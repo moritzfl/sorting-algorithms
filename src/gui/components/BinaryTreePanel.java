@@ -1,4 +1,4 @@
-package gui.general;
+package gui.components;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -82,14 +82,6 @@ public class BinaryTreePanel extends JPanel {
      */
     public static double getFontHeight() {
         return new JPanel().getFontMetrics(BinaryTreePanel.FONT).getHeight();
-    }
-
-    /**
-     * Refreshes the panel by repainting. This is used if the panel gets resized
-     * after being initially rendered.
-     */
-    public void refresh() {
-        paintImmediately(0, 0, getWidth(), getHeight());
     }
 
     /**

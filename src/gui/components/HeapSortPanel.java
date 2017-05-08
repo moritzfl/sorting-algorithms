@@ -1,11 +1,9 @@
-package gui.sortingwindows;
+package gui.components;
 
 import java.util.Arrays;
 
-import gui.general.BinaryTreePanel;
 import logic.sorting.HeapStep;
 
-// TODO: Auto-generated Javadoc
 
 /**
  * @author Moritz Floeter

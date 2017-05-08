@@ -1,7 +1,7 @@
 /*
  * 
  */
-package gui.sortingwindows;
+package gui;
 
 import java.awt.Desktop;
 import java.awt.event.ActionEvent;
@@ -11,6 +11,7 @@ import java.io.File;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+import gui.components.HeapSortPanelExtended;
 import logic.sorting.HeapSort;
 
 /**

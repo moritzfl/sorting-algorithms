@@ -1,4 +1,4 @@
-package gui.sortingwindows;
+package gui.components;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -8,7 +8,6 @@ import java.awt.event.MouseMotionListener;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import gui.general.GeneralGuiFunctions;
 import logic.sorting.HeapStep;
 
 /**

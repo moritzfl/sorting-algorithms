@@ -1,4 +1,4 @@
-package gui.general;
+package gui;
 
 import java.awt.BorderLayout;
 import java.awt.Container;
@@ -18,8 +18,6 @@ import javax.swing.JPanel;
 
 import org.jdesktop.swingx.JXTextField;
 
-import gui.sortingwindows.HeapWindow;
-import gui.sortingwindows.SortingWindow;
 import logic.sorting.BubbleSort;
 import logic.sorting.HeapSort;
 import logic.sorting.QuickSort;

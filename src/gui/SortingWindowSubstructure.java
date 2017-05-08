@@ -1,4 +1,4 @@
-package gui.sortingwindows;
+package gui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -12,9 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 
-import gui.general.DragScrollListener;
-
-import gui.general.GeneralGuiFunctions;
+import gui.components.DragScrollListener;
 
 /**
  * The Class SortingWindow.

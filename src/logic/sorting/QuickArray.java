@@ -1,7 +1,5 @@
 package logic.sorting;
 
-// TODO: Auto-generated Javadoc
-
 /**
  * @author Moritz Floeter
  *         <p>

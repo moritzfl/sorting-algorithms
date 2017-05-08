@@ -2,8 +2,6 @@ package logic.sorting;
 
 import java.util.ArrayList;
 
-// TODO: Auto-generated Javadoc
-
 /**
  * @author Moritz Floeter
  *         <p>

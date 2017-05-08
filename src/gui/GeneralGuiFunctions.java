@@ -1,4 +1,4 @@
-package gui.general;
+package gui;
 
 import java.awt.GraphicsDevice;
 import java.awt.MouseInfo;

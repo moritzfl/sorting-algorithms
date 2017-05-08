@@ -1,4 +1,7 @@
-package gui.general;
+package gui;
+
+import gui.components.MonoTextArea;
+import gui.components.LaTeXPanel;
 
 import java.awt.BorderLayout;
 import java.awt.Container;
@@ -67,6 +70,7 @@ public class AboutWindow extends JFrame {
 
         mainpane.add(new LaTeXPanel(versionInformation, 21), BorderLayout.NORTH);
         mainpane.add(new JScrollPane(new MonoTextArea(copyrightInformation)), BorderLayout.CENTER);
+
         this.setLocationRelativeTo(parent);
         this.setAlwaysOnTop(true);
         this.setResizable(false);

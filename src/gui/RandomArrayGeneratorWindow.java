@@ -1,4 +1,4 @@
-package gui.general;
+package gui;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -13,6 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import gui.components.IntegerField;
 import logic.util.InputGeneration;
 
 // TODO: Auto-generated Javadoc
@@ -142,7 +143,6 @@ public class RandomArrayGeneratorWindow extends JFrame implements ActionListener
         boolean close = true;
 
         if (e.getSource().equals(generateBtn)) {
-            // TODO Auto-generated method stub
             numberCount.validateValue();
             minNumberValue.validateValue();
             maxNumberValue.validateValue();

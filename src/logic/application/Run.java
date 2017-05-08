@@ -1,9 +1,8 @@
 package logic.application;
 
-import gui.general.AlgorithmSelection;
-import gui.general.GeneralGuiFunctions;
+import gui.AlgorithmSelection;
+import gui.GeneralGuiFunctions;
 
-// TODO: Auto-generated Javadoc
 
 /**
  * @author Moritz Floeter
