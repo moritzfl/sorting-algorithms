@@ -48,7 +48,7 @@ public class SelectionSort extends SortingAlgorithm {
         }
 
         // insert minimum if the step was not the last step
-        if (chosenStepNumber != protocol.size() - 1) {
+        if (chosenStep.getSortedUntilPositionMarker() != -1)  {
             retString += "min = " + (chosenStep.getMinPosition() + 1);
         }
 
