@@ -1,7 +1,5 @@
 package gui.general;
 
-import io.SaveFile;
-
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.io.File;
