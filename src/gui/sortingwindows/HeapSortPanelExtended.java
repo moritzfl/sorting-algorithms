@@ -13,28 +13,30 @@ import logic.sorting.HeapStep;
 
 /**
  * @author Moritz Floeter
- * 
- * The Class HeapSortPanelExtended. This provides a more detailed view of a
- * HeapStep by adding the currently sorted array as well as other additional
- * information to the tree-view of HeapSortPanel.
- * 
- * --------------------------------------------------------------------
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *         <p>
+ *         The Class HeapSortPanelExtended. This provides a more detailed view of a
+ *         HeapStep by adding the currently sorted array as well as other additional
+ *         information to the tree-view of HeapSortPanel.
+ *         <p>
+ *         --------------------------------------------------------------------
+ *         This program is free software: you can redistribute it and/or modify
+ *         it under the terms of the GNU General Public License as published by
+ *         the Free Software Foundation, either version 3 of the License, or
+ *         (at your option) any later version.
+ *         <p>
+ *         This program is distributed in the hope that it will be useful,
+ *         but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *         MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *         GNU General Public License for more details.
+ *         <p>
+ *         You should have received a copy of the GNU General Public License
+ *         along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 public class HeapSortPanelExtended extends JPanel {
 
-    /** The Constant serialVersionUID. */
+    /**
+     * The Constant serialVersionUID.
+     */
     private static final long serialVersionUID = 6747671448724713302L;
 
     /**
@@ -43,7 +45,9 @@ public class HeapSortPanelExtended extends JPanel {
      */
     JLabel arrayLabel = new JLabel("");
 
-    /** The hpanel. This contains the binary tree. */
+    /**
+     * The hpanel. This contains the binary tree.
+     */
     JPanel hpanel = new JPanel();
 
     /**
@@ -83,7 +87,7 @@ public class HeapSortPanelExtended extends JPanel {
             array += "<br>&nbsp;<font face=\"verdana\" size=\"4\">finished sorting! :) </font><br>";
         } else if ((hstep.getMemory() == (hstep.getStep().length / 2 - 1)) && hstep.getSortedList().isEmpty()) {
             array += "<br>&nbsp;<font face=\"verdana\" size=\"14\">Heap Creation</font><br>.........................."
-                + "<br>&nbsp;<font face=\"verdana\" size=\"4\">original binary tree</font>";
+                    + "<br>&nbsp;<font face=\"verdana\" size=\"4\">original binary tree</font>";
         } else if (hstep.getMemory() == (hstep.getStep().length / 2 - 2) && hstep.getSortedList().isEmpty()) {
             array += "<br>&nbsp;<font face=\"verdana\" size=\"4\"> &gt;__&lt; := element that is to be heapified</font>";
         }

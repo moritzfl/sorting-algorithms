@@ -10,52 +10,59 @@ import javax.swing.JTextField;
 // TODO: Auto-generated Javadoc
 
 /**
- *
  * @author Moritz Floeter
- * 
- * The Class IntegerField. This Class is basically an implementation of a
- * TextField that only accepts integers (more specifically positive integers) in
- * a certain range that is defined by a minimum and maximum passed to the
- * constructor.
- * 
- * Why not use a simple JSPinner instead? Amazingly those things perform
- * differently under OSX and Windows (not tested on Linux but perhaps they have
- * their own parallel life there too). While working perfectly fine on OSX in
- * one situation, they might get you into trouble on Windows and vice versa. By
- * writing my own class, I have the luxury of being under the impression that I
- * am actually in control of what's happening. And if I am not sure whether the
- * inputs are correct, I can always call the validateValue() method.
- * 
- * And when a class like this is quickly written - why bother looking for an
- * alternative (JFormattedTextField etc) that would also need evaluation and
- * testing:)
- * 
- * --------------------------------------------------------------------
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *         <p>
+ *         The Class IntegerField. This Class is basically an implementation of a
+ *         TextField that only accepts integers (more specifically positive integers) in
+ *         a certain range that is defined by a minimum and maximum passed to the
+ *         constructor.
+ *         <p>
+ *         Why not use a simple JSPinner instead? Amazingly those things perform
+ *         differently under OSX and Windows (not tested on Linux but perhaps they have
+ *         their own parallel life there too). While working perfectly fine on OSX in
+ *         one situation, they might get you into trouble on Windows and vice versa. By
+ *         writing my own class, I have the luxury of being under the impression that I
+ *         am actually in control of what's happening. And if I am not sure whether the
+ *         inputs are correct, I can always call the validateValue() method.
+ *         <p>
+ *         And when a class like this is quickly written - why bother looking for an
+ *         alternative (JFormattedTextField etc) that would also need evaluation and
+ *         testing:)
+ *         <p>
+ *         --------------------------------------------------------------------
+ *         This program is free software: you can redistribute it and/or modify
+ *         it under the terms of the GNU General Public License as published by
+ *         the Free Software Foundation, either version 3 of the License, or
+ *         (at your option) any later version.
+ *         <p>
+ *         This program is distributed in the hope that it will be useful,
+ *         but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *         MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *         GNU General Public License for more details.
+ *         <p>
+ *         You should have received a copy of the GNU General Public License
+ *         along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 public class IntegerField extends JTextField implements FocusListener {
 
-    /** The Constant serialVersionUID. */
+    /**
+     * The Constant serialVersionUID.
+     */
     private static final long serialVersionUID = 7993439468559754401L;
 
-    /** The max. */
+    /**
+     * The max.
+     */
     private int max;
 
-    /** The min. */
+    /**
+     * The min.
+     */
     private int min;
 
-    /** The int listen. */
+    /**
+     * The int listen.
+     */
     private IntegerListener intListen = new IntegerListener();
 
     /**
@@ -160,7 +167,6 @@ public class IntegerField extends JTextField implements FocusListener {
      * is responsible for processing an input event that only should allow
      * numbers. When the integer event occurs, the appropriate method is
      * invoked.
-     *
      */
     private class IntegerListener implements KeyListener {
 

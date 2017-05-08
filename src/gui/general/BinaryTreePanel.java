@@ -9,34 +9,35 @@ import java.awt.Graphics;
 import javax.swing.JPanel;
 
 /**
- * @author Moritz Floeter 
- * 
- * The Class BinaryTreePanel. This panel renders a string-array
- * as a binary tree The array gets displayed as follows: a[0]->rootnode,
- * a[1]->left child of root, a[2]->right child of root, a[3]->left child of
- * a[1], a[4]->right child of a[1], a[5]->left child of a[2], ...
- * 
- * --------------------------------------------------------------------
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- * 
+ * @author Moritz Floeter
+ *         <p>
+ *         The Class BinaryTreePanel. This panel renders a string-array
+ *         as a binary tree The array gets displayed as follows: a[0]->rootnode,
+ *         a[1]->left child of root, a[2]->right child of root, a[3]->left child of
+ *         a[1], a[4]->right child of a[1], a[5]->left child of a[2], ...
+ *         <p>
+ *         --------------------------------------------------------------------
+ *         This program is free software: you can redistribute it and/or modify
+ *         it under the terms of the GNU General Public License as published by
+ *         the Free Software Foundation, either version 3 of the License, or
+ *         (at your option) any later version.
+ *         <p>
+ *         This program is distributed in the hope that it will be useful,
+ *         but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *         MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *         GNU General Public License for more details.
+ *         <p>
+ *         You should have received a copy of the GNU General Public License
+ *         along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 public class BinaryTreePanel extends JPanel {
 
     private static final long serialVersionUID = 1661954419258085501L;
 
-    /** The tree array. */
+    /**
+     * The tree array.
+     */
     private String[] treeArray;
 
     /**
@@ -49,7 +50,7 @@ public class BinaryTreePanel extends JPanel {
      * Instantiates a new binary tree panel.
      *
      * @param treeArray the tree array @param width the width @param height the
-     * height
+     *                  height
      */
     public BinaryTreePanel(String[] treeArray, int width, int height) {
         // set the colors
@@ -111,8 +112,8 @@ public class BinaryTreePanel extends JPanel {
      * method.
      *
      * @param graphic the graphic @param minX the min x @param maxX the max
-     * x @param yCoordinate the y coordinate @param rowHeight the row
-     * height @param nodeNumber the node number
+     *                x @param yCoordinate the y coordinate @param rowHeight the row
+     *                height @param nodeNumber the node number
      */
     private void drawNode(Graphics graphic, int minX, int maxX, int yCoordinate, int rowHeight, int nodeNumber) {
         String nodeText = treeArray[nodeNumber];
@@ -137,14 +138,14 @@ public class BinaryTreePanel extends JPanel {
         if (leftnode > -1) {
             // if the left node is not empty a line is drawn to the left child
             graphic.drawLine((minX + maxX) / 2, yCoordinate + rowHeight / 2 + 2, (minX + (minX + maxX) / 2) / 2,
-                yCoordinate + rowHeight + rowHeight / 2 - height);
+                    yCoordinate + rowHeight + rowHeight / 2 - height);
             // the draw-Method is rendered recursively to paint the left child
             drawNode(graphic, minX, (minX + maxX) / 2, yCoordinate + rowHeight, rowHeight, leftnode);
         }
         if (rightnode > -1) {
             // if the right node is not empty a line is drawn to the right child
             graphic.drawLine((minX + maxX) / 2, yCoordinate + rowHeight / 2 + 2, (maxX + (minX + maxX) / 2) / 2,
-                yCoordinate + rowHeight + rowHeight / 2 - height);
+                    yCoordinate + rowHeight + rowHeight / 2 - height);
             // the draw-Method is rendered recursively to paint the right child
             drawNode(graphic, (minX + maxX) / 2, maxX, yCoordinate + rowHeight, rowHeight, rightnode);
         }

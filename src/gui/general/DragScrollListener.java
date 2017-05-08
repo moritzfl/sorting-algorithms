@@ -21,93 +21,122 @@ import javax.swing.*;
 /**
  * Listener to allow for iPhone like drag scrolling of a Component within a
  * JScrollPane. @author Greg Cope
- * 
+ * <p>
  * This program is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free Software
  * Foundation, either version 3 of the License, or (at your option) any later
  * version.
- *
+ * <p>
  * This program is distributed in the hope that it will be useful, but WITHOUT
  * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
  * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
  * details.
- *
+ * <p>
  * You should have received a copy of the GNU General Public License along with
  * this program. If not, see <http://www.gnu.org/licenses/>.
- *
  */
 
 public class DragScrollListener implements MouseListener, MouseMotionListener {
 
     // flags used to turn on/off draggable scrolling directions
 
-    /** The Constant DRAGABLE_HORIZONTAL_SCROLL_BAR. */
+    /**
+     * The Constant DRAGABLE_HORIZONTAL_SCROLL_BAR.
+     */
     public static final int DRAGABLE_HORIZONTAL_SCROLL_BAR = 1;
 
-    /** The Constant DRAGABLE_VERTICAL_SCROLL_BAR. */
+    /**
+     * The Constant DRAGABLE_VERTICAL_SCROLL_BAR.
+     */
     public static final int DRAGABLE_VERTICAL_SCROLL_BAR = 2;
 
     // defines the intensite of automatic scrolling.
 
-    /** The scrolling intensity. */
+    /**
+     * The scrolling intensity.
+     */
     private int scrollingIntensity = 10;
 
     // value used to descrease scrolling intensity during animation
 
-    /** The damping. */
+    /**
+     * The damping.
+     */
     private double damping = 0.05;
 
     // indicates the number of milliseconds between animation updates.
 
-    /** The animation speed. */
+    /**
+     * The animation speed.
+     */
     private int animationSpeed = 20;
 
     // Animation timer
 
-    /** The animation timer. */
+    /**
+     * The animation timer.
+     */
     private javax.swing.Timer animationTimer = null;
 
     // the time of the last mouse drag event
 
-    /** The last drag time. */
+    /**
+     * The last drag time.
+     */
     private long lastDragTime = 0;
 
-    /** The last drag point. */
+    /**
+     * The last drag point.
+     */
     private Point lastDragPoint = null;
 
     // animation rates
 
-    /** The pixels per msx. */
+    /**
+     * The pixels per msx.
+     */
     private double pixelsPerMSX;
 
-    /** The pixels per msy. */
+    /**
+     * The pixels per msy.
+     */
     private double pixelsPerMSY;
 
     // flag which defines the draggable scroll directions
 
-    /** The scroll bar mask. */
+    /**
+     * The scroll bar mask.
+     */
     private int scrollBarMask = DRAGABLE_HORIZONTAL_SCROLL_BAR | DRAGABLE_VERTICAL_SCROLL_BAR;
 
     // the draggable component
 
-    /** The draggable component. */
+    /**
+     * The draggable component.
+     */
     private final Component draggableComponent;
 
     // the JScrollPane containing the component - programmatically determined.
 
-    /** The scroller. */
+    /**
+     * The scroller.
+     */
     private JScrollPane scroller = null;
 
     // the default cursor
 
-    /** The default cursor. */
+    /**
+     * The default cursor.
+     */
     private Cursor defaultCursor;
 
     // List of drag speeds used to calculate animation speed
 
     // Uses the Point2D class to represent speeds rather than locations
 
-    /** The drag speeds. */
+    /**
+     * The drag speeds.
+     */
     private java.util.List<Point2D.Double> dragSpeeds = new ArrayList<Point2D.Double>();
 
     /**
@@ -159,16 +188,12 @@ public class DragScrollListener implements MouseListener, MouseMotionListener {
     }
 
     /**
-     * 
-     * 
-     * 
      * Sets the Draggable elements - the Horizontal or Vertical Direction. One
-     * 
+     * <p>
      * can use a bitmasked 'or' (HORIZONTAL_SCROLL_BAR | VERTICAL_SCROLL_BAR ).
-     * 
+     *
      * @param mask One of HORIZONTAL_SCROLL_BAR, VERTICAL_SCROLL_BAR, or
-     * HORIZONTAL_SCROLL_BAR | VERTICAL_SCROLL_BAR
-     * 
+     *             HORIZONTAL_SCROLL_BAR | VERTICAL_SCROLL_BAR
      */
 
     public void setDraggableElements(int mask) {
@@ -178,17 +203,15 @@ public class DragScrollListener implements MouseListener, MouseMotionListener {
     }
 
     /**
-     * 
      * Sets the scrolling intensity - the default value being 5. Note, that this
      * has an
-     * 
+     * <p>
      * inverse relationship to intensity (1 has the biggest difference, higher
      * numbers having
-     * 
+     * <p>
      * less impact).
-     * 
+     *
      * @param intensity The new intensity value (Note the inverse relationship).
-     * 
      */
 
     public void setScrollingIntensity(int intensity) {
@@ -198,13 +221,11 @@ public class DragScrollListener implements MouseListener, MouseMotionListener {
     }
 
     /**
-     * 
      * Sets how frequently the animation will occur in milliseconds. Default
-     * 
+     * <p>
      * value is 30 milliseconds. 60+ will get a bit flickery.
-     * 
+     *
      * @param timing The timing, in milliseconds.
-     * 
      */
 
     public void setAnimationTiming(int timing) {
@@ -214,11 +235,9 @@ public class DragScrollListener implements MouseListener, MouseMotionListener {
     }
 
     /**
-     * 
      * Sets the animation damping.
-     * 
+     *
      * @param damping The new value
-     * 
      */
 
     public void setDamping(double damping) {
@@ -387,9 +406,9 @@ public class DragScrollListener implements MouseListener, MouseMotionListener {
 
         dragSpeeds.add(new Point2D.Double(
 
-        (e.getPoint().x - lastDragPoint.x),
+                (e.getPoint().x - lastDragPoint.x),
 
-        (e.getPoint().y - lastDragPoint.y)));
+                (e.getPoint().y - lastDragPoint.y)));
 
         lastDragTime = System.currentTimeMillis();
 
@@ -405,13 +424,9 @@ public class DragScrollListener implements MouseListener, MouseMotionListener {
     }
 
     /**
-     * 
      * Private inner class which accomplishes the animation.
-     * 
-     * @author Greg Cope
      *
-     * 
-     * 
+     * @author Greg Cope
      */
 
     private class ScrollAnimator implements ActionListener {
@@ -593,28 +608,32 @@ public class DragScrollListener implements MouseListener, MouseMotionListener {
     }
 
     /**
-     * 
      * Testing inner class that draws several squares of randomly selected
      * colors.
-     * 
-     * @author Greg Cope
      *
-     * 
-     * 
+     * @author Greg Cope
      */
 
     public static class Drawer extends JPanel {
 
-        /** The Constant serialVersionUID. */
+        /**
+         * The Constant serialVersionUID.
+         */
         static final long serialVersionUID = 43214321L;
 
-        /** The width. */
+        /**
+         * The width.
+         */
         int width = 10000;
 
-        /** The height. */
+        /**
+         * The height.
+         */
         int height = 5000;
 
-        /** The colors. */
+        /**
+         * The colors.
+         */
         Color[][] colors;
 
         /**

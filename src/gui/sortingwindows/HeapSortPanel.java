@@ -6,30 +6,33 @@ import gui.general.BinaryTreePanel;
 import logic.sorting.HeapStep;
 
 // TODO: Auto-generated Javadoc
+
 /**
  * @author Moritz Floeter
- * 
- * The Class HeapSortPanel. This panel is used to display the binary tree for a
- * heapsort step.
- * 
- * --------------------------------------------------------------------
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *         <p>
+ *         The Class HeapSortPanel. This panel is used to display the binary tree for a
+ *         heapsort step.
+ *         <p>
+ *         --------------------------------------------------------------------
+ *         This program is free software: you can redistribute it and/or modify
+ *         it under the terms of the GNU General Public License as published by
+ *         the Free Software Foundation, either version 3 of the License, or
+ *         (at your option) any later version.
+ *         <p>
+ *         This program is distributed in the hope that it will be useful,
+ *         but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *         MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *         GNU General Public License for more details.
+ *         <p>
+ *         You should have received a copy of the GNU General Public License
+ *         along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 public class HeapSortPanel extends BinaryTreePanel {
 
-    /** The Constant serialVersionUID. */
+    /**
+     * The Constant serialVersionUID.
+     */
     private static final long serialVersionUID = 2139431116975562997L;
 
     /**
@@ -69,7 +72,6 @@ public class HeapSortPanel extends BinaryTreePanel {
 
     /**
      * Int to string array.
-     *
      */
     public static String[] pullAsStringArray(HeapStep step) {
 
@@ -114,7 +116,6 @@ public class HeapSortPanel extends BinaryTreePanel {
 
     /**
      * Gets the max width.
-     *
      */
     private static int getMaxWidth(HeapStep step) {
         // the current maximum number of characters that are displayed in one
@@ -147,7 +148,7 @@ public class HeapSortPanel extends BinaryTreePanel {
      * Gets the max height.
      *
      * @param array the array representing the binary tree @return the max
-     * height that the binary tree will have in the gui
+     *              height that the binary tree will have in the gui
      */
     private static int getMaxHeight(int[][] array) {
         /*
@@ -155,7 +156,7 @@ public class HeapSortPanel extends BinaryTreePanel {
          * Space that every line should take
          */
         int maxHeight =
-            (int) (Math.floor(Math.log(array.length) / Math.log(2)) * verticalNodeSpace + verticalNodeSpace);
+                (int) (Math.floor(Math.log(array.length) / Math.log(2)) * verticalNodeSpace + verticalNodeSpace);
         return maxHeight;
     }
 
@@ -163,7 +164,7 @@ public class HeapSortPanel extends BinaryTreePanel {
      * Cross out all characters in a string.
      *
      * @param input the input @return the string with all characters crossed
-     * out.
+     *              out.
      */
     private static String crossOut(String input) {
 

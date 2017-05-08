@@ -2,13 +2,15 @@
   This program serves the purpose of teaching and learning different algorithms
   and was developed during my studies at the University of Hildesheim.
 
-  If needed, you can contact me via the contact form on my website (moritzf.de)
+  If needed, you can contact me through th contact information on my website
+  http://www.moritzf.de/
+
   Feedback and small donations can also be given through that website.
 
   -----------------------------------------------------------------------------
   This program is licensed under the terms of the GPL.
 
-    Copyright (C) 2015  Moritz Floeter
+    Copyright (C) 2015 - 2017  Moritz Floeter
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by

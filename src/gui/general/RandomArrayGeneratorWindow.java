@@ -16,48 +16,63 @@ import javax.swing.JPanel;
 import logic.util.InputGeneration;
 
 // TODO: Auto-generated Javadoc
+
 /**
  * @author Moritz Floeter
- * 
- * The Class RandomArrayGenerator.
- *
- * This class provides the gui for creating a randomized array.
- * 
- * --------------------------------------------------------------------
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *         <p>
+ *         The Class RandomArrayGenerator.
+ *         <p>
+ *         This class provides the gui for creating a randomized array.
+ *         <p>
+ *         --------------------------------------------------------------------
+ *         This program is free software: you can redistribute it and/or modify
+ *         it under the terms of the GNU General Public License as published by
+ *         the Free Software Foundation, either version 3 of the License, or
+ *         (at your option) any later version.
+ *         <p>
+ *         This program is distributed in the hope that it will be useful,
+ *         but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *         MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *         GNU General Public License for more details.
+ *         <p>
+ *         You should have received a copy of the GNU General Public License
+ *         along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 public class RandomArrayGeneratorWindow extends JFrame implements ActionListener {
 
-    /** The Constant serialVersionUID. */
+    /**
+     * The Constant serialVersionUID.
+     */
     private static final long serialVersionUID = -2004873389331204943L;
 
-    /** The number count. */
+    /**
+     * The number count.
+     */
     private IntegerField numberCount = new IntegerField(2, AlgorithmSelection.maxCount);
 
-    /** The max number value. */
+    /**
+     * The max number value.
+     */
     private IntegerField maxNumberValue = new IntegerField(0, AlgorithmSelection.maxValue);
 
-    /** The min number value. */
+    /**
+     * The min number value.
+     */
     private IntegerField minNumberValue = new IntegerField(0, AlgorithmSelection.maxValue);
 
-    /** The generate btn. */
+    /**
+     * The generate btn.
+     */
     private JButton generateBtn = new JButton("<html>&nbsp; <br>Generate<br> &nbsp;</html>");
 
-    /** The cancel btn. */
+    /**
+     * The cancel btn.
+     */
     private JButton cancelBtn = new JButton("<html> &nbsp; <br>Cancel<br> &nbsp;</html>");
 
-    /** The selection. */
+    /**
+     * The selection.
+     */
     private AlgorithmSelection selection;
 
     /**
@@ -95,12 +110,12 @@ public class RandomArrayGeneratorWindow extends JFrame implements ActionListener
         parameters.setBorder(BorderFactory.createTitledBorder("Selection"));
         parameters.add(new JLabel("Note: only numbers ≥ 0 are allowed"));
         parameters.add(
-            new JLabel("<html>Number of elements<br>" + "<i> must be below " + AlgorithmSelection.maxCount + "</i></html>"));
+                new JLabel("<html>Number of elements<br>" + "<i> must be below " + AlgorithmSelection.maxCount + "</i></html>"));
         parameters.add(numberCount);
         parameters.add(new JLabel("Min. value"));
         parameters.add(minNumberValue);
         parameters
-            .add(new JLabel("<html>Max. value<br>" + "<i> must be below " + AlgorithmSelection.maxValue + "<i></html>"));
+                .add(new JLabel("<html>Max. value<br>" + "<i> must be below " + AlgorithmSelection.maxValue + "<i></html>"));
         parameters.add(maxNumberValue);
         mainpanel.add(parameters, BorderLayout.CENTER);
 
@@ -147,7 +162,7 @@ public class RandomArrayGeneratorWindow extends JFrame implements ActionListener
                 selection.setInput(InputGeneration.generate(max, min, count));
             } else {
                 JOptionPane.showMessageDialog(null,
-                    "<html>Min. value must be below max. value.</html>");
+                        "<html>Min. value must be below max. value.</html>");
                 close = false;
             }
         }

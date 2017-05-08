@@ -4,25 +4,25 @@ import java.util.Random;
 
 /**
  * @author Moritz Floeter
- * 
- * The Class InputGeneration.
- * 
- * The Class InputGeneration. Serves the generation of Input for the different
- * sorting algorithms.
- * 
- * --------------------------------------------------------------------
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *         <p>
+ *         The Class InputGeneration.
+ *         <p>
+ *         The Class InputGeneration. Serves the generation of Input for the different
+ *         sorting algorithms.
+ *         <p>
+ *         --------------------------------------------------------------------
+ *         This program is free software: you can redistribute it and/or modify
+ *         it under the terms of the GNU General Public License as published by
+ *         the Free Software Foundation, either version 3 of the License, or
+ *         (at your option) any later version.
+ *         <p>
+ *         This program is distributed in the hope that it will be useful,
+ *         but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *         MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *         GNU General Public License for more details.
+ *         <p>
+ *         You should have received a copy of the GNU General Public License
+ *         along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 public class InputGeneration {
 
@@ -31,7 +31,7 @@ public class InputGeneration {
      * commas.
      *
      * @param input the input as String @return the int[] numbers from the input
-     * as an array
+     *              as an array
      */
     public static int[] arrayFromString(String input) {
         String[] sArray = input.split(",");
@@ -53,8 +53,8 @@ public class InputGeneration {
      * passed to the function.
      *
      * @param max maximum value of a single element @param min minimum value of
-     * a single element @param count total count of numbers generated @return
-     * the generated String
+     *            a single element @param count total count of numbers generated @return
+     *            the generated String
      */
     public static String generate(int max, int min, int count) {
         String retString = "";
