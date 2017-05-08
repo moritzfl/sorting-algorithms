@@ -1,0 +1,52 @@
+
+  This program serves the purpose of teaching and learning different algorithms
+  and was developed during my studies at the University of Hildesheim.
+
+  If needed, you can contact me via the contact form on my website (moritzf.de)
+  Feedback and small donations can also be given through that website.
+
+  -----------------------------------------------------------------------------
+  This program is licensed under the terms of the GPL.
+
+    Copyright (C) 2015  Moritz Floeter
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+  -----------------------------------------------------------------------
+  Furthermore, this program uses other open source software:
+
+    JLaTeXMath - a library to render and display LaTeX-Elements
+
+        Copyright (C) 2009-2011 DENIZET Calixte
+        Copyright (C) Kris Coolsaet
+        Copyright (C) Nico Van Cleemput
+        Copyright (C) Kurt Vermeulen
+        Copyright 2004-2007 Universiteit Gent
+
+    licensed under the terms of GPL v3
+
+
+    DragScrollListner - a class for enabling scrolling by touchinput
+
+        Copyright (C) Greg Cope
+
+    licensed under the terms of GPL v3
+
+
+    SwingX - a library for various GUI-Elements
+
+        Copyright (C) 2005-2006 Sun Microsystems
+
+    licensed under the terms of GNU Lesser GPL v2.1
+
