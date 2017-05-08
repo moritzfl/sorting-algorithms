@@ -1,2 +1,2 @@
-\text{\textit{Sorting Algorighms V 1.0beta}} \\
+\text{\textit{Sorting Algorithms V 1.0beta}} \\
 \scriptsize \text{© 2015-2017 by Moritz Fl\ddot{o}ter}
