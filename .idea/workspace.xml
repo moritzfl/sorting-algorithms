@@ -6,42 +6,9 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="39bfdd93-1689-4a0f-b9bb-d8f7bc2b0e56" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/gui/AboutWindow.java" afterPath="$PROJECT_DIR$/src/de/moritzf/sorting/gui/AboutWindow.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/gui/AlgorithmSelection.java" afterPath="$PROJECT_DIR$/src/de/moritzf/sorting/gui/AlgorithmSelection.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/gui/GeneralGuiFunctions.java" afterPath="$PROJECT_DIR$/src/de/moritzf/sorting/gui/GeneralGuiFunctions.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/gui/HeapWindow.java" afterPath="$PROJECT_DIR$/src/de/moritzf/sorting/gui/HeapWindow.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/gui/RandomArrayGeneratorWindow.java" afterPath="$PROJECT_DIR$/src/de/moritzf/sorting/gui/RandomArrayGeneratorWindow.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/gui/SortingWindow.java" afterPath="$PROJECT_DIR$/src/de/moritzf/sorting/gui/SortingWindow.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/gui/SortingWindowSubstructure.java" afterPath="$PROJECT_DIR$/src/de/moritzf/sorting/gui/SortingWindowSubstructure.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/gui/about-copyright.txt" afterPath="$PROJECT_DIR$/src/de/moritzf/sorting/gui/about-copyright.txt" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/gui/about-version.txt" afterPath="$PROJECT_DIR$/src/de/moritzf/sorting/gui/about-version.txt" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/gui/components/BinaryTreePanel.java" afterPath="$PROJECT_DIR$/src/de/moritzf/sorting/gui/components/BinaryTreePanel.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/gui/components/DragScrollListener.java" afterPath="$PROJECT_DIR$/src/de/moritzf/sorting/gui/components/DragScrollListener.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/gui/components/HeapSortPanel.java" afterPath="$PROJECT_DIR$/src/de/moritzf/sorting/gui/components/HeapSortPanel.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/gui/components/HeapSortPanelExtended.java" afterPath="$PROJECT_DIR$/src/de/moritzf/sorting/gui/components/HeapSortPanelExtended.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/gui/components/IntegerField.java" afterPath="$PROJECT_DIR$/src/de/moritzf/sorting/gui/components/IntegerField.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/gui/components/LaTeXPanel.java" afterPath="$PROJECT_DIR$/src/de/moritzf/sorting/gui/components/LaTeXPanel.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/gui/components/MonoTextArea.java" afterPath="$PROJECT_DIR$/src/de/moritzf/sorting/gui/components/MonoTextArea.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/io/SaveFile.java" afterPath="$PROJECT_DIR$/src/de/moritzf/sorting/io/SaveFile.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/io/export-template.txt" afterPath="$PROJECT_DIR$/src/de/moritzf/sorting/io/export-template.txt" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/logic/application/Run.java" afterPath="$PROJECT_DIR$/src/de/moritzf/sorting/logic/application/Run.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/logic/sorting/BubbleSort.java" afterPath="$PROJECT_DIR$/src/de/moritzf/sorting/logic/sorting/BubbleSort.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/logic/sorting/BubbleStep.java" afterPath="$PROJECT_DIR$/src/de/moritzf/sorting/logic/sorting/BubbleStep.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/logic/sorting/HeapSort.java" afterPath="$PROJECT_DIR$/src/de/moritzf/sorting/logic/sorting/HeapSort.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/logic/sorting/HeapStep.java" afterPath="$PROJECT_DIR$/src/de/moritzf/sorting/logic/sorting/HeapStep.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/logic/sorting/QuickArray.java" afterPath="$PROJECT_DIR$/src/de/moritzf/sorting/logic/sorting/QuickArray.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/logic/sorting/QuickSort.java" afterPath="$PROJECT_DIR$/src/de/moritzf/sorting/logic/sorting/QuickSort.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/logic/sorting/QuickStep.java" afterPath="$PROJECT_DIR$/src/de/moritzf/sorting/logic/sorting/QuickStep.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/logic/sorting/RadixSort.java" afterPath="$PROJECT_DIR$/src/de/moritzf/sorting/logic/sorting/RadixSort.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/logic/sorting/RadixStep.java" afterPath="$PROJECT_DIR$/src/de/moritzf/sorting/logic/sorting/RadixStep.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/logic/sorting/SelectionSort.java" afterPath="$PROJECT_DIR$/src/de/moritzf/sorting/logic/sorting/SelectionSort.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/logic/sorting/SelectionStep.java" afterPath="$PROJECT_DIR$/src/de/moritzf/sorting/logic/sorting/SelectionStep.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/logic/sorting/SortingAlgorithm.java" afterPath="$PROJECT_DIR$/src/de/moritzf/sorting/logic/sorting/SortingAlgorithm.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/logic/util/InputGeneration.java" afterPath="$PROJECT_DIR$/src/de/moritzf/sorting/logic/util/InputGeneration.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/logic/util/IntArrayUtils.java" afterPath="$PROJECT_DIR$/src/de/moritzf/sorting/logic/util/IntArrayUtils.java" />
+    <list default="true" id="39bfdd93-1689-4a0f-b9bb-d8f7bc2b0e56" name="Default" comment="add de.moritzf to package name">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -124,7 +91,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MANIFEST.MF" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MANIFEST.MF" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/META-INF/MANIFEST.MF">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
@@ -134,21 +101,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DragScrollListener.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/de/moritzf/sorting/gui/components/DragScrollListener.java">
+      <file leaf-file-name="LICENSE.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/LICENSE.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="38" column="13" lean-forward="false" selection-start-line="38" selection-start-column="13" selection-end-line="38" selection-end-column="13" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HeapSortPanel.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/de/moritzf/sorting/gui/components/HeapSortPanel.java">
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="28" column="13" lean-forward="false" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
+            <state relative-caret-position="30">
+              <caret line="2" column="19" lean-forward="false" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -181,6 +148,9 @@
       <find>btn</find>
       <find>jsobject</find>
     </findStrings>
+    <dirStrings>
+      <dir>$PROJECT_DIR$</dir>
+    </dirStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -196,7 +166,6 @@
         <option value="$PROJECT_DIR$/src/gui/general/TooltipSettingChangeListener.java" />
         <option value="$PROJECT_DIR$/src/logic/sorting/SortingStep.java" />
         <option value="$PROJECT_DIR$/src/io/export-template.txt" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/logic/sorting/BubbleStep.java" />
         <option value="$PROJECT_DIR$/src/logic/sorting/SelectionStep.java" />
         <option value="$PROJECT_DIR$/src/logic/sorting/SortingAlgorithm.java" />
@@ -243,6 +212,7 @@
         <option value="$PROJECT_DIR$/src/gui/components/main.fxml" />
         <option value="$PROJECT_DIR$/src/gui/components/WebController.java" />
         <option value="$PROJECT_DIR$/src/de/moritzf/sorting/gui/GeneralGuiFunctions.java" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -286,6 +256,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="sorting-algorithms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sorting-algorithms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sorting-algorithms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value=".idea" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -862,7 +846,7 @@
       <workItem from="1494269458924" duration="571000" />
       <workItem from="1494270143004" duration="4820000" />
       <workItem from="1494310096515" duration="286000" />
-      <workItem from="1494336400899" duration="76000" />
+      <workItem from="1494336400899" duration="347000" />
     </task>
     <task id="LOCAL-00001" summary="Add vcs and gitignore to project">
       <created>1494245112266</created>
@@ -920,11 +904,18 @@
       <option name="project" value="LOCAL" />
       <updated>1494275738094</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="add de.moritzf to package name">
+      <created>1494336534457</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1494336534457</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="21095000" />
+    <option name="totallyTimeSpent" value="21366000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="62" y="22" width="1304" height="746" extended-state="0" />
@@ -947,10 +938,10 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32874617" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32874617" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40519878" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2155309" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2947702" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32874617" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -976,7 +967,8 @@
     <MESSAGE value="Add runnable jar as build artifact" />
     <MESSAGE value="Reproduce fixes from teaching-algorithms" />
     <MESSAGE value="Refactoring" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactoring" />
+    <MESSAGE value="add de.moritzf to package name" />
+    <option name="LAST_COMMIT_MESSAGE" value="add de.moritzf to package name" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -989,28 +981,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/moritzf/sorting/logic/application/Run.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/de/moritzf/sorting/logic/sorting/BubbleSort.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2625">
-          <caret line="181" column="30" lean-forward="false" selection-start-line="181" selection-start-column="30" selection-end-line="181" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/de/moritzf/sorting/logic/sorting/BubbleStep.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
@@ -1256,10 +1226,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/META-INF/MANIFEST.MF">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LICENSE.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="19" lean-forward="false" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
           <folding />
         </state>
       </provider>
