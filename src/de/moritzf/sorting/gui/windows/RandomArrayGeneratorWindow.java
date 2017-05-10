@@ -1,4 +1,4 @@
-package de.moritzf.sorting.gui;
+package de.moritzf.sorting.gui.windows;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -16,14 +16,13 @@ import javax.swing.JPanel;
 import de.moritzf.sorting.gui.components.IntegerField;
 import de.moritzf.sorting.logic.util.InputGeneration;
 
-// TODO: Auto-generated Javadoc
 
 /**
  * @author Moritz Floeter
  *         <p>
  *         The Class RandomArrayGenerator.
  *         <p>
- *         This class provides the de.moritzf.sorting.gui for creating a randomized array.
+ *         This class provides the gui for creating a randomized array.
  *         <p>
  *         --------------------------------------------------------------------
  *         This program is free software: you can redistribute it and/or modify

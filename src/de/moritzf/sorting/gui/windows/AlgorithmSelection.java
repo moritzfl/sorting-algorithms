@@ -1,4 +1,4 @@
-package de.moritzf.sorting.gui;
+package de.moritzf.sorting.gui.windows;
 
 import java.awt.BorderLayout;
 import java.awt.Container;
@@ -31,7 +31,7 @@ import de.moritzf.sorting.logic.util.InputGeneration;
  * @author Moritz Floeter
  *         <p>
  *         The Class AlgorithmSelection. This class is the one where it all
- *         starts. It provides the de.moritzf.sorting.gui that the user sees right after the
+ *         starts. It provides gui that the user sees right after the
  *         software is launched. Here the user can select the algorithm which he
  *         wants to use and input the array on which it should be used.
  *         <p>

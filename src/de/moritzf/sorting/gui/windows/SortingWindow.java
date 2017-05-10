@@ -1,7 +1,7 @@
 /*
  * 
  */
-package de.moritzf.sorting.gui;
+package de.moritzf.sorting.gui.windows;
 
 import java.awt.Desktop;
 import java.awt.event.ActionEvent;
@@ -18,7 +18,7 @@ import de.moritzf.sorting.logic.sorting.SortingAlgorithm;
  * @author Moritz Floeter
  *         <p>
  *         The Class SelectionWindow. This class serves the graphical
- *         representation of the selectionsort algorithm in a de.moritzf.sorting.gui frame. From
+ *         representation of the selectionsort algorithm in a gui frame. From
  *         here all important actions concerning the sorting algorithm can be
  *         performed and displayed.
  *         <p>

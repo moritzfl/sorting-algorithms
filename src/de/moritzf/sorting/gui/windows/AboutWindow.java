@@ -1,4 +1,4 @@
-package de.moritzf.sorting.gui;
+package de.moritzf.sorting.gui.windows;
 
 import de.moritzf.sorting.gui.components.MonoTextArea;
 import de.moritzf.sorting.gui.components.LaTeXPanel;

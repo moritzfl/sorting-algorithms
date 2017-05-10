@@ -1,7 +1,7 @@
 /*
  * 
  */
-package de.moritzf.sorting.gui;
+package de.moritzf.sorting.gui.windows;
 
 import java.awt.Desktop;
 import java.awt.event.ActionEvent;
@@ -17,7 +17,7 @@ import de.moritzf.sorting.logic.sorting.HeapSort;
 /**
  * @author Moritz Floeter
  *         <p>
- *         The Class HeapWindow. A de.moritzf.sorting.gui class for displaying heapsort and perfoming steps
+ *         The Class HeapWindow. A gui class for displaying heapsort and perfoming steps
  *         with that algorithm.
  *         <p>
  *         --------------------------------------------------------------------

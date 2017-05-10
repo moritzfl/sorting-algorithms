@@ -1,4 +1,4 @@
-package de.moritzf.sorting.gui;
+package de.moritzf.sorting.gui.windows;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -21,7 +21,7 @@ import de.moritzf.sorting.gui.components.DragScrollListener;
  *         <p>
  *         The Class SortingWindow. This class serves as a template for the
  *         graphical representation of any algorithm that can be divided into
- *         steps in a de.moritzf.sorting.gui frame. From here all important actions concerning the
+ *         steps in a gui frame. From here all important actions concerning the
  *         sorting algorithm can be performed and displayed.
  *         <p>
  *         --------------------------------------------------------------------

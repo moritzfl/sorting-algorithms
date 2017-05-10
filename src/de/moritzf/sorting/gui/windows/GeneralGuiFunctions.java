@@ -1,4 +1,4 @@
-package de.moritzf.sorting.gui;
+package de.moritzf.sorting.gui.windows;
 
 import java.awt.GraphicsDevice;
 import java.awt.MouseInfo;
