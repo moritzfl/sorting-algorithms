@@ -49,14 +49,15 @@ public class SortingWindow extends SortingWindowSubstructure implements ActionLi
     private boolean smallmatrix;
 
     /**
-     * The ssort.
+     * The sorting algorithm.
      */
     private SortingAlgorithm algorithm;
 
     /**
-     * Instantiates a new selectionsort window.
+     * Instantiates a new sorting window.
      *
-     * @param parent the parent window @param bsort the BubbleSort instance
+     * @param parent    the parent window.
+     * @param algorithm the sorting algorithm
      */
     public SortingWindow(JFrame parent, SortingAlgorithm algorithm) {
         super(parent);
@@ -70,7 +71,7 @@ public class SortingWindow extends SortingWindowSubstructure implements ActionLi
         exportBtn.addActionListener(this);
 
         if (algorithm.getStepLimit() != -1 && algorithm.getStepLimit() < algorithm.getInputSize()) {
-            allSteps.setText("<html> &nbsp; <br>Gehe " + algorithm.getStepLimit() + " Schritte <br> &nbsp; <html>");
+            allSteps.setText("<html> &nbsp; <br>Do " + algorithm.getStepLimit() + " Steps <br> &nbsp; <html>");
         }
 
         this.smallmatrix = (this.algorithm.step2LaTeX(0).contains("\\begin{smallmatrix}"));
@@ -124,7 +125,7 @@ public class SortingWindow extends SortingWindowSubstructure implements ActionLi
             this.scrollToBottom();
         } else {
             JOptionPane.showMessageDialog(this,
-                    "<html>Finished sorting - no further stps possible</html>", "Error",
+                    "<html>Finished sorting - no further steps possible</html>", "Layer-8-Error",
                     JOptionPane.ERROR_MESSAGE);
         }
     }
@@ -137,7 +138,7 @@ public class SortingWindow extends SortingWindowSubstructure implements ActionLi
             this.repaint();
         } else {
             JOptionPane.showMessageDialog(this,
-                    "<html>Can't undo step because there is nothing more to undo...</html>", "Fehler",
+                    "<html>Can't undo step because there is nothing more to undo...</html>", "Layer-8-Error",
                     JOptionPane.ERROR_MESSAGE);
         }
     }
@@ -178,21 +179,20 @@ public class SortingWindow extends SortingWindowSubstructure implements ActionLi
             Desktop.getDesktop().open(new File("info/" + algorithm.getName().toLowerCase() + ".pdf"));
         } catch (Exception exc) {
             JOptionPane.showMessageDialog(this,
-                    "<html> Das &Ouml;ffnen der Zusatzinformation '" + algorithm.getName().toLowerCase() + ".pdf' ist fehlgeschlagen. M&ouml;glicherweise <br>"
-                            + "wurde die Datei durch den Nutzer gel&ouml;scht oder es ist kein geeignetes Anzeigeprogramm vorhanden.",
-                    "Fehler", JOptionPane.ERROR_MESSAGE);
+                    "<html> Failed to open '" + algorithm.getName().toLowerCase() + ".pdf'.<br>",
+                    "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 
     private void handleExport() {
         if (this.algorithm.getInputSize() > 20) {
             int reply = JOptionPane.showConfirmDialog(this,
-                    "<html> Sie versuchen das Sortierprotokoll eines grossen Arrays (>20 Elemente) zu exportieren. <br>"
-                            + " Zwar ist es immer m&ouml;glich eine .tex-Datei zu erstellen, jedoch ist LaTeX ein Format,<br>"
-                            + " das f&uuml;r die Ausgabe von Formaten gedacht ist, die sich gut auf Papiergr&ouml;sse bringen lassen. <br>"
-                            + " Dadurch kann die .tex-Datei gegebenenfalls durch ihren LaTeX-Setzer nicht oder nur fehlerhaft gesetzt werden."
-                            + "<br> <br> Wollen Sie die Datei dennoch erstellen? </html>",
-                    "Arraygroesse problematisch", JOptionPane.YES_NO_OPTION);
+                    "<html> You are trying to export the protocol for a large input (>20 elements). <br>"
+                            + " It is possible to create a *.tex file. However LaTeX is a format which is only meant <br>"
+                            + " for information that actually fits on paper. <br>"
+                            + " Therefore imperfect layout and formatting issues may occur when compiling the pdf."
+                            + "<br> <br> Would you like to continue? </html>",
+                    "Arraysize = Overkill", JOptionPane.YES_NO_OPTION);
             if (reply == JOptionPane.YES_OPTION) {
                 de.moritzf.sorting.io.SaveFile.saveLaTeX(this, this.algorithm.protocol2LaTeX());
             }

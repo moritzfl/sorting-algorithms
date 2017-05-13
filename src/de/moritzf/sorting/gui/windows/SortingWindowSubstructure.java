@@ -102,12 +102,12 @@ public abstract class SortingWindowSubstructure extends JFrame {
      * @param parent the parent
      */
     public SortingWindowSubstructure(JFrame parent) {
-        super("Sortieralgorithmus");
+        super("Sorting Algorithm");
         JPanel mainpanel = new JPanel();
         this.getContentPane().add(mainpanel);
         mainpanel.setLayout(new BorderLayout());
 
-        // Creating and inserting layouts for the right area of the window
+        // Create layout for the right side of the window
         JPanel right = new JPanel();
         mainpanel.add(right, BorderLayout.EAST);
         right.setLayout(new BorderLayout());
@@ -139,15 +139,12 @@ public abstract class SortingWindowSubstructure extends JFrame {
         mainpanel.add(scroll, BorderLayout.CENTER);
         protocolPnl.setBackground(Color.white);
 
-        // /Adding a list-style panel that will late contain the steps of the
-        // protocol
+        // /Add a list-style panel that will contain the steps of the protocol after execution of an algorithm
         protocolListPnl.setBackground(Color.white);
         protocolListPnl.setLayout(new BoxLayout(protocolListPnl, BoxLayout.PAGE_AXIS));
         protocolListPnl.addMouseListener(dragScroll);
         protocolListPnl.addMouseMotionListener(dragScroll);
 
-        // adding to the north because the protocol should start right at the
-        // top of the area.
         protocolPnl.add(protocolListPnl, BorderLayout.NORTH);
 
         // setting default window parameters

@@ -40,14 +40,15 @@ public class HeapWindow extends SortingWindowSubstructure implements ActionListe
     private static final long serialVersionUID = -7777097415364226306L;
 
     /**
-     * The HeapSort.
+     * The heapsort instance being represented by the window.
      */
     private HeapSort hsort;
 
     /**
-     * Instantiates a new bubble window.
+     * Instantiates a new heapsort window.
      *
-     * @param parent the parent window @param hsort the hsort
+     * @param parent the parent window.
+     * @param hsort the hsort.
      */
     public HeapWindow(JFrame parent, HeapSort hsort) {
         super(parent);
@@ -85,29 +86,27 @@ public class HeapWindow extends SortingWindowSubstructure implements ActionListe
         } else if (e.getSource().equals(infoBtn)) {
             handleInfo();
         }
-
     }
 
     private void handleInfo() {
         try {
-            Desktop.getDesktop().open(new File("info/heapsort.pdf"));
+            Desktop.getDesktop().open(new File("info/" + hsort.getName().toLowerCase() + ".pdf"));
         } catch (Exception exc) {
             JOptionPane.showMessageDialog(this,
-                    "<html> Das &Ouml;ffnen der Zusatzinformation 'heapsort.pdf' ist fehlgeschlagen. M&ouml;glicherweise <br>"
-                            + "wurde die Datei durch den Nutzer gel&ouml;scht oder es ist kein geeignetes Anzeigeprogramm vorhanden.",
-                    "Fehler", JOptionPane.ERROR_MESSAGE);
+                    "<html> Failed to open '" + hsort.getName().toLowerCase() + ".pdf'.<br>",
+                    "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 
     private void handleExport() {
         if (this.hsort.getInputSize() > 20) {
             int reply = JOptionPane.showConfirmDialog(this,
-                    "<html> Sie versuchen das Sortierprotokoll eines grossen Arrays (>20 Elemente) zu exportieren. <br>"
-                            + " Zwar ist es immer m&ouml;glich eine .tex-Datei zu erstellen, jedoch ist LaTeX ein Format,<br>"
-                            + " das f&uuml;r die Ausgabe von Formaten gedacht ist, die sich gut auf Papiergr&ouml;sse bringen lassen. <br>"
-                            + " Dadurch kann die .tex-Datei gegebenenfalls durch ihren LaTeX-Setzer nicht oder nur fehlerhaft gesetzt werden."
-                            + "<br> <br> Wollen Sie die Datei dennoch erstellen? </html>",
-                    "Arraygroesse problematisch", JOptionPane.YES_NO_OPTION);
+                    "<html> You are trying to export the protocol for a large input (>20 elements). <br>"
+                            + " It is possible to create a *.tex file. However LaTeX is a format which is only meant <br>"
+                            + " for information that actually fits on paper. <br>"
+                            + " Therefore imperfect layout and formatting issues may occur when compiling the pdf."
+                            + "<br> <br> Would you like to continue? </html>",
+                    "Arraysize = Overkill", JOptionPane.YES_NO_OPTION);
             if (reply == JOptionPane.YES_OPTION) {
                 de.moritzf.sorting.io.SaveFile.saveLaTeX(this, this.hsort.protocol2LaTeX());
             }
@@ -132,7 +131,7 @@ public class HeapWindow extends SortingWindowSubstructure implements ActionListe
             this.repaint();
         } else {
             JOptionPane.showMessageDialog(this,
-                    "<html>Es kann kein weiterer Schritt zur&uuml;ck gegangen werden...</html>", "Fehler",
+                    "<html>Can't undo step because there is nothing more to undo...</html>", "Layer-8-Error",
                     JOptionPane.ERROR_MESSAGE);
         }
     }
@@ -145,8 +144,8 @@ public class HeapWindow extends SortingWindowSubstructure implements ActionListe
             this.scrollToBottom();
             // a message gets displayed if no step was performed.
         } else {
-            JOptionPane.showMessageDialog(this, "<html>Fertig sortiert. Kein weiterer Schritt m&ouml;glich.</html>",
-                    "Hinweis", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "<html>Finished sorting - no further steps possible</html>",
+                    "Layer-8-Error", JOptionPane.INFORMATION_MESSAGE);
         }
     }
 
