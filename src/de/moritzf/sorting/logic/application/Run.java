@@ -1,7 +1,7 @@
 package de.moritzf.sorting.logic.application;
 
-import de.moritzf.sorting.gui.AlgorithmSelection;
-import de.moritzf.sorting.gui.GeneralGuiFunctions;
+import de.moritzf.sorting.gui.windows.AlgorithmSelection;
+import de.moritzf.sorting.gui.windows.GeneralGuiFunctions;
 
 
 /**
