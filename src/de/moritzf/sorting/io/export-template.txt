@@ -8,18 +8,17 @@
 \newcommand\Ccancel[2][black]{\renewcommand\CancelColor{\color{#1}}\xcancel{#2}}
 \tikzstyle{vertex}=[draw,fill=white,circle,minimum size=20pt,inner sep=0pt]
 
-%\Bearbeitet Format, sodass keine Einrueckung bei Paragraphen vorgenommen wird
+%\Remove indentation for paragraphs
 \usepackage{parskip}
 \setlength\parindent{0pt}
 
 \begin{document}
 
-%\Tips fuer die Anpassung von Elementen, die nicht auf die Seite passen oder zu klein dargestellt werden:
-%\a) an sinnvollen Stellen Zeilenumbrueche einfuegen
-%\b) Verwendung von \tiny um die Schriftgroesse zu verringern
-%\c) Verwendung von \begin{smallmatrix} anstatt \begin{matrix} bei Radixsort
-
-%\d) falls die Darstellung unter Verwendung der standardmaessig bei allen Verfahren ausser Radix verwendeten "smallmatrix" kleiner als gewuenscht ist, kann die Schriftgroesse  beispielsweise ueber \huge angepasst werden. Der Wechsel zu "matrix" ist hier nicht empfehlenswert, da in dieser unabhaengig von der Schriftgroesse immer maximal 10 Spalten dargestellt werden koennen.
+%\Hints for possible adjustments/formatting:
+%\a) insert linebreaks where it makes sense
+%\b) use \tiny to decrease the fontsize, use \huge to increase the fontsize
+%\c) use \begin{smallmatrix} instead of \begin{matrix} for radixsort
+%\d) do not change smallmatrix to matrix for any matrix longer than 10 elements. Only smallmartix is able to handle more than 10 elements!.
 
 %\{body}
 
