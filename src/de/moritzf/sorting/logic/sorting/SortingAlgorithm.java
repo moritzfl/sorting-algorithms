@@ -6,67 +6,69 @@ package de.moritzf.sorting.logic.sorting;
 public abstract class SortingAlgorithm {
 
     /**
-     * Do all steps.
+     * Executes all steps of the algorithm.
      */
     public abstract void doAllSteps();
 
     /**
-     * Do step boolean.
+     * Executes one step of the algorithm.
      *
-     * @return the boolean
+     * @return true if successful.
      */
     public abstract boolean doStep();
 
     /**
-     * Gets input size.
+     * Gets the size of the array that was used as input.
      *
      * @return the input size
      */
     public abstract int getInputSize();
 
     /**
-     * Gets protocol size.
+     * Gets the stepcount for the protocol.
      *
      * @return the protocol size
      */
     public abstract int getProtocolSize();
 
     /**
-     * Reset.
+     * Resets the algorithm to the start and removes
+     * any information previously generated during execution.
      */
     public abstract void reset();
 
     /**
-     * Protocol 2 la te x string.
+     * Generates a LaTeX-expression representing the steps that were performed.
      *
-     * @return the string
+     * @return the latex expression.
      */
     public abstract String protocol2LaTeX();
 
     /**
-     * Step 2 la te x string.
+     * Generates a LaTeX-expression representing a single step.
      *
-     * @param i the
-     * @return the string
+     * @param i the number of the step.
+     * @return the latex expression.
      */
     public abstract String step2LaTeX(int i);
 
     /**
-     * Undo step boolean.
+     * Reverts the last step performed by the algorithm.
      *
      * @return the boolean
      */
     public abstract boolean undoStep();
 
     /**
-     * Gets name.
+     * Gets name of the algorithm
      *
      * @return the name
      */
     public abstract String getName();
 
     /**
-     * Gets step limit.
+     * Gets step limit. Used to limit the maximum number of steps that can be performed at once.
+     * This is used when a long protocol is expected due to a large input and replaces the execute all steps option in the gui.
      *
      * @return the step limit
      */

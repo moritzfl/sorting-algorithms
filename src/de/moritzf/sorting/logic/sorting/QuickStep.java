@@ -27,7 +27,7 @@ public class QuickStep {
      * The qarrays. Representation of all the parts that the original array was
      * divided into
      */
-    private ArrayList<QuickArray> qarrays = new ArrayList<QuickArray>();
+    private ArrayList<QuickArray> qarrays = new ArrayList<>();
 
 
     /**
@@ -38,21 +38,12 @@ public class QuickStep {
     }
 
     /**
-     * Gets the qarrays.
+     * Gets all subarrays that the original array was divided into.
      *
      * @return the qarrays
      */
     public ArrayList<QuickArray> getQarrays() {
         return qarrays;
-    }
-
-    /**
-     * Sets the qarrays.
-     *
-     * @param qarrays the new qarrays
-     */
-    public void setQarrays(ArrayList<QuickArray> qarrays) {
-        this.qarrays = qarrays;
     }
 
 

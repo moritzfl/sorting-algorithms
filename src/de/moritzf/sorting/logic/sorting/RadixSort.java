@@ -75,7 +75,9 @@ public class RadixSort extends SortingAlgorithm {
 
 
     /**
-     * Gets the number length.
+     * Gets the length of the numbers that are being sorted. For example 1234 would have the length 4.
+     * All numbers do have the same length as they got normalized by adding 0s before the number in the
+     * during initialization in the constructor.
      *
      * @return the number length
      */
@@ -189,7 +191,7 @@ public class RadixSort extends SortingAlgorithm {
         } else {
             retString += "$\n............................\\\\\n$\n \n ";
         }
-        retString += sort2LaTeX(stepNumber);
+        retString += distributionPartToLatex(stepNumber);
         retString += collect2LaTeX(stepNumber);
         return retString;
     }
@@ -210,12 +212,12 @@ public class RadixSort extends SortingAlgorithm {
     }
 
     /**
-     * Sort2 la te x.
+     * Renders the distribution-part of the algorithm to a latex expression.
      *
      * @param stepNumber the step number
      * @return the string
      */
-    private String sort2LaTeX(int stepNumber) {
+    private String distributionPartToLatex(int stepNumber) {
         String retString = "$\n\\underline{Distribution}\\\\\n$\n\n" + "$\n\\begin{matrix}\n"
                 + "F_0 & F_1 & F_2 & F_3 & F_4 & F_5 & F_6 & F_7 & F_8 & F_9 \\\\ \n";
         RadixStep step = protocol.get(stepNumber);

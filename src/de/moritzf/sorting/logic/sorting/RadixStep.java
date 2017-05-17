@@ -30,7 +30,7 @@ public class RadixStep {
     private ArrayList<ArrayList<String>> postBoxes = new ArrayList<>(10);
 
     /**
-     * The memory.
+     * The memory. Stores which position is currently considered for distribution into the boxes.
      */
     private int memory = 0;
 

@@ -16,13 +16,9 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import de.moritzf.sorting.logic.sorting.*;
 import org.jdesktop.swingx.JXTextField;
 
-import de.moritzf.sorting.logic.sorting.BubbleSort;
-import de.moritzf.sorting.logic.sorting.HeapSort;
-import de.moritzf.sorting.logic.sorting.QuickSort;
-import de.moritzf.sorting.logic.sorting.RadixSort;
-import de.moritzf.sorting.logic.sorting.SelectionSort;
 import de.moritzf.sorting.logic.util.InputGeneration;
 
 /**
@@ -74,7 +70,8 @@ public class AlgorithmSelection extends JFrame implements ActionListener {
     /**
      * The algorithmOptions. Defines which algorithms should be shown
      */
-    String[] algorithmOptions = {"Bubblesort", "Selectionsort", "Radixsort", "Quicksort", "Heapsort (Minheap)", "Heapsort (Maxheap)"};
+    String[] algorithmOptions = {"Bubblesort", "Selectionsort", "Radixsort", "Quicksort",
+            "Heapsort (Minheap)", "Heapsort (Maxheap)", "Insertionsort"};
 
     /**
      * The algorithmSelectionBox. Dropdown for user selection of the algorithm
@@ -140,7 +137,7 @@ public class AlgorithmSelection extends JFrame implements ActionListener {
         mainelements.add(buttonPanel, BorderLayout.SOUTH);
 
 		/*
-		 * create instructions for the user input and the button for generating
+         * create instructions for the user input and the button for generating
 		 * a random input string
 		 */
         JPanel northpanel = new JPanel(new BorderLayout());
@@ -246,6 +243,8 @@ public class AlgorithmSelection extends JFrame implements ActionListener {
                     new SortingWindow(this, new RadixSort(input));
                 } else if (this.algorithmSelectionBox.getSelectedItem().equals("Selectionsort")) {
                     new SortingWindow(this, new SelectionSort(input));
+                } else if (this.algorithmSelectionBox.getSelectedItem().equals("Insertionsort")) {
+                    new SortingWindow(this, new InsertionSort(input));
                 } else {
                     JOptionPane.showMessageDialog(this,
                             this.algorithmSelectionBox.getSelectedItem()

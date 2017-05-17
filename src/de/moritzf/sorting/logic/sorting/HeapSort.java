@@ -36,7 +36,7 @@ public class HeapSort extends SortingAlgorithm {
     private ArrayList<HeapStep> protocol = new ArrayList<>();
 
     /**
-     * The minheap.
+     * The minheap. If true executes heapsort with minheap, otherwise handles it as maxheap.
      */
     boolean minheap = true;
 
@@ -215,7 +215,7 @@ public class HeapSort extends SortingAlgorithm {
             curStep.setSortedList((ArrayList<Integer>) prevStep.getSortedList().clone());
 
             // If the memory is equal or above 0 it means that the heap
-            // condition has not been achieved yet
+            // condition has not been fulfilled yet
             if (prevStep.getMemory() >= 0) {
 
                 curStep.setStep(copyCompleteStep(prevStep.getStep()));
@@ -443,20 +443,12 @@ public class HeapSort extends SortingAlgorithm {
 
     }
 
-    /**
-     * Reset.
-     */
     public void reset() {
         while (protocol.size() > 1) {
             protocol.remove(protocol.size() - 1);
         }
     }
 
-    /**
-     * Gets the input size.
-     *
-     * @return the input size
-     */
     public int getInputSize() {
         return this.getStep(0).getStep().length;
     }

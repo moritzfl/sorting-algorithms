@@ -82,7 +82,8 @@ public class HeapStep {
     }
 
     /**
-     * Sets the memory.
+     * Set the index of the element for heapification.
+     * Values below 0 mean that the min/max-heap condition has already been fulfilled.
      *
      * @param memory the new memory
      */

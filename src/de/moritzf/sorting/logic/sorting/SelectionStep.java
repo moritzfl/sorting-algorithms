@@ -48,7 +48,7 @@ public class SelectionStep {
      * Instantiates a new selection step.
      */
     public SelectionStep() {
-        // TODO Auto-generated constructor stub
+        // empty constructor
     }
 
     /**
