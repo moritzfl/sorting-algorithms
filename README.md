@@ -10,6 +10,7 @@ Currently supported algorithms:
 - Radixsort
 - Quicksort
 - Heapsort (Min-/Maxheap)
+- Insertionsort
 
 
 noteworthy features:
