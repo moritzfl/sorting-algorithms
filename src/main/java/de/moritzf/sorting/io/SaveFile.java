@@ -1,14 +1,12 @@
 package de.moritzf.sorting.io;
 
 import java.io.*;
-import java.nio.file.Files;
+
 import java.util.stream.Collectors;
 
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-
-import static java.nio.charset.Charset.*;
 
 /**
  * @author Moritz Floeter
@@ -90,7 +88,7 @@ public class SaveFile {
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setDialogTitle("Save " + type + "-file");
 
-        File fileToSave = null;
+        File fileToSave;
         boolean overwrite = false;
 
         do {
@@ -117,11 +115,7 @@ public class SaveFile {
                                 "<html> File already exists. Do you want to replace the existing file?</html>",
                                 "File already exists.",
                                 JOptionPane.YES_NO_OPTION);
-                if (reply == JOptionPane.YES_OPTION) {
-                    overwrite = true;
-                } else {
-                    overwrite = false;
-                }
+                overwrite = (reply == JOptionPane.YES_OPTION);
             }
 
         } while (fileToSave != null && (fileToSave.exists() && !overwrite));
@@ -131,12 +125,19 @@ public class SaveFile {
 
     private static String insertIntoTemplate(String body) {
         String template = null;
+        String result;
         try (BufferedReader buffer = new BufferedReader(
                 new InputStreamReader(SaveFile.class.getResourceAsStream(TEMPLATE_FILE)))) {
             template = buffer.lines().collect(Collectors.joining("\n"));
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return template.replace("%\\{body}", body);
+
+        if (template == null){
+            result = body;
+        } else {
+            result = template.replace("%\\{body}", body);
+        }
+        return result;
     }
 }
