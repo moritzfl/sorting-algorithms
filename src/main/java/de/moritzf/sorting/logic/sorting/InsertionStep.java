@@ -27,10 +27,6 @@ public class InsertionStep {
      */
     int[] array;
 
-    /**
-     * The target postion where the element will be inserted
-     */
-    int targetPosition;
 
 
     /**
@@ -92,7 +88,6 @@ public class InsertionStep {
                 .add("memory = " + memory)
                 .add("searchMarker = " + searchMarker)
                 .add("sortedMarker = " + sortedMarker)
-                .add("targetPosition = " + targetPosition)
                 .toString();
     }
 }
