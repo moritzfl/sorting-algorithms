@@ -86,7 +86,7 @@ public class InsertionSort extends SortingAlgorithm {
      * @return the input size
      */
     public int getInputSize() {
-        return 0;
+        return this.protocol.get(0).getArray().length;
     }
 
     /**
