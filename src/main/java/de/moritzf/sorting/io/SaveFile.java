@@ -1,9 +1,8 @@
 package de.moritzf.sorting.io;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Files;
+import java.util.stream.Collectors;
 
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -36,7 +35,7 @@ import static java.nio.charset.Charset.*;
 public class SaveFile {
 
 
-    private static String templatePath = SaveFile.class.getResource("export-template.txt").getPath();
+    private static String TEMPLATE_FILE = "export-template.txt";
 
     /**
      * Saves the String passed to it as LaTeX document
@@ -132,8 +131,9 @@ public class SaveFile {
 
     private static String insertIntoTemplate(String body) {
         String template = null;
-        try {
-            template = new String(Files.readAllBytes(new File(templatePath).toPath()), forName("UTF-8"));
+        try (BufferedReader buffer = new BufferedReader(
+                new InputStreamReader(SaveFile.class.getResourceAsStream(TEMPLATE_FILE)))) {
+            template = buffer.lines().collect(Collectors.joining("\n"));
         } catch (IOException e) {
             e.printStackTrace();
         }
