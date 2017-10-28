@@ -1,5 +1,8 @@
 package de.moritzf.sorting.logic.sorting;
 
+import java.util.Arrays;
+import java.util.StringJoiner;
+
 /**
  * Created by moritz on 13.05.17.
  */
@@ -23,6 +26,12 @@ public class InsertionStep {
      * The Array.
      */
     int[] array;
+
+    /**
+     * The target postion where the element will be inserted
+     */
+    int targetPosition;
+
 
     /**
      * Instantiates a new Insertion step.
@@ -73,5 +82,17 @@ public class InsertionStep {
      */
     public int[] getArray() {
         return array;
+    }
+
+
+    @Override
+    public String toString() {
+        return new StringJoiner(", ", this.getClass().getSimpleName() + "[", "]")
+                .add("array = " + Arrays.toString(array))
+                .add("memory = " + memory)
+                .add("searchMarker = " + searchMarker)
+                .add("sortedMarker = " + sortedMarker)
+                .add("targetPosition = " + targetPosition)
+                .toString();
     }
 }

@@ -1,5 +1,7 @@
 package de.moritzf.sorting.logic.sorting;
 
+import de.moritzf.sorting.logic.util.IntArrayUtils;
+
 import java.util.ArrayList;
 
 /**
@@ -39,7 +41,43 @@ public class InsertionSort extends SortingAlgorithm {
      * @return the boolean
      */
     public boolean doStep() {
-        return false;
+        InsertionStep lastStep = protocol.get(protocol.size() - 1);
+        int[] lastArray = lastStep.getArray();
+        int lastSearchMarker = lastStep.getSearchMarker();
+        int lastSortedMarker = lastStep.getSortedMarker();
+        int lastMemory = lastStep.getMemory();
+        boolean stepDone = false;
+
+
+        //Check if the algorithm has terminated
+        if (lastMemory != -1) {
+            int[] currentArray = IntArrayUtils.copyArray(lastArray);
+            int currentSearchMarker = lastSearchMarker - 1;
+            int currentSortedMarker = lastSortedMarker;
+            int currentMemory = lastMemory;
+
+            //handle insertion if a suitable position was found
+            if (lastSearchMarker == -1 || currentArray[lastSearchMarker] < lastMemory) {
+                currentArray[lastSearchMarker + 1] = lastMemory;
+                currentSortedMarker = lastSortedMarker + 1;
+                currentSearchMarker = currentSortedMarker - 1;
+                if (currentArray.length > currentSortedMarker) {
+                    currentMemory = currentArray[currentSortedMarker];
+                } else {
+                    currentMemory = -1;
+                }
+            } else {
+                currentArray[currentSearchMarker + 2] = currentArray[currentSearchMarker + 1];
+            }
+
+            protocol.add(new InsertionStep(currentSortedMarker, currentSearchMarker, currentMemory, currentArray));
+
+
+            stepDone = true;
+        }
+
+
+        return stepDone;
     }
 
     /**
@@ -64,7 +102,12 @@ public class InsertionSort extends SortingAlgorithm {
      * Reset.
      */
     public void reset() {
+
+        while (protocol.size() > 1) {
+            protocol.remove(protocol.size() - 1);
+        }
     }
+
 
     /**
      * Protocol 2 la te x string.
@@ -89,6 +132,7 @@ public class InsertionSort extends SortingAlgorithm {
 
         // adds the actual array of the step to the String
         for (int i = 0; i < lastArray.length; i++) {
+            //Check if the current field in the array was different from the one in the last step
             if (chosenStepNumber >= 1 && lastArray[i] != this.protocol.get(chosenStepNumber - 1).getArray()[i]) {
                 retString += " \\textcolor{red}{" + lastArray[i] + "} & ";
             } else {
@@ -96,20 +140,25 @@ public class InsertionSort extends SortingAlgorithm {
             }
         }
 
-        retString += chosenStep.getMemory();
+        if (chosenStep.getMemory() != -1) {
+            retString += "k=" + chosenStep.getMemory();
+        }
 
-        retString += " \\\\ \n";
+        if (chosenStep.getSearchMarker() != -1
+                && chosenStep.getMemory() != -1) {
+            retString += " \\\\ \n";
 
-        // writes the marker (i)
-        for (int i = 0; i < lastArray.length; i++) {
-            if (chosenStep.getSortedMarker() == i) {
-                retString += "i &";
-            } else if (chosenStep.getSearchMarker() == i) {
-                retString += "j-1 &";
-            } else {
-                retString += " &";
+            // writes the marker (i)
+            for (int i = 0; i < lastArray.length; i++) {
+
+                if (chosenStep.getSortedMarker() == i) {
+                    retString += "i &";
+                } else if (chosenStep.getSearchMarker() == i) {
+                    retString += "j-1 &";
+                } else {
+                    retString += " &";
+                }
             }
-
         }
         retString += " \n\\end{smallmatrix} \n$ ";
 
@@ -117,13 +166,13 @@ public class InsertionSort extends SortingAlgorithm {
     }
 
 
-    /**
-     * Undo step boolean.
-     *
-     * @return the boolean
-     */
     public boolean undoStep() {
-        return false;
+        boolean removed = false;
+        if (protocol.size() > 1) {
+            protocol.remove(protocol.size() - 1);
+            removed = true;
+        }
+        return removed;
     }
 
     /**
