@@ -34,7 +34,6 @@ import de.moritzf.sorting.logic.sorting.HeapSort;
  *         You should have received a copy of the GNU General Public License
  *         along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 public class HeapWindow extends SortingWindowSubstructure implements ActionListener {
 
     private static final long serialVersionUID = -7777097415364226306L;
