@@ -19,17 +19,17 @@
 
 \chapter*{Radixsort}
 
-\underline{\bf{Laufzeit}}
+\underline{\bf{Computational effort}}
 
-Da der Aufwand von Radixsort nicht nur von der Anzahl der Elemente $n$, die sortiert werden sollen abhängig ist, sondern außerdem noch von der maximalen Anzahl an Ziffern eines Elements $m$, wird die Laufzeit generell mit $O(m \times n)$ angegeben.
+Because the computational effort does not only depend on the number of elements $n$ that are to be sorted but also depends on the maximum number of digits in a single element $m$, the complexity is denoted as $O(m \times n)$.
 
-Ist die maximale Anzahl der Ziffern fest bestimmt und somit eine Konstante, so lässt sich die Laufzeit auch durch $O(n)$ beschreiben. 
+If the maximum number of digit is a known constant, the complexity can also be described as $O(n)$.
 
-\underline{\bf{Wann ist dieser Algorithmus sinnvoll einsetzbar?}}
+\underline{\bf{When does it make sense to use this algorithm?}}
 
-Nehmen wir an, man sortiert Briefe nach der in Deutschland fünfstelligen Postleitzahl, so ist dieser Algorithmus durchaus empfehlenswert, da vermutlich viele Briefe sortiert werden müssen, dies aber in nur 5 Durchläufen geschieht. 
+Let's assume your job is to sort all the letters in a postoffice by postal code. If that is the case, the number of letters most likely exceeds the number of digits (in Germany that would be 5) significantly. Therefore you only have to do five iterations and in each iteration distribute n objects. Here the algorithm is a sound option.
 
-Übersteigt die maximale Anzahl der Ziffern jedoch die Anzahl der Elemente stark, so ist die Anwendung alternativer Algorithmen sinnvoll.
+If you work as an accountant and have to compare the net worth of your wealthiest two clients, you will be left with two very large numbers. For each of those digits, you would have to do one iteration and in each iteration distribute in two objects. At this point you would even be better off with the really impractical Selectionsort ($O(n^2)$ with $n=2$).
 
 
 \end{document} 

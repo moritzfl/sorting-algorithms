@@ -1,6 +1,5 @@
 \documentclass[a4paper]{report}                                     
 
-\usepackage{ngerman}                                                   
 \usepackage[utf8]{inputenc}                                                 
 \usepackage{amssymb}                                                                                                 
 \usepackage{pseudocode} 
@@ -27,11 +26,11 @@ Best Case & Worst Case \\ \hline
 $O(n) $     & $O(n^2)$ \\ \hline
 \end{tabular}
 
-WORST CASE: falls Array umgekehrt sortiert, die kleinste Zahl also an der letzten Stelle im Array steht
+WORST CASE: if the smallest number of the array is in the last position
 
 
 
-BEST CASE: falls Array sortiert
+BEST CASE: if array is already sorted from smallest to largest element
 
 \underline{\bf{Pseudocode}}
 
@@ -40,7 +39,7 @@ Bubblesort
 ----------
 begin 
   repeat
-    nichtvertauscht := true 
+    noswap := true
     for i:= 1 to (n-l) do
       if a[i].key > a[i+1].key
       	then
@@ -48,9 +47,9 @@ begin
       	  t := a[i]
             a[i] := a[i + 1]
             a[i + 1] := t
-          nichtvertauscht := false
+          noswap := false
           end
-  until nichtvertauscht
+  until noswap
 end
 \end{lstlisting}
 

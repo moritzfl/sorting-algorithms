@@ -7,7 +7,7 @@
 
     <groupId>com.github.moritzfl</groupId>
     <artifactId>sortingalgorithms</artifactId>
-    <version>1.1</version>
+    <version>1.2</version>
 
     <name>sortingalgorithms</name>
 
@@ -141,9 +141,10 @@
                     </settings>
                 </configuration>
                 <executions>
-                    <!-- execute latex goal automatically during the site phase -->
+                    <!-- execute latex goal before compilation as the generated pdf-->
+                    <!-- resources ned to be in place before compilation-->
                     <execution>
-                        <phase>compile</phase>
+                        <phase>validate</phase>
                         <goals>
                             <goal>latex</goal>
                         </goals>

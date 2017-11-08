@@ -32,8 +32,7 @@ WORST CASE: -
 
 BEST CASE: -
 
-Da die Laufzeit immer in $O(n^2)$ liegt, ist der Algorithmus zwar ein schönes Lern und Lehrbeispiel für einen Sortieralgorithmus, allerdings sind andere Algorithmen deutlich effizienter.
-
+The computational effort is always in $O(n^2)$. Therefore this algorithm is only relevant for teaching and learning purposes and should not be applied in practical applications.
 
 \underline{\bf{Pseudocode}}
 
@@ -41,12 +40,16 @@ Da die Laufzeit immer in $O(n^2)$ liegt, ist der Algorithmus zwar ein schönes L
 
 \begin{lstlisting}
 Selectionsort
--------------begin  for i := 1 to n - 1 do    begin
+-------------
+begin
+  for i := 1 to n - 1 do
+    begin
       min := i;
       for j := i + 1 to n do 
         if a[j].key < a[min].key
         then min := j;
-      t:= a[min]; a[min]:= [i]; a[i] := t;    end
+      t:= a[min]; a[min]:= [i]; a[i] := t;
+    end
 end
 \end{lstlisting}
 

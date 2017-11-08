@@ -1,6 +1,5 @@
 \documentclass[a4paper]{report}                                     
 
-\usepackage{ngerman}                                                   
 \usepackage[utf8]{inputenc}                                                 
 \usepackage{amssymb}                                                                                                 
 \usepackage{pseudocode} 
@@ -30,22 +29,31 @@ $O(n\,log(n))$ & $O(n\,log(n))$  &  $o(n\,log(n))$  \\ \hline
 \underline{\bf{Pseudocode}}
 
 \begin{lstlisting}
-procedure versickere(a, i, m)
------------------------------(d.h. versickere a[i] bis hoechstens a[m] im Heap a)
+procedure heapify(a, i, m)
+-----------------------------
+(meaning: heapify a[i] until no further than a[m] in heap a)
 \end{lstlisting}
 
 \begin{lstlisting}
-Sortieren eines Heaps a von Position l bis r
---------------------------------------------begin  for i := r downto 2 do    begin (tausche a[l] mit a[i], versickere a[l]) 
-      t:= a[i];      a[i] := a[l];      a[l] := t; 
-      versickere(a, l, i - l)    end
+Sorting of a heap a from position l to r
+--------------------------------------------
+begin
+  for i := r downto 2 do
+    begin (swap a[l] with a[i], heapify a[l])
+      t:= a[i];
+      a[i] := a[l];
+      a[l] := t; 
+      heapify(a, l, i - l)
+    end
 end
 \end{lstlisting}
 
 \begin{lstlisting}
-Erzeugen eines Heaps mit Laenge n
+Create a heap with length n
 ---------------------------------
-begin  for i := [n/2] downto 1 do    versickere(a, i, n) 
+begin
+  for i := [n/2] downto 1 do
+    heapify(a, i, n)
 end
 \end{lstlisting}
 
