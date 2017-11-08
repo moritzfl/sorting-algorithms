@@ -54,9 +54,9 @@ public class HeapWindow extends SortingWindowSubstructure implements ActionListe
         super(parent);
         this.setTitle("HeapSort");
         this.hsort = hsort;
-        nextStep.addActionListener(this);
-        undoStep.addActionListener(this);
-        allSteps.addActionListener(this);
+        nextStepBtn.addActionListener(this);
+        undoStepBtn.addActionListener(this);
+        allStepsBtn.addActionListener(this);
         reset.addActionListener(this);
         exportBtn.addActionListener(this);
         infoBtn.addActionListener(this);
@@ -73,11 +73,11 @@ public class HeapWindow extends SortingWindowSubstructure implements ActionListe
      */
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource().equals(nextStep)) {
+        if (e.getSource().equals(nextStepBtn)) {
             handleNextStep();
-        } else if (e.getSource().equals(allSteps)) {
+        } else if (e.getSource().equals(allStepsBtn)) {
             handleAllSteps();
-        } else if (e.getSource().equals(undoStep)) {
+        } else if (e.getSource().equals(undoStepBtn)) {
             handleUndo();
         } else if (e.getSource().equals(reset)) {
             handleReset();

@@ -1,5 +1,6 @@
 package de.moritzf.sorting.logic.sorting;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import de.moritzf.sorting.logic.util.IntArrayUtils;
@@ -263,5 +264,6 @@ public class BubbleSort extends SortingAlgorithm {
     public int getStepLimit() {
         return STEP_LIMIT;
     }
+
 
 }

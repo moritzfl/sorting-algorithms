@@ -71,7 +71,7 @@ public class RandomArrayGeneratorWindow extends JFrame implements ActionListener
     private JButton cancelBtn = new JButton("<html> &nbsp; <br>Cancel<br> &nbsp;</html>");
 
     /**
-     * The selection.
+     * The main window for selecting the algorithm.
      */
     private AlgorithmSelection selection;
 

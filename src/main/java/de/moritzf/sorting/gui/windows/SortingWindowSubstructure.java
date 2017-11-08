@@ -63,23 +63,23 @@ public abstract class SortingWindowSubstructure extends JFrame {
     /**
      * The drag scroll.
      */
-    protected DragScrollListener dragScroll;
+    protected DragScrollListener dragScrollListener;
 
     /**
      * The next step.
      */
-    protected JButton nextStep = new JButton("<html> &nbsp; <br>Next Step<br> &nbsp; </html>");
+    protected JButton nextStepBtn = new JButton("<html> &nbsp; <br>Next Step<br> &nbsp; </html>");
 
     /**
      * The undo step.
      */
-    protected JButton undoStep = new JButton(
+    protected JButton undoStepBtn = new JButton(
             "<html>  &nbsp; <br>Undo Step<br> &nbsp; </html>");
 
     /**
      * The all steps.
      */
-    protected JButton allSteps = new JButton("<html>  &nbsp; <br>Execute all steps <br> &nbsp; </html>");
+    protected JButton allStepsBtn = new JButton("<html>  &nbsp; <br>Execute all steps <br> &nbsp; </html>");
 
     /**
      * The export btn.
@@ -92,9 +92,11 @@ public abstract class SortingWindowSubstructure extends JFrame {
     protected JButton infoBtn = new JButton("<html> &nbsp; <br>Additional Information<br> &nbsp; </html>");
 
     /**
-     * The reset.
+     * The reset button.
      */
     protected JButton reset = new JButton("<html>&nbsp; <br>Reset to Start<br> &nbsp;</html>");
+
+
 
     /**
      * Instantiates a new sorting window.
@@ -114,9 +116,9 @@ public abstract class SortingWindowSubstructure extends JFrame {
         Box righttop = Box.createVerticalBox();
 
         // adding buttons
-        righttop.add(nextStep);
-        righttop.add(undoStep);
-        righttop.add(allSteps);
+        righttop.add(nextStepBtn);
+        righttop.add(undoStepBtn);
+        righttop.add(allStepsBtn);
         righttop.add(reset);
 
         right.add(righttop, BorderLayout.NORTH);
@@ -128,12 +130,12 @@ public abstract class SortingWindowSubstructure extends JFrame {
 
         // Creating the main area of the window where the protocol is shown
         scroll = new JScrollPane(protocolPnl);
-        this.dragScroll = new DragScrollListener(protocolPnl);
+        this.dragScrollListener = new DragScrollListener(protocolPnl);
         scroll.getVerticalScrollBar().setUnitIncrement(25);
         scroll.getHorizontalScrollBar().setUnitIncrement(25);
 
-        protocolPnl.addMouseListener(dragScroll);
-        protocolPnl.addMouseMotionListener(dragScroll);
+        protocolPnl.addMouseListener(dragScrollListener);
+        protocolPnl.addMouseMotionListener(dragScrollListener);
         protocolPnl.setLayout(new BorderLayout());
 
         mainpanel.add(scroll, BorderLayout.CENTER);
@@ -142,8 +144,8 @@ public abstract class SortingWindowSubstructure extends JFrame {
         // /Add a list-style panel that will contain the steps of the protocol after execution of an algorithm
         protocolListPnl.setBackground(Color.white);
         protocolListPnl.setLayout(new BoxLayout(protocolListPnl, BoxLayout.PAGE_AXIS));
-        protocolListPnl.addMouseListener(dragScroll);
-        protocolListPnl.addMouseMotionListener(dragScroll);
+        protocolListPnl.addMouseListener(dragScrollListener);
+        protocolListPnl.addMouseMotionListener(dragScrollListener);
 
         protocolPnl.add(protocolListPnl, BorderLayout.NORTH);
 
@@ -166,15 +168,15 @@ public abstract class SortingWindowSubstructure extends JFrame {
         // the panel pushleft serves the purpose of aligning the protocol to the
         // left side of the protocol area
         JPanel pushleft = new JPanel();
-        pushleft.addMouseListener(dragScroll);
-        pushleft.addMouseMotionListener(dragScroll);
+        pushleft.addMouseListener(dragScrollListener);
+        pushleft.addMouseMotionListener(dragScrollListener);
 
         pushleft.setBackground(Color.WHITE);
         pushleft.setLayout(new BorderLayout());
         pushleft.add(heapSortPanelExtended, BorderLayout.WEST);
 
-        heapSortPanelExtended.addMouseListener(dragScroll);
-        heapSortPanelExtended.addMouseMotionListener(dragScroll);
+        heapSortPanelExtended.addMouseListener(dragScrollListener);
+        heapSortPanelExtended.addMouseMotionListener(dragScrollListener);
 
         protocolListPnl.add(pushleft);
     }

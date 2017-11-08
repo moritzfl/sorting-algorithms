@@ -12,29 +12,30 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import de.moritzf.sorting.gui.components.LaTeXPanel;
+import de.moritzf.sorting.io.SaveFile;
 import de.moritzf.sorting.logic.sorting.SortingAlgorithm;
 
 /**
  * @author Moritz Floeter
- *         <p>
- *         The Class SelectionWindow. This class serves the graphical
- *         representation of the selectionsort algorithm in a gui frame. From
- *         here all important actions concerning the sorting algorithm can be
- *         performed and displayed.
- *         <p>
- *         --------------------------------------------------------------------
- *         This program is free software: you can redistribute it and/or modify
- *         it under the terms of the GNU General Public License as published by
- *         the Free Software Foundation, either version 3 of the License, or (at
- *         your option) any later version.
- *         <p>
- *         This program is distributed in the hope that it will be useful, but
- *         WITHOUT ANY WARRANTY; without even the implied warranty of
- *         MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- *         General Public License for more details.
- *         <p>
- *         You should have received a copy of the GNU General Public License
- *         along with this program. If not, see <http://www.gnu.org/licenses/>.
+ * <p>
+ * The Class SelectionWindow. This class serves the graphical
+ * representation of the selectionsort algorithm in a gui frame. From
+ * here all important actions concerning the sorting algorithm can be
+ * performed and displayed.
+ * <p>
+ * --------------------------------------------------------------------
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or (at
+ * your option) any later version.
+ * <p>
+ * This program is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+ * General Public License for more details.
+ * <p>
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 public class SortingWindow extends SortingWindowSubstructure implements ActionListener {
 
@@ -63,15 +64,15 @@ public class SortingWindow extends SortingWindowSubstructure implements ActionLi
         super(parent);
         this.setTitle(algorithm.getName());
         this.algorithm = algorithm;
-        nextStep.addActionListener(this);
-        undoStep.addActionListener(this);
-        allSteps.addActionListener(this);
+        nextStepBtn.addActionListener(this);
+        undoStepBtn.addActionListener(this);
+        allStepsBtn.addActionListener(this);
         reset.addActionListener(this);
         infoBtn.addActionListener(this);
         exportBtn.addActionListener(this);
 
         if (algorithm.getStepLimit() != -1 && algorithm.getStepLimit() < algorithm.getInputSize()) {
-            allSteps.setText("<html> &nbsp; <br>Do " + algorithm.getStepLimit() + " Steps <br> &nbsp; <html>");
+            allStepsBtn.setText("<html> &nbsp; <br>Do " + algorithm.getStepLimit() + " Steps <br> &nbsp; <html>");
         }
 
         this.smallmatrix = (this.algorithm.step2LaTeX(0).contains("\\begin{smallmatrix}"));
@@ -100,20 +101,19 @@ public class SortingWindow extends SortingWindowSubstructure implements ActionLi
      */
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource().equals(nextStep)) {
+        if (e.getSource().equals(nextStepBtn)) {
             handleNextStep();
-        } else if (e.getSource().equals(undoStep)) {
+        } else if (e.getSource().equals(undoStepBtn)) {
             handleUndo();
         } else if (e.getSource().equals(reset)) {
             handleReset();
-        } else if (e.getSource().equals(allSteps)) {
+        } else if (e.getSource().equals(allStepsBtn)) {
             handleAllSteps();
         } else if (e.getSource().equals(exportBtn)) {
             handleExport();
         } else if (e.getSource().equals(infoBtn)) {
             handleInfo();
         }
-
     }
 
     private void handleNextStep() {
@@ -175,13 +175,16 @@ public class SortingWindow extends SortingWindowSubstructure implements ActionLi
     }
 
     private void handleInfo() {
-        try {
-            Desktop.getDesktop().open(new File("info/" + algorithm.getName().toLowerCase() + ".pdf"));
-        } catch (Exception exc) {
+
+        String infoPath = this.algorithm.getPdfInfoFilePath();
+        if (infoPath != null) {
+            //
+        } else {
             JOptionPane.showMessageDialog(this,
-                    "<html> Failed to open '" + algorithm.getName().toLowerCase() + ".pdf'.<br>",
+                    "<html> Failed to open algorithm's info file.<br>",
                     "Error", JOptionPane.ERROR_MESSAGE);
         }
+
     }
 
     private void handleExport() {
@@ -194,10 +197,10 @@ public class SortingWindow extends SortingWindowSubstructure implements ActionLi
                             + "<br> <br> Would you like to continue? </html>",
                     "Arraysize = Overkill", JOptionPane.YES_NO_OPTION);
             if (reply == JOptionPane.YES_OPTION) {
-                de.moritzf.sorting.io.SaveFile.saveLaTeX(this, this.algorithm.protocol2LaTeX());
+                SaveFile.saveLaTeX(this, this.algorithm.protocol2LaTeX());
             }
         } else {
-            de.moritzf.sorting.io.SaveFile.saveLaTeX(this, this.algorithm.protocol2LaTeX());
+            SaveFile.saveLaTeX(this, this.algorithm.protocol2LaTeX());
         }
     }
 

@@ -1,9 +1,15 @@
 package de.moritzf.sorting.logic.sorting;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+
 /**
  * The type Sorting algorithm.
  */
 public abstract class SortingAlgorithm {
+
 
     /**
      * Executes all steps of the algorithm.
@@ -73,6 +79,39 @@ public abstract class SortingAlgorithm {
      * @return the step limit
      */
     public abstract int getStepLimit();
+
+
+    public String getPdfInfoFilePath() {
+        try {
+            return this.getResourceAsFile(this.getName().toLowerCase() + ".pdf").getAbsolutePath();
+        } catch (IOException e) {
+            return null;
+        }
+    }
+
+    private File getResourceAsFile(String resourcePath) throws IOException {
+
+        InputStream in = this.getClass().getResourceAsStream(resourcePath);
+
+        if (in == null) {
+            throw new IOException("Resource not found.");
+        }
+
+        File tempFile = File.createTempFile(String.valueOf(in.hashCode()), ".pdf");
+
+        tempFile.deleteOnExit();
+
+        try (FileOutputStream out = new FileOutputStream(tempFile)) {
+            //copy stream
+            byte[] buffer = new byte[1024];
+            int bytesRead;
+            while ((bytesRead = in.read(buffer)) != -1) {
+                out.write(buffer, 0, bytesRead);
+            }
+        }
+
+        return tempFile;
+    }
 
 
 }
