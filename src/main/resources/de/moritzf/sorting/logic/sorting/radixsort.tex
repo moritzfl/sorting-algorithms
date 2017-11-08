@@ -1,0 +1,35 @@
+\documentclass[a4paper]{report}                                     
+
+\usepackage{ngerman}                                                   
+\usepackage[utf8]{inputenc}                                                 
+\usepackage{amssymb}                                                                                                 
+\usepackage{pseudocode} 
+\usepackage{listings}
+\usepackage{color}
+\usepackage{parskip}
+\setlength\parindent{0pt}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+
+
+\begin{document}
+
+\chapter*{Radixsort}
+
+\underline{\bf{Laufzeit}}
+
+Da der Aufwand von Radixsort nicht nur von der Anzahl der Elemente $n$, die sortiert werden sollen abhängig ist, sondern außerdem noch von der maximalen Anzahl an Ziffern eines Elements $m$, wird die Laufzeit generell mit $O(m \times n)$ angegeben.
+
+Ist die maximale Anzahl der Ziffern fest bestimmt und somit eine Konstante, so lässt sich die Laufzeit auch durch $O(n)$ beschreiben. 
+
+\underline{\bf{Wann ist dieser Algorithmus sinnvoll einsetzbar?}}
+
+Nehmen wir an, man sortiert Briefe nach der in Deutschland fünfstelligen Postleitzahl, so ist dieser Algorithmus durchaus empfehlenswert, da vermutlich viele Briefe sortiert werden müssen, dies aber in nur 5 Durchläufen geschieht. 
+
+Übersteigt die maximale Anzahl der Ziffern jedoch die Anzahl der Elemente stark, so ist die Anwendung alternativer Algorithmen sinnvoll.
+
+
+\end{document} 

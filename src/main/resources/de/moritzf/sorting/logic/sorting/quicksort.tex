@@ -1,0 +1,67 @@
+\documentclass[a4paper]{report}                                     
+
+\usepackage{ngerman}                                                   
+\usepackage[utf8]{inputenc}                                                 
+\usepackage{amssymb}                                                                                                 
+\usepackage{pseudocode} 
+\usepackage{listings}
+\usepackage{color}
+\usepackage{parskip}
+\setlength\parindent{0pt}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+
+
+\begin{document}
+
+\chapter*{Quicksort}
+
+\underline{\bf{Laufzeit}}
+
+
+\begin{tabular}{|l|l|l|}
+\hline
+Best Case    & Average Case  &  Worst Case\\ \hline
+$O(n\,log(n))$ & $O(n\,log(n))$  &  $o(n^2)$  \\ \hline
+\end{tabular}
+
+
+WORST CASE: sortierte oder umgekehrt sotierte Liste
+
+
+
+BEST CASE: Pivot = Median
+
+\underline{\bf{Pseudocode}}
+
+\begin{lstlisting}
+procedure quicksort(a,l,r)
+--------------------------
+begin
+  if r > l then    
+    begin
+      i := l - 1
+      j := r
+      pivot :=  a[r].key
+      "begin - loop"
+        repeat i := i + 1 until a[i].key >= pivot;
+        repeat j := j - 1 until a[j].key <= pivot;
+        if i >= j
+          then "exit-loop";
+        t := a[i];
+        a[i] := a[j];
+        a[j] := t;
+      "end-loop";
+      t := a[i];
+      a[i] := a[r];
+      a[r] := t
+      quicksort(a,l,i - 1)
+      quicksort(a,i+1,r)
+    end
+end 
+\end{lstlisting}
+
+\end{document} 

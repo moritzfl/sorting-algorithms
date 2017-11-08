@@ -1,0 +1,57 @@
+\documentclass[a4paper]{report}                                     
+
+\usepackage{ngerman}                                                   
+\usepackage[utf8]{inputenc}                                                 
+\usepackage{amssymb}                                                                                                 
+\usepackage{pseudocode} 
+\usepackage{listings}
+\usepackage{color}
+\usepackage{parskip}
+\setlength\parindent{0pt}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+
+
+\begin{document}
+
+\chapter*{Bubblesort}
+
+\underline{\bf{Laufzeit}}
+
+\begin{tabular}{|l|l|}
+\hline
+Best Case & Worst Case \\ \hline
+$O(n) $     & $O(n^2)$ \\ \hline
+\end{tabular}
+
+WORST CASE: falls Array umgekehrt sortiert, die kleinste Zahl also an der letzten Stelle im Array steht
+
+
+
+BEST CASE: falls Array sortiert
+
+\underline{\bf{Pseudocode}}
+
+\begin{lstlisting}
+Bubblesort
+----------
+begin 
+  repeat
+    nichtvertauscht := true 
+    for i:= 1 to (n-l) do
+      if a[i].key > a[i+1].key
+      	then
+      	  begin
+      	  t := a[i]
+            a[i] := a[i + 1]
+            a[i + 1] := t
+          nichtvertauscht := false
+          end
+  until nichtvertauscht
+end
+\end{lstlisting}
+
+\end{document} 

@@ -7,6 +7,7 @@ import java.awt.Desktop;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.IOException;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -177,13 +178,15 @@ public class SortingWindow extends SortingWindowSubstructure implements ActionLi
     private void handleInfo() {
 
         String infoPath = this.algorithm.getPdfInfoFilePath();
-        if (infoPath != null) {
-            //
-        } else {
+
+        try {
+            Desktop.getDesktop().open(new File(infoPath));
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(this,
-                    "<html> Failed to open algorithm's info file.<br>",
+                    "<html> Failed to open algorithm's info file.<br> Make sure you have an pdf-reader installed.",
                     "Error", JOptionPane.ERROR_MESSAGE);
         }
+
 
     }
 

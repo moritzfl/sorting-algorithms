@@ -25,25 +25,25 @@ import de.moritzf.sorting.logic.util.InputGeneration;
  * The Class AlgorithmSelection.
  *
  * @author Moritz Floeter
- *         <p>
- *         The Class AlgorithmSelection. This class is the one where it all
- *         starts. It provides gui that the user sees right after the
- *         software is launched. Here the user can select the algorithm which he
- *         wants to use and input the array on which it should be used.
- *         <p>
- *         --------------------------------------------------------------------
- *         This program is free software: you can redistribute it and/or modify
- *         it under the terms of the GNU General Public License as published by
- *         the Free Software Foundation, either version 3 of the License, or (at
- *         your option) any later version.
- *         <p>
- *         This program is distributed in the hope that it will be useful, but
- *         WITHOUT ANY WARRANTY; without even the implied warranty of
- *         MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
- *         General Public License for more details.
- *         <p>
- *         You should have received a copy of the GNU General Public License
- *         along with this program. If not, see <http://www.gnu.org/licenses/>.
+ * <p>
+ * The Class AlgorithmSelection. This class is the one where it all
+ * starts. It provides gui that the user sees right after the
+ * software is launched. Here the user can select the algorithm which he
+ * wants to use and input the array on which it should be used.
+ * <p>
+ * --------------------------------------------------------------------
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or (at
+ * your option) any later version.
+ * <p>
+ * This program is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+ * General Public License for more details.
+ * <p>
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 public class AlgorithmSelection extends JFrame implements ActionListener {
 
@@ -204,68 +204,66 @@ public class AlgorithmSelection extends JFrame implements ActionListener {
      * java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
      */
     public void actionPerformed(ActionEvent e) {
-        // If start is clicked, the following action will get performed
 
         if (e.getSource().equals(startbtn)) {
-            int[] input = null;
-
-            if (!arrayInputField.getText().isEmpty()) {
-                String inputString = AlgorithmSelection.removeInvalidChars(arrayInputField.getText());
-                input = InputGeneration.arrayFromString(inputString);
-            }
-
-            if (input == null) {
-                JOptionPane.showMessageDialog(this, "You should enter a few numbers first ...", "Layer-8-Error",
-                        JOptionPane.ERROR_MESSAGE);
-            } else if (input.length < 2) {
-                JOptionPane.showMessageDialog(this,
-                        "<html>Fun Fact: <br>" + "Arrays containing only one element are already sorted.</html>",
-                        "Der Fehler sitzt vor dem Bildschirm", JOptionPane.INFORMATION_MESSAGE);
-            } else if (input.length > AlgorithmSelection.maxCount) {
-                JOptionPane.showMessageDialog(this,
-                        "<html>The array used as input contains more than" + maxCount
-                                + " elements. <br> <br> Because every step has to be displayed and the number of "
-                                + " steps incrases with the input, <br> sind "
-                                + " only arrays with a length as high as 100 are allowed.<br> <br>"
-                                + "But seriously: you did not really want to look at that protocol in detail and"
-                                + "<br>just tried to cause a software crash ;)</html>",
-                        "Error: Are you serious?", JOptionPane.INFORMATION_MESSAGE);
-            } else {
-                if (this.algorithmSelectionBox.getSelectedItem().equals("Bubblesort")) {
-                    new SortingWindow(this, new BubbleSort(input));
-                } else if (this.algorithmSelectionBox.getSelectedItem().equals("Heapsort (Maxheap)")) {
-                    new HeapWindow(this, new HeapSort(input, false));
-                } else if (this.algorithmSelectionBox.getSelectedItem().equals("Heapsort (Minheap)")) {
-                    new HeapWindow(this, new HeapSort(input, true));
-                } else if (this.algorithmSelectionBox.getSelectedItem().equals("Quicksort")) {
-                    new SortingWindow(this, new QuickSort(input));
-                } else if (this.algorithmSelectionBox.getSelectedItem().equals("Radixsort")) {
-                    new SortingWindow(this, new RadixSort(input));
-                } else if (this.algorithmSelectionBox.getSelectedItem().equals("Selectionsort")) {
-                    new SortingWindow(this, new SelectionSort(input));
-                } else if (this.algorithmSelectionBox.getSelectedItem().equals("Insertionsort")) {
-                    new SortingWindow(this, new InsertionSort(input));
-                } else {
-                    JOptionPane.showMessageDialog(this,
-                            this.algorithmSelectionBox.getSelectedItem()
-                                    + " should start now. This algorithm has however not been implemented yet.",
-                            "Developer was lazy", JOptionPane.INFORMATION_MESSAGE);
-                }
-            }
-        }
-
-        // if the button for arraygeneration is clicked, the following action
-        // will get performed
-        if (e.getSource().equals(randomArrayGenerationButton)) {
+            handleStart();
+        } else if (e.getSource().equals(randomArrayGenerationButton)) {
             // The calling instance gets passed to the new window so that the
             // arraygenerator can fill the according field with a random array
             new RandomArrayGeneratorWindow(this);
-        }
-
-        if (e.getSource().equals(aboutButton)) {
+        } else if (e.getSource().equals(aboutButton)) {
             new AboutWindow(this);
         }
 
+    }
+
+
+    private void handleStart() {
+        int[] input = null;
+
+        if (!arrayInputField.getText().isEmpty()) {
+            String inputString = AlgorithmSelection.removeInvalidChars(arrayInputField.getText());
+            input = InputGeneration.arrayFromString(inputString);
+        }
+
+        if (input == null) {
+            JOptionPane.showMessageDialog(this, "You should enter a few numbers first ...", "Layer-8-Error",
+                    JOptionPane.ERROR_MESSAGE);
+        } else if (input.length < 2) {
+            JOptionPane.showMessageDialog(this,
+                    "<html>Fun Fact: <br>" + "Arrays containing only one element are already sorted.</html>",
+                    "Der Fehler sitzt vor dem Bildschirm", JOptionPane.INFORMATION_MESSAGE);
+        } else if (input.length > AlgorithmSelection.maxCount) {
+            JOptionPane.showMessageDialog(this,
+                    "<html>The array used as input contains more than" + maxCount
+                            + " elements. <br> <br> Because every step has to be displayed and the number of "
+                            + " steps incrases with the input, <br> sind "
+                            + " only arrays with a length as high as 100 are allowed.<br> <br>"
+                            + "But seriously: you did not really want to look at that protocol in detail and"
+                            + "<br>just tried to cause a software crash ;)</html>",
+                    "Error: Are you serious?", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            if (this.algorithmSelectionBox.getSelectedItem().equals("Bubblesort")) {
+                new SortingWindow(this, new BubbleSort(input));
+            } else if (this.algorithmSelectionBox.getSelectedItem().equals("Heapsort (Maxheap)")) {
+                new HeapWindow(this, new HeapSort(input, false));
+            } else if (this.algorithmSelectionBox.getSelectedItem().equals("Heapsort (Minheap)")) {
+                new HeapWindow(this, new HeapSort(input, true));
+            } else if (this.algorithmSelectionBox.getSelectedItem().equals("Quicksort")) {
+                new SortingWindow(this, new QuickSort(input));
+            } else if (this.algorithmSelectionBox.getSelectedItem().equals("Radixsort")) {
+                new SortingWindow(this, new RadixSort(input));
+            } else if (this.algorithmSelectionBox.getSelectedItem().equals("Selectionsort")) {
+                new SortingWindow(this, new SelectionSort(input));
+            } else if (this.algorithmSelectionBox.getSelectedItem().equals("Insertionsort")) {
+                new SortingWindow(this, new InsertionSort(input));
+            } else {
+                JOptionPane.showMessageDialog(this,
+                        this.algorithmSelectionBox.getSelectedItem()
+                                + " should start now. This algorithm has however not been implemented yet.",
+                        "Developer was lazy", JOptionPane.INFORMATION_MESSAGE);
+            }
+        }
     }
 
     /**
@@ -288,8 +286,8 @@ public class AlgorithmSelection extends JFrame implements ActionListener {
                 e.consume();
             }
             if (c == KeyEvent.VK_COMMA) {
-				/*
-				 * when the last input was a comma, we do not need another
+                /*
+                 * when the last input was a comma, we do not need another
 				 * one... only one comma is used to seperate numbers after all.
 				 */
                 if (arrayInputField.getText().isEmpty() || arrayInputField.getText().endsWith(",")) {

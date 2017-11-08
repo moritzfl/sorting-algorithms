@@ -34,6 +34,16 @@
         </repository>
     </repositories>
 
+    <pluginRepositories>
+        <pluginRepository>
+            <id>maven-latex-plugin-repo</id>
+            <url>http://akquinet.github.com/maven-latex-plugin/maven2/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </pluginRepository>
+    </pluginRepositories>
+
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.scilab.forge/jlatexmath -->
         <dependency>
@@ -47,19 +57,6 @@
             <artifactId>swingx</artifactId>
             <version>1.6.1</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.icepdf.os/icepdf-core -->
-        <dependency>
-            <groupId>org.icepdf.os</groupId>
-            <artifactId>icepdf-core</artifactId>
-            <version>6.2.2</version>
-        </dependency>
-        <dependency>
-            <groupId>org.icepdf.os</groupId>
-            <artifactId>icepdf-viewer</artifactId>
-            <version>6.2.2</version>
-        </dependency>
-
-
 
     </dependencies>
 
@@ -68,6 +65,9 @@
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
+            </resource>
+            <resource>
+                <directory>target/site/generated-resources</directory>
             </resource>
         </resources>
         <plugins>
@@ -120,6 +120,45 @@
                     </execution>
                 </executions>
             </plugin>
+
+            <plugin>
+                <groupId>de.akquinet.maven</groupId>
+                <artifactId>maven-latex-plugin</artifactId>
+                <version>1.1</version>
+                <configuration>
+                    <settings>
+                        <!-- all tex main documents in this folder (including subfolders) will be processed -->
+                        <texDirectory>${basedir}/src/main/resources/de/moritzf/sorting/logic/sorting</texDirectory>
+                        <!-- the generated artifacts will be copied to this folder relative to ${project.reporting.outputDirectory} -->
+                        <outputDirectory>generated-resources/de/moritzf/sorting/logic/sorting</outputDirectory>
+                        <!-- the working directory, for temporary files and LaTeX processing relative to ${project.build.directory} -->
+                        <tempDirectory>m2latex</tempDirectory>
+                        <!-- clean up the working directory in the end? May be used for debugging -->
+                        <cleanUp>true</cleanUp>
+                        <!-- path to the TeX scripts, if none, it must be on the system path -->
+                        <texPath/>
+                        <!-- the latex command -->
+                        <texCommand>pdflatex</texCommand>
+                        <!-- the bibtex command -->
+                        <bibtexCommand>bibtex</bibtexCommand>
+                        <!-- the arguments to use when calling latex -->
+                        <texCommandArgs>
+                            <texCommandArg>-interaction=nonstopmode</texCommandArg>
+                            <texCommandArg>--src-specials</texCommandArg>
+                        </texCommandArgs>
+                    </settings>
+                </configuration>
+                <executions>
+                    <!-- execute latex goal automatically during the site phase -->
+                    <execution>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>latex</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
         </plugins>
 
     </build>

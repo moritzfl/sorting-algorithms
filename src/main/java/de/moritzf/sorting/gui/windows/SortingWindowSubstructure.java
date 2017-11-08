@@ -123,8 +123,8 @@ public abstract class SortingWindowSubstructure extends JFrame {
 
         right.add(righttop, BorderLayout.NORTH);
         Box rightbottom = Box.createVerticalBox();
-        //TODO: Enable infobutton with link to information resources
-        //rightbottom.add(infoBtn);
+
+        rightbottom.add(infoBtn);
         rightbottom.add(exportBtn);
         right.add(rightbottom, BorderLayout.SOUTH);
 
