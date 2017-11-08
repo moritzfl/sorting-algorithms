@@ -11,14 +11,6 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="jlatexmath-1.0.3" level="project" />
-    <orderEntry type="library" name="swingx-all-1.6.4" level="project" />
-    <orderEntry type="library" name="jlatexmath-1.0.5" level="project" />
-    <orderEntry type="library" name="jlatexmath-font-cyrillic-1.0.5" level="project" />
-    <orderEntry type="library" name="jlatexmath-font-greek-1.0.5" level="project" />
-    <orderEntry type="library" name="jlatexmath-1.0.5" level="project" />
-    <orderEntry type="library" name="jlatexmath-font-cyrillic-1.0.5" level="project" />
-    <orderEntry type="library" name="jlatexmath-font-greek-1.0.5" level="project" />
     <orderEntry type="library" name="Maven: org.scilab.forge:jlatexmath:1.0.6" level="project" />
     <orderEntry type="library" name="Maven: org.scilab.forge:jlatexmath-font-greek:1.0.6" level="project" />
     <orderEntry type="library" name="Maven: org.scilab.forge:jlatexmath-font-cyrillic:1.0.6" level="project" />
