@@ -16,7 +16,7 @@
 
 \begin{document}
 
-\chapter*{Bubblesort}
+\chapter*{Insertionsort}
 
 \underline{\bf{Computational effort}}
 
@@ -26,30 +26,30 @@ Best Case & Worst Case \\ \hline
 $O(n) $     & $O(n^2)$ \\ \hline
 \end{tabular}
 
-WORST CASE: if the smallest number of the array is in the last position
+WORST CASE: the array is sorted reversely (= ordered from largest to smallest element)
 
 
 
-BEST CASE: if array is already sorted from smallest to largest element
+BEST CASE: the array is already sorted (= ordered from smallest to largest element)
 
 \underline{\bf{Pseudocode}}
 
 \begin{lstlisting}
-Bubblesort
+Insertionsort
 ----------
 begin 
-  repeat
-    noswap := true
-    for i:= 1 to (n-l) do
-      if a[i].key > a[i+1].key
-      	then
-      	  begin
-      	  t := a[i]
-            a[i] := a[i + 1]
-            a[i + 1] := t
-          noswap := false
-          end
-  until noswap
+  for i := 2 to n do
+    begin
+      j := i;
+      t := a[i];
+      k := a[i].key;
+      while a[j-1].key > k do
+        begin
+          a[j] = a[j-1];
+          j := j-1;
+         end
+        a[j] := t;
+      end
 end
 \end{lstlisting}
 
