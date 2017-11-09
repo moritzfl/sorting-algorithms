@@ -89,10 +89,10 @@ public class HeapWindow extends SortingWindowSubstructure implements ActionListe
 
     private void handleInfo() {
         try {
-            Desktop.getDesktop().open(new File("info/" + hsort.getName().toLowerCase() + ".pdf"));
+            Desktop.getDesktop().open(new File(hsort.getPdfInfoFilePath()));
         } catch (Exception exc) {
             JOptionPane.showMessageDialog(this,
-                    "<html> Failed to open '" + hsort.getName().toLowerCase() + ".pdf'.<br>",
+                    "<html> Failed to open algorithm's info file.<br> Make sure you have an pdf-reader installed.",
                     "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
