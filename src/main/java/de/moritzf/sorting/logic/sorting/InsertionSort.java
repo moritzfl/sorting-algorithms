@@ -114,8 +114,17 @@ public class InsertionSort extends SortingAlgorithm {
      *
      * @return the string
      */
+    /**
+     * This produces a LaTeX-Expression representing the entire protocol.
+     *
+     * @return the string
+     */
     public String protocol2LaTeX() {
-        return step2LaTeX(0);
+        String retString = "";
+        for (int i = 0; i < protocol.size(); i++) {
+            retString +=  this.step2LaTeX(i) + "\n \n";
+        }
+        return retString;
     }
 
     /**

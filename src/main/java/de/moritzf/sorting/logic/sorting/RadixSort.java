@@ -205,7 +205,7 @@ public class RadixSort extends SortingAlgorithm {
     public String protocol2LaTeX() {
         String retString = "";
         for (int i = 0; i < protocol.size(); i++) {
-            retString += " " + this.step2LaTeX(i) + " \n\\newline \n";
+            retString += " " + this.step2LaTeX(i) + " \n \n";
         }
 
         return retString;

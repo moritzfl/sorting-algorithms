@@ -344,7 +344,7 @@ public class HeapSort extends SortingAlgorithm {
         if (chosenStepNumber == 0) {
             retString += "\\underline{\\textbf{Heap Creation}}\n\n original binary tree \n\n";
         } else if (chosenStepNumber == 1) {
-            retString += "$\\boxed{Zahl}$ := element that is to be heapified \n\n";
+            retString += "$\\boxed{number}$ := element that is to be heapified \n\n";
         }
 
 		/*

@@ -4,23 +4,23 @@ import java.util.ArrayList;
 
 /**
  * @author Moritz Floeter
- *         <p>
- *         The class QuickSort.
- *         This class represents the implementation of the algorithm quicksort.
- *         <p>
- *         --------------------------------------------------------------------
- *         This program is free software: you can redistribute it and/or modify
- *         it under the terms of the GNU General Public License as published by
- *         the Free Software Foundation, either version 3 of the License, or
- *         (at your option) any later version.
- *         <p>
- *         This program is distributed in the hope that it will be useful,
- *         but WITHOUT ANY WARRANTY; without even the implied warranty of
- *         MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *         GNU General Public License for more details.
- *         <p>
- *         You should have received a copy of the GNU General Public License
- *         along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * <p>
+ * The class QuickSort.
+ * This class represents the implementation of the algorithm quicksort.
+ * <p>
+ * --------------------------------------------------------------------
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * <p>
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * <p>
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 public class QuickSort extends SortingAlgorithm {
 
@@ -144,7 +144,7 @@ public class QuickSort extends SortingAlgorithm {
                         int temp = oldArrayClone[leftEnd];
                         oldArrayClone[leftEnd] = oldArrayClone[rightEnd];
                         oldArrayClone[rightEnd] = temp;
-						/*
+                        /*
 						 * When the rightEnd and the leftEnd have "traded sides"
 						 * this means that all elements are on the according
 						 * side. The only thing left to do here is to swap the
@@ -281,8 +281,8 @@ public class QuickSort extends SortingAlgorithm {
     public String protocol2LaTeX() {
         String retString = "";
         for (int i = 0; i < protocol.size(); i++) {
-            retString += " " + this.step2LaTeX(i)
-                    + "\n\\newline \n\\newline \n\\newline \n";
+            retString += this.step2LaTeX(i)
+                    + "\n\n";
         }
         return retString;
     }
@@ -420,7 +420,6 @@ public class QuickSort extends SortingAlgorithm {
     public int getStepLimit() {
         return STEP_LIMIT;
     }
-
 
 
 }
