@@ -102,6 +102,7 @@
                 <version>1.2.0</version>
                 <configuration>
                     <mainClass>${mainClass}</mainClass>
+                    <iconFile>icon.icns</iconFile>
                 </configuration>
                 <executions>
                     <execution>
