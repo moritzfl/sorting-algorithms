@@ -17,8 +17,8 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>1.8.0</maven.compiler.source>
-        <maven.compiler.target>1.8.0</maven.compiler.target>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
         <mainClass>de.moritzf.sorting.logic.application.Run</mainClass>
     </properties>
 
@@ -159,7 +159,7 @@
                             </classPath>
                             <icon>src/main/resources/icon.ico</icon>
                             <jre>
-                                <minVersion>${maven.compiler.target}</minVersion>
+                                <minVersion>${maven.compiler.target}.0</minVersion>
                             </jre>
                             <versionInfo>
                                 <fileVersion>1.0.0.0</fileVersion>
