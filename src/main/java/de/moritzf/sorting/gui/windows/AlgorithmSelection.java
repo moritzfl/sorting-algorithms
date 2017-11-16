@@ -71,7 +71,7 @@ public class AlgorithmSelection extends JFrame implements ActionListener {
      * The algorithmOptions. Defines which algorithms should be shown
      */
     String[] algorithmOptions = {"Bubblesort", "Selectionsort", "Radixsort", "Quicksort",
-            "Heapsort (Minheap)", "Heapsort (Maxheap)", "Insertionsort"};
+            "Heapsort (Minheap)", "Heapsort (Maxheap)", "Insertionsort", "Shellsort ( steplengths=[1,2,4,8, ...] )"};
 
     /**
      * The algorithmSelectionBox. Dropdown for user selection of the algorithm
@@ -257,6 +257,8 @@ public class AlgorithmSelection extends JFrame implements ActionListener {
                 new SortingWindow(this, new SelectionSort(input));
             } else if (this.algorithmSelectionBox.getSelectedItem().equals("Insertionsort")) {
                 new SortingWindow(this, new InsertionSort(input));
+            } else if (this.algorithmSelectionBox.getSelectedItem().equals("Shellsort ( steplengths=[1,2,4,8, ...] )")) {
+                new SortingWindow(this, new ShellSort(input));
             } else {
                 JOptionPane.showMessageDialog(this,
                         this.algorithmSelectionBox.getSelectedItem()
