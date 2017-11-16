@@ -51,7 +51,7 @@ public class HeapWindow extends SortingWindowSubstructure implements ActionListe
      */
     public HeapWindow(JFrame parent, HeapSort hsort) {
         super(parent);
-        this.setTitle("HeapSort");
+        this.setTitle(hsort.getName());
         this.hsort = hsort;
         nextStepBtn.addActionListener(this);
         undoStepBtn.addActionListener(this);

@@ -455,7 +455,11 @@ public class HeapSort extends SortingAlgorithm {
 
     @Override
     public String getName() {
-        return NAME;
+        String suffix = " (Maxheap)";
+        if (this.minheap){
+            suffix = " (Minheap)";
+        }
+        return NAME + suffix;
     }
 
     public int getStepLimit() {
