@@ -49,8 +49,7 @@ public class RadixSort extends SortingAlgorithm {
         int max = 0;
         this.inputArray = input;
 
-        // find the maximum length of one input element (letters needed for the
-        // according value)
+        // find the maximum length of one input element (eg. 43 has the length 2, 154 has the length 3 etc.)
         for (int i = 0; i < input.length; i++) {
             if (max < ("" + input[i]).length()) {
                 max = ("" + input[i]).length();
