@@ -29,7 +29,7 @@ public class ShellSort extends SortingAlgorithm {
 
     private static final String NAME = "Shellsort";
 
-    private static final int STEP_LIMIT = 20;
+    private static final int STEP_LIMIT = -1;
 
     private ArrayList<ShellStep> protocol = new ArrayList<>();
 
