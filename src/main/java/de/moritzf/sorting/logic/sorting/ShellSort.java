@@ -251,7 +251,7 @@ public class ShellSort extends SortingAlgorithm {
         latexString.append(generateLatexTable(step.getTargetMatrix()));
 
         latexString.append("\n$");
-        System.out.println(latexString.toString());
+
         return latexString.toString();
     }
 
