@@ -159,12 +159,12 @@ public class ShellSort extends SortingAlgorithm {
     private static void sortColumns(int[][] targetMatrix) {
         for (int[] column : targetMatrix) {
             //Only sort arrays until the first empty position in it (marked by -1)
-            int sortUntil = column.length - 1;
+            int sortUntil = column.length;
             for (int i = 0; i < column.length; i++) {
                 //we do not need to check for i == 0 as every row has at least one entry
                 //otherwise one could assume that sortUntil gets assigned -1 which is not possible in this case
                 if (column[i] == -1) {
-                    sortUntil = i - 1;
+                    sortUntil = i;
                     break;
                 }
             }
