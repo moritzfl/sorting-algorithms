@@ -14,6 +14,7 @@ Currently supported algorithms:
 - Quicksort
 - Heapsort (Min-/Maxheap)
 - Insertionsort
+- Shellsort
 
 
 noteworthy features:
