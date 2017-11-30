@@ -24,7 +24,7 @@
 \begin{tabular}{|l|l|p{7cm} l |}
 \hline
 Best Case    & Average Case  &  Worst Case\\ \hline
-$O(n\cdot log(n))$ & $O(n^2)$  &  $O(n2)$ (worst known steplength sequence) $O(n\cdot log(n)^2)$ (best known steplenth sequence) \\ \hline
+$O(n\cdot log(n))$ & $O(n^2)$  &  $O(n2)$ (worst known steplength sequence) $O(n\cdot log(n)^2)$ (best known steplength sequence) \\ \hline
 \end{tabular}
 
 WORST CASE: The conditions under which the worst case occurs depend on steplengths that are used. For Shell's originally proposed steplength sequence based on $2^n$ (eg. steplengths = [8,4,2,1]), the worst case performance may appear when the binary representation of the number of elements contains many consecutive zeroes (eg. $1024_{10} \rightarrow 10000000000_2$). This steplength-sequence leaves out uneven numbers until it gets to 1 and therefore is not the optimal choice.
