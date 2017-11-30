@@ -19,27 +19,39 @@
 
 \chapter*{Shellsort}
 
-\underline{\bf{Computational effort}}
+\underline{\bf{Computational complexity}}
 
-\begin{tabular}{|l|l|l|}
+\begin{tabular}{|l|l|p{7cm} l |}
 \hline
 Best Case    & Average Case  &  Worst Case\\ \hline
-$O(n^2)$ & $O(n^2)$  &  $O(n^2)$  \\ \hline
+$O(n\cdot log(n))$ & $O(n^2)$  &  $O(n2)$ (worst known steplength sequence) $O(n\cdot log(n)^2)$ (best known steplenth sequence) \\ \hline
 \end{tabular}
 
-WORST CASE: - 
+WORST CASE: depends on steplengths that are used. For shells originally proposed steplength sequence based on $2^n$ (eg. steplengths = [8,4,2,1]), the worst case performance may appear when the binary representation of the number of elements contains many consecutive zeroes. Shells steplength leaves out uneven numbers until it gets to 1 and therefore is not the optimal choice.
 
+BEST CASE: array is already sorted. Because the number of elements in steplengths is $log(n)$ and for each steplength we need to confirm that the order of elements in the array is correct $O(n)$ , the resulting complexity is $O(n \cdot log(n)$.
 
-BEST CASE: -
-
-dummy - to be filled with content :P
 
 \underline{\bf{Pseudocode}}
 
 \begin{lstlisting}
-Shellsort
--------------
-very shelly sort
+procedure shellsort(array, steplengths)
+--------------------------
+begin
+  for each steplength in steplengths do
+    for i := 1 to step do
+  	  sort(array, i, steplength)   
+    end
+  end
+end
+
+procedure sort(array, i, steplength)
+--------------------------
+# perform Insertionsort between the
+# following positions in the array:
+# i, i  + steplength, i + steplength*2, ...
+
+
 \end{lstlisting}
 
 
