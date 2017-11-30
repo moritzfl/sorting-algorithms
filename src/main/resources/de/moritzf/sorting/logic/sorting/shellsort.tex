@@ -27,12 +27,16 @@ Best Case    & Average Case  &  Worst Case\\ \hline
 $O(n\cdot log(n))$ & $O(n^2)$  &  $O(n2)$ (worst known steplength sequence) $O(n\cdot log(n)^2)$ (best known steplenth sequence) \\ \hline
 \end{tabular}
 
-WORST CASE: depends on steplengths that are used. For shells originally proposed steplength sequence based on $2^n$ (eg. steplengths = [8,4,2,1]), the worst case performance may appear when the binary representation of the number of elements contains many consecutive zeroes. Shells steplength leaves out uneven numbers until it gets to 1 and therefore is not the optimal choice.
+WORST CASE: The conditions under which the worst case occurs depend on steplengths that are used. For Shell's originally proposed steplength sequence based on $2^n$ (eg. steplengths = [8,4,2,1]), the worst case performance may appear when the binary representation of the number of elements contains many consecutive zeroes (eg. $1024_{10} \rightarrow 10000000000_2$). This steplength-sequence leaves out uneven numbers until it gets to 1 and therefore is not the optimal choice.
 
-BEST CASE: array is already sorted. Because the number of elements in steplengths is $log(n)$ and for each steplength we need to confirm that the order of elements in the array is correct $O(n)$ , the resulting complexity is $O(n \cdot log(n)$.
+BEST CASE: This occurs when the array is already sorted. Because the number of elements in steplengths is $log(n)$ (again for Shell's original proposal) and for each steplength we need to confirm that the order of elements in the array is correct ($O(n)$ as this is the best case for Insertionsort) , the resulting complexity is $O(n \cdot log(n)$.
 
 
 \underline{\bf{Pseudocode}}
+
+array: array with numbers that are to be sorted
+steplengths: array with steplengths that are to be used. In our definition, steplengths are arranged in descending order (eg. steplengths = [8,4,2,1]). A practical steplengths-array must further fulfill the condition $steplengths[0] < array.length$. 
+
 
 \begin{lstlisting}
 procedure shellsort(array, steplengths)
@@ -47,10 +51,8 @@ end
 
 procedure sort(array, i, steplength)
 --------------------------
-# perform Insertionsort between the
-# following positions in the array:
-# i, i  + steplength, i + steplength*2, ...
-
+perform Insertionsort using the following positions
+in the array: i, i  + steplength, i + steplength*2, ...
 
 \end{lstlisting}
 
