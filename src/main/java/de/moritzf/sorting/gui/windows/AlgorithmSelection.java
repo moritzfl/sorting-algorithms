@@ -15,7 +15,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-
 import de.moritzf.sorting.logic.sorting.*;
 import org.jdesktop.swingx.JXTextField;
 
@@ -67,16 +66,11 @@ public class AlgorithmSelection extends JFrame implements ActionListener {
      */
     JXTextField arrayInputField = new JXTextField();
 
-    /**
-     * The algorithmOptions. Defines which algorithms should be shown
-     */
-    String[] algorithmOptions = {"Bubblesort", "Selectionsort", "Radixsort", "Quicksort",
-            "Heapsort (Minheap)", "Heapsort (Maxheap)", "Insertionsort", "Shellsort ( steplengths=[... 8,4,2,1] )"};
 
     /**
      * The algorithmSelectionBox. Dropdown for user selection of the algorithm
      */
-    JComboBox<String> algorithmSelectionBox = new JComboBox<String>(algorithmOptions);
+    JComboBox<SelectionItem> algorithmSelectionBox = new JComboBox<SelectionItem>(SelectionItem.values());
 
     /**
      * The randomArrayGenerationButton. Starts generation of a random array as input for the sorting algorithm.
@@ -123,23 +117,25 @@ public class AlgorithmSelection extends JFrame implements ActionListener {
         this.randomArrayGenerationButton.addActionListener(this);
         this.aboutButton.addActionListener(this);
 
+        this.algorithmSelectionBox.addActionListener(this);
+
         arrayInputField.addKeyListener(new InputListener());
 
 
-		/*
+        /*
          * create the panel where the algorithm selection and the startbutton
-		 * gets displayed
-		 */
+         * gets displayed
+         */
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new BorderLayout());
         buttonPanel.add(algorithmSelectionBox, BorderLayout.CENTER);
         buttonPanel.add(startbtn, BorderLayout.EAST);
         mainelements.add(buttonPanel, BorderLayout.SOUTH);
 
-		/*
+        /*
          * create instructions for the user input and the button for generating
-		 * a random input string
-		 */
+         * a random input string
+         */
         JPanel northpanel = new JPanel(new BorderLayout());
         northpanel.add(randomArrayGenerationButton, BorderLayout.EAST);
         northpanel.add(new JLabel("Enter the number sequence that you want to sort:"), BorderLayout.WEST);
@@ -213,6 +209,8 @@ public class AlgorithmSelection extends JFrame implements ActionListener {
             new RandomArrayGeneratorWindow(this);
         } else if (e.getSource().equals(aboutButton)) {
             new AboutWindow(this);
+        } else if (e.getSource().equals(algorithmSelectionBox)) {
+
         }
 
     }
@@ -237,27 +235,27 @@ public class AlgorithmSelection extends JFrame implements ActionListener {
             JOptionPane.showMessageDialog(this,
                     "<html>The array used as input contains more than" + maxCount
                             + " elements. <br> <br> Because every step has to be displayed and the number of "
-                            + " steps incrases with the input, <br> sind "
+                            + " steps increases with the input, <br> sind "
                             + " only arrays with a length as high as 100 are allowed.<br> <br>"
                             + "But seriously: you did not really want to look at that protocol in detail and"
                             + "<br>just tried to cause a software crash ;)</html>",
                     "Error: Are you serious?", JOptionPane.INFORMATION_MESSAGE);
         } else {
-            if (this.algorithmSelectionBox.getSelectedItem().equals("Bubblesort")) {
+            if (this.algorithmSelectionBox.getSelectedItem().equals(SelectionItem.BUBBLE_SORT)) {
                 new SortingWindow(this, new BubbleSort(input));
-            } else if (this.algorithmSelectionBox.getSelectedItem().equals("Heapsort (Maxheap)")) {
+            } else if (this.algorithmSelectionBox.getSelectedItem().equals(SelectionItem.HEAP_SORT_MAX)) {
                 new HeapWindow(this, new HeapSort(input, false));
-            } else if (this.algorithmSelectionBox.getSelectedItem().equals("Heapsort (Minheap)")) {
+            } else if (this.algorithmSelectionBox.getSelectedItem().equals(SelectionItem.HEAP_SORT_MIN)) {
                 new HeapWindow(this, new HeapSort(input, true));
-            } else if (this.algorithmSelectionBox.getSelectedItem().equals("Quicksort")) {
+            } else if (this.algorithmSelectionBox.getSelectedItem().equals(SelectionItem.QUICK_SORT)) {
                 new SortingWindow(this, new QuickSort(input));
-            } else if (this.algorithmSelectionBox.getSelectedItem().equals("Radixsort")) {
+            } else if (this.algorithmSelectionBox.getSelectedItem().equals(SelectionItem.RADIX_SORT)) {
                 new SortingWindow(this, new RadixSort(input));
-            } else if (this.algorithmSelectionBox.getSelectedItem().equals("Selectionsort")) {
+            } else if (this.algorithmSelectionBox.getSelectedItem().equals(SelectionItem.SELECTION_SORT)) {
                 new SortingWindow(this, new SelectionSort(input));
-            } else if (this.algorithmSelectionBox.getSelectedItem().equals("Insertionsort")) {
+            } else if (this.algorithmSelectionBox.getSelectedItem().equals(SelectionItem.INSERTION_SORT)) {
                 new SortingWindow(this, new InsertionSort(input));
-            } else if (this.algorithmSelectionBox.getSelectedItem().equals("Shellsort ( steplengths=[... 8,4,2,1] )")) {
+            } else if (this.algorithmSelectionBox.getSelectedItem().equals(SelectionItem.SHELL_SORT_2N)) {
                 new SortingWindow(this, new ShellSort(input));
             } else {
                 JOptionPane.showMessageDialog(this,
@@ -267,6 +265,7 @@ public class AlgorithmSelection extends JFrame implements ActionListener {
             }
         }
     }
+
 
     /**
      * The class for receiving input events in this kind of window
@@ -290,8 +289,8 @@ public class AlgorithmSelection extends JFrame implements ActionListener {
             if (c == KeyEvent.VK_COMMA) {
                 /*
                  * when the last input was a comma, we do not need another
-				 * one... only one comma is used to seperate numbers after all.
-				 */
+                 * one... only one comma is used to seperate numbers after all.
+                 */
                 if (arrayInputField.getText().isEmpty() || arrayInputField.getText().endsWith(",")) {
                     e.consume();
                     getToolkit().beep();
@@ -321,5 +320,30 @@ public class AlgorithmSelection extends JFrame implements ActionListener {
         }
 
     }
+
+    private enum SelectionItem {
+        BUBBLE_SORT("Bubblesort"),
+        SELECTION_SORT("Selectionsort"),
+        RADIX_SORT("Radixsort"),
+        QUICK_SORT("Quicksort"),
+        HEAP_SORT_MIN("Heapsort (Minheap)"),
+        HEAP_SORT_MAX("Heapsort (Maxheap)"),
+        INSERTION_SORT("Insertionsort"),
+        SHELL_SORT_2N("Shellsort ( steplengths=[... 8,4,2,1] )"),
+        SHELL_SORT_CUSTOM("Shellsort (custom steplengths)");
+
+        private final String selectionValue;
+
+        SelectionItem(String selectionValue) {
+            this.selectionValue = selectionValue;
+        }
+
+        public String toString() {
+            return this.selectionValue;
+        }
+
+
+    }
+
 
 }
