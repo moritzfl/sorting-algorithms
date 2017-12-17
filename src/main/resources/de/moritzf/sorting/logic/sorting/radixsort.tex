@@ -1,19 +1,12 @@
 \documentclass[a4paper]{report}                                     
 
-\usepackage{ngerman}                                                   
 \usepackage[utf8]{inputenc}                                                 
 \usepackage{amssymb}                                                                                                 
 \usepackage{pseudocode} 
 \usepackage{listings}
-\usepackage{color}
 \usepackage{parskip}
 \setlength\parindent{0pt}
-
-\definecolor{dkgreen}{rgb}{0,0.6,0}
-\definecolor{gray}{rgb}{0.5,0.5,0.5}
-\definecolor{mauve}{rgb}{0.58,0,0.82}
-
-
+\usepackage[margin=1in]{geometry}
 
 \begin{document}
 
@@ -21,7 +14,7 @@
 
 \underline{\bf{Computational effort}}
 
-Because the computational effort does not only depend on the number of elements $n$ that are to be sorted but also depends on the maximum number of digits in a single element $m$, the complexity is denoted as $O(m \times n)$.
+Because the computational effort does not only depend on the number of elements $n$ that are to be sorted but also depends on the maximum number of digits in a single element $m$, the complexity is denoted as $O(m \cdot n)$.
 
 If the maximum number of digit is a known constant, the complexity can also be described as $O(n)$.
 
