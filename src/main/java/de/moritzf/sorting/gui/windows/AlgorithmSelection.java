@@ -15,6 +15,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+
 import de.moritzf.sorting.logic.sorting.*;
 import org.jdesktop.swingx.JXTextField;
 
@@ -209,8 +210,6 @@ public class AlgorithmSelection extends JFrame implements ActionListener {
             new RandomArrayGeneratorWindow(this);
         } else if (e.getSource().equals(aboutButton)) {
             new AboutWindow(this);
-        } else if (e.getSource().equals(algorithmSelectionBox)) {
-
         }
 
     }
@@ -241,27 +240,39 @@ public class AlgorithmSelection extends JFrame implements ActionListener {
                             + "<br>just tried to cause a software crash ;)</html>",
                     "Error: Are you serious?", JOptionPane.INFORMATION_MESSAGE);
         } else {
-            if (this.algorithmSelectionBox.getSelectedItem().equals(SelectionItem.BUBBLE_SORT)) {
-                new SortingWindow(this, new BubbleSort(input));
-            } else if (this.algorithmSelectionBox.getSelectedItem().equals(SelectionItem.HEAP_SORT_MAX)) {
-                new HeapWindow(this, new HeapSort(input, false));
-            } else if (this.algorithmSelectionBox.getSelectedItem().equals(SelectionItem.HEAP_SORT_MIN)) {
-                new HeapWindow(this, new HeapSort(input, true));
-            } else if (this.algorithmSelectionBox.getSelectedItem().equals(SelectionItem.QUICK_SORT)) {
-                new SortingWindow(this, new QuickSort(input));
-            } else if (this.algorithmSelectionBox.getSelectedItem().equals(SelectionItem.RADIX_SORT)) {
-                new SortingWindow(this, new RadixSort(input));
-            } else if (this.algorithmSelectionBox.getSelectedItem().equals(SelectionItem.SELECTION_SORT)) {
-                new SortingWindow(this, new SelectionSort(input));
-            } else if (this.algorithmSelectionBox.getSelectedItem().equals(SelectionItem.INSERTION_SORT)) {
-                new SortingWindow(this, new InsertionSort(input));
-            } else if (this.algorithmSelectionBox.getSelectedItem().equals(SelectionItem.SHELL_SORT_2N)) {
-                new SortingWindow(this, new ShellSort(input));
-            } else {
-                JOptionPane.showMessageDialog(this,
-                        this.algorithmSelectionBox.getSelectedItem()
-                                + " should start now. This algorithm has however not been implemented yet.",
-                        "Developer was lazy", JOptionPane.INFORMATION_MESSAGE);
+            SelectionItem selection = (SelectionItem) this.algorithmSelectionBox.getSelectedItem();
+
+            switch (selection) {
+                case BUBBLE_SORT:
+                    new SortingWindow(this, new BubbleSort(input));
+                    break;
+                case HEAP_SORT_MAX:
+                    new HeapWindow(this, new HeapSort(input, false));
+                    break;
+                case HEAP_SORT_MIN:
+                    new HeapWindow(this, new HeapSort(input, true));
+                    break;
+                case QUICK_SORT:
+                    new SortingWindow(this, new QuickSort(input));
+                    break;
+                case RADIX_SORT:
+                    new SortingWindow(this, new RadixSort(input));
+                    break;
+                case SELECTION_SORT:
+                    new SortingWindow(this, new SelectionSort(input));
+                    break;
+                case INSERTION_SORT:
+                    new SortingWindow(this, new InsertionSort(input));
+                    break;
+                case SHELL_SORT_2N:
+                    new SortingWindow(this, new ShellSort(input));
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(this,
+                            this.algorithmSelectionBox.getSelectedItem()
+                                    + " should start now. This algorithm has however not been implemented yet.",
+                            "Developer was lazy", JOptionPane.INFORMATION_MESSAGE);
+                    break;
             }
         }
     }
@@ -305,7 +316,7 @@ public class AlgorithmSelection extends JFrame implements ActionListener {
          * @see java.awt.event.KeyListener#keyPressed(java.awt.event.KeyEvent)
          */
         public void keyPressed(KeyEvent e) {
-            // TODO Auto-generated method stub
+            // nothing to do here
 
         }
 
@@ -315,7 +326,7 @@ public class AlgorithmSelection extends JFrame implements ActionListener {
          * @see java.awt.event.KeyListener#keyReleased(java.awt.event.KeyEvent)
          */
         public void keyReleased(KeyEvent e) {
-            // TODO Auto-generated method stub
+            // nothing to do here
 
         }
 
@@ -329,8 +340,7 @@ public class AlgorithmSelection extends JFrame implements ActionListener {
         HEAP_SORT_MIN("Heapsort (Minheap)"),
         HEAP_SORT_MAX("Heapsort (Maxheap)"),
         INSERTION_SORT("Insertionsort"),
-        SHELL_SORT_2N("Shellsort ( steplengths=[... 8,4,2,1] )"),
-        SHELL_SORT_CUSTOM("Shellsort (custom steplengths)");
+        SHELL_SORT_2N("Shellsort ( steplengths=[... 8,4,2,1] )");
 
         private final String selectionValue;
 
