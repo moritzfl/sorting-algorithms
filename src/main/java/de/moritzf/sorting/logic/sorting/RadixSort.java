@@ -1,6 +1,7 @@
 package de.moritzf.sorting.logic.sorting;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Moritz Floeter
@@ -36,7 +37,7 @@ public class RadixSort extends SortingAlgorithm {
     /**
      * The input array.
      */
-    private int[] inputArray;
+    private List<String> inputArray;
 
     /**
      * Instantiates a new instance of radixsort.
@@ -45,10 +46,26 @@ public class RadixSort extends SortingAlgorithm {
      */
     public RadixSort(int[] input) {
         RadixStep firstStep = new RadixStep();
-        ArrayList<String> inputAsStrings = new ArrayList<String>();
         int max = 0;
-        this.inputArray = input;
+        this.inputArray = convertToLengthAdjustedStrings(input);
 
+
+        sortIntoBoxes(this.inputArray, firstStep);
+
+        protocol.add(firstStep);
+    }
+
+    /**
+     * Converts a list of numbers to a list of Strings and prepends 0s in
+     * order to guarantee the same length for every number-String.
+     *
+     * @param input the array
+     * @return the converted array
+     */
+    private static List<String> convertToLengthAdjustedStrings(int[] input){
+
+        List<String> inputAsStrings = new ArrayList<>();
+        int max = 0;
         // find the maximum length of one input element (eg. 43 has the length 2, 154 has the length 3 etc.)
         for (int i = 0; i < input.length; i++) {
             if (max < ("" + input[i]).length()) {
@@ -56,10 +73,10 @@ public class RadixSort extends SortingAlgorithm {
             }
         }
 
-		/*
+        /*
          * all elements shorter than the longest element get filled with zeroes
-		 * so that they have the same length when represented as String
-		 */
+         * so that they have the same length when represented as String
+         */
         for (int i = 0; i < input.length; i++) {
             String input2add = "" + input[i];
             while (input2add.length() < max) {
@@ -67,9 +84,8 @@ public class RadixSort extends SortingAlgorithm {
             }
             inputAsStrings.add(input2add);
         }
-        sortIntoBoxes(inputAsStrings, firstStep);
 
-        protocol.add(firstStep);
+        return inputAsStrings;
     }
 
 
@@ -90,7 +106,7 @@ public class RadixSort extends SortingAlgorithm {
      * @param collectedStrings the collected strings
      * @param step             the step
      */
-    private static void sortIntoBoxes(ArrayList<String> collectedStrings, RadixStep step) {
+    private static void sortIntoBoxes(List<String> collectedStrings, RadixStep step) {
         // as memory marks the position counting from the right end of the
         // string, the position gets set accordingly
         int position = collectedStrings.get(0).length() - 1 - step.getMemory();
@@ -146,7 +162,7 @@ public class RadixSort extends SortingAlgorithm {
                 retString += ", ";
             }
             //add linebreaks after 10 elements.
-            if ((i + 1) % 10 == 0 && this.inputArray.length > i + 1) {
+            if ((i + 1) % 10 == 0 && this.inputArray.size() > i + 1) {
                 retString += "\\\\ ";
             }
         }
@@ -162,13 +178,14 @@ public class RadixSort extends SortingAlgorithm {
      */
     private String originalArray2LaTeX() {
         String originalArray = "";
-        for (int i = 0; i < this.inputArray.length; i++) {
-            originalArray = originalArray + this.inputArray[i];
-            if (this.inputArray.length > i + 1) {
+        for (int i = 0; i < this.inputArray.size(); i++) {
+            originalArray = originalArray + this.inputArray.get(i);
+            if (this.inputArray.size() > i + 1) {
                 originalArray += ", ";
             }
+
             //add linebreaks after 10 elements.
-            if ((i + 1) % 10 == 0 && this.inputArray.length > i + 1) {
+            if ((i + 1) % 10 == 0 && this.inputArray.size() > i + 1) {
                 originalArray += "\\\\ ";
             }
         }
@@ -334,7 +351,5 @@ public class RadixSort extends SortingAlgorithm {
     public int getStepLimit() {
         return STEP_LIMIT;
     }
-
-
 
 }
