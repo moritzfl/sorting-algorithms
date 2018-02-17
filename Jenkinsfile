@@ -6,7 +6,7 @@ pipeline {
         sh 'mvn package'
       }
     }
-    stage('error') {
+    stage('archive') {
       steps {
         archiveArtifacts 'target/*.exe, target/*.dmg, target/*-shaded.jar'
       }
