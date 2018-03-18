@@ -1,5 +1,7 @@
 # Sorting Algorithms
 
+[![Build Status](http://moritz-diskstation.ddns.net:4445/job/sorting-algorithms/job/master/badge/icon)](http://moritz-diskstation.ddns.net:4445/job/sorting-algorithms/job/master/)
+
 ![Screenshot](http://www.moritzf.de/projects/media/sorting.png)
 
 This software was developed with the aim to enrich teaching and learning in the area of algorithms with new possibilities. It is licensed under the terms of GPL v3.
