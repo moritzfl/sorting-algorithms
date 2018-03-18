@@ -126,28 +126,27 @@
                         </goals>
                         <configuration>
                             <headerType>gui</headerType>
-                            <jar>${project.build.directory}/${name}-${version}-shaded.jar</jar>
-                            <outfile>${project.build.directory}/${name}-${version}.exe</outfile>
+                            <jar>${project.build.directory}/${project.name}-${project.version}-shaded.jar</jar>
+                            <outfile>${project.build.directory}/${project.name}-${project.version}.exe</outfile>
                             <downloadUrl>http://java.com/download</downloadUrl>
                             <classPath>
                                 <mainClass>${mainClass}</mainClass>
-                                <preCp>anything</preCp>
                             </classPath>
                             <icon>src/main/resources/icon.ico</icon>
                             <jre>
                                 <minVersion>${maven.compiler.target}.0</minVersion>
                             </jre>
                             <versionInfo>
-                                <fileVersion>1.0.0.0</fileVersion>
-                                <txtFileVersion>${version}</txtFileVersion>
-                                <fileDescription>${name}</fileDescription>
+                                <fileVersion>${project.version}.0</fileVersion>
+                                <txtFileVersion>${project.version}</txtFileVersion>
+                                <fileDescription>${project.name}</fileDescription>
                                 <copyright>2015-2017 Moritz Flöter</copyright>
-                                <productVersion>1.0.0.0</productVersion>
-                                <txtProductVersion>1.0.0.0</txtProductVersion>
+                                <productVersion>${project.version}.0</productVersion>
+                                <txtProductVersion>${project.version}.0</txtProductVersion>
                                 <productName>${project.name}</productName>
                                 <companyName>moritzf.de</companyName>
-                                <internalName>${name}</internalName>
-                                <originalFilename>original.exe</originalFilename>
+                                <internalName>${project.name}</internalName>
+                                <originalFilename>sortingalgorithms.exe</originalFilename>
                             </versionInfo>
                         </configuration>
                     </execution>
