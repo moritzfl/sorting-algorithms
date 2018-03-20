@@ -48,17 +48,12 @@ public abstract class SortingWindowSubstructure extends JFrame {
     /**
      * The protocol pnl.
      */
-    private JPanel protocolPnl = new JPanel();
+    private JPanel protocolPnl = new JPanel(new BorderLayout());
 
     /**
      * The scroll.
      */
     private JScrollPane scroll;
-
-    /**
-     * The protocol list pnl.
-     */
-    protected JPanel protocolListPnl = new JPanel();
 
     /**
      * The drag scroll.
@@ -128,26 +123,17 @@ public abstract class SortingWindowSubstructure extends JFrame {
         rightbottom.add(exportBtn);
         right.add(rightbottom, BorderLayout.SOUTH);
 
+        protocolPnl.setBackground(Color.white);
+        protocolPnl.addMouseListener(this.dragScrollListener);
+
         // Creating the main area of the window where the protocol is shown
         scroll = new JScrollPane(protocolPnl);
         this.dragScrollListener = new DragScrollListener(protocolPnl);
         scroll.getVerticalScrollBar().setUnitIncrement(25);
         scroll.getHorizontalScrollBar().setUnitIncrement(25);
-
-        protocolPnl.addMouseListener(dragScrollListener);
-        protocolPnl.addMouseMotionListener(dragScrollListener);
-        protocolPnl.setLayout(new BorderLayout());
-
         mainpanel.add(scroll, BorderLayout.CENTER);
-        protocolPnl.setBackground(Color.white);
 
-        // /Add a list-style panel that will contain the steps of the protocol after execution of an algorithm
-        protocolListPnl.setBackground(Color.white);
-        protocolListPnl.setLayout(new BoxLayout(protocolListPnl, BoxLayout.PAGE_AXIS));
-        protocolListPnl.addMouseListener(dragScrollListener);
-        protocolListPnl.addMouseMotionListener(dragScrollListener);
 
-        protocolPnl.add(protocolListPnl, BorderLayout.NORTH);
 
         // setting default window parameters
         this.setMinimumSize(new Dimension(600, 450));
@@ -160,32 +146,15 @@ public abstract class SortingWindowSubstructure extends JFrame {
     }
 
     /**
-     * adds panel to protocol panel.
      *
-     * @param heapSortPanelExtended the panel
+     * @param panel the panel
      */
-    protected void addToProtocol(JPanel heapSortPanelExtended) {
-        // the panel pushleft serves the purpose of aligning the protocol to the
-        // left side of the protocol area
-        JPanel pushleft = new JPanel();
-        pushleft.addMouseListener(dragScrollListener);
-        pushleft.addMouseMotionListener(dragScrollListener);
-
-        pushleft.setBackground(Color.WHITE);
-        pushleft.setLayout(new BorderLayout());
-        pushleft.add(heapSortPanelExtended, BorderLayout.WEST);
-
-        heapSortPanelExtended.addMouseListener(dragScrollListener);
-        heapSortPanelExtended.addMouseMotionListener(dragScrollListener);
-
-        protocolListPnl.add(pushleft);
-    }
-
-    /**
-     * Remove last element from protocol.
-     */
-    protected void removeLastElementFromProtocol() {
-        protocolListPnl.remove(protocolListPnl.getComponentCount() - 1);
+    protected void setProtocolPanel(JPanel panel) {
+        this.protocolPnl.removeAll();
+        this.protocolPnl.add(panel, BorderLayout.WEST);
+        panel.addMouseListener(this.dragScrollListener);
+        this.validate();
+        this.repaint();
     }
 
     /**
@@ -194,6 +163,14 @@ public abstract class SortingWindowSubstructure extends JFrame {
     protected void scrollToBottom() {
         JScrollBar vertical = scroll.getVerticalScrollBar();
         vertical.setValue(vertical.getMaximum());
+    }
+
+    /**
+     * Scroll2 bottom.
+     */
+    protected void scrollToTop() {
+        JScrollBar vertical = scroll.getVerticalScrollBar();
+        vertical.setValue(vertical.getMinimum());
     }
 
 

@@ -1,18 +1,18 @@
 package de.moritzf.sorting.gui.windows;
 
+import de.moritzf.sorting.gui.components.LatexPanel;
 import de.moritzf.sorting.gui.components.MonoTextArea;
-import de.moritzf.sorting.gui.components.LaTeXPanel;
+
 
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.io.*;
-import java.nio.file.Files;
 import java.util.stream.Collectors;
 
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 
-import static java.nio.charset.Charset.forName;
+
 
 /**
  * @author Moritz Floeter
@@ -74,7 +74,7 @@ public class AboutWindow extends JFrame {
             e.printStackTrace();
         }
 
-        mainpane.add(new LaTeXPanel(versionInformation, 21), BorderLayout.NORTH);
+        mainpane.add(new LatexPanel(versionInformation), BorderLayout.NORTH);
         mainpane.add(new JScrollPane(new MonoTextArea(copyrightInformation)), BorderLayout.CENTER);
 
         this.setLocationRelativeTo(parent);

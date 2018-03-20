@@ -247,10 +247,10 @@ public class AlgorithmSelection extends JFrame implements ActionListener {
                     new SortingWindow(this, new BubbleSort(input));
                     break;
                 case HEAP_SORT_MAX:
-                    new HeapWindow(this, new HeapSort(input, false));
+                    new SortingWindow(this, new HeapSort(input, false));
                     break;
                 case HEAP_SORT_MIN:
-                    new HeapWindow(this, new HeapSort(input, true));
+                    new SortingWindow(this, new HeapSort(input, true));
                     break;
                 case QUICK_SORT:
                     new SortingWindow(this, new QuickSort(input));

@@ -207,10 +207,7 @@ public class ShellSort extends SortingAlgorithm {
         return this.input.length;
     }
 
-    @Override
-    public int getProtocolSize() {
-        return this.protocol.size();
-    }
+
 
     @Override
     public void reset() {
@@ -228,7 +225,6 @@ public class ShellSort extends SortingAlgorithm {
         return protocolString.toString();
     }
 
-    @Override
     public String step2LaTeX(int i) {
         StringBuilder latexString = new StringBuilder();
 

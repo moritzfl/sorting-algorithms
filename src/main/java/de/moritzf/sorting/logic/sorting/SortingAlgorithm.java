@@ -30,12 +30,6 @@ public abstract class SortingAlgorithm {
      */
     public abstract int getInputSize();
 
-    /**
-     * Gets the stepcount for the protocol.
-     *
-     * @return the protocol size
-     */
-    public abstract int getProtocolSize();
 
     /**
      * Resets the algorithm to the start and removes
@@ -50,13 +44,6 @@ public abstract class SortingAlgorithm {
      */
     public abstract String protocol2LaTeX();
 
-    /**
-     * Generates a LaTeX-expression representing a single step.
-     *
-     * @param i the number of the step.
-     * @return the latex expression.
-     */
-    public abstract String step2LaTeX(int i);
 
     /**
      * Reverts the last step performed by the algorithm.

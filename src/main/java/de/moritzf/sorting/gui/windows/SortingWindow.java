@@ -7,12 +7,11 @@ import java.awt.Desktop;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.io.IOException;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-import de.moritzf.sorting.gui.components.LaTeXPanel;
+import de.moritzf.sorting.gui.components.LatexPanel;
 import de.moritzf.sorting.io.SaveFile;
 import de.moritzf.sorting.logic.sorting.SortingAlgorithm;
 
@@ -45,10 +44,9 @@ public class SortingWindow extends SortingWindowSubstructure implements ActionLi
      */
     private static final long serialVersionUID = 7326001445728823589L;
 
-    private static final float SMALLMATRIX_FONT_SIZE = 30;
-    private static final float NORMAL_FONT_SIZE = 21;
+    private static final float FONT_SIZE = 30;
 
-    private boolean smallmatrix;
+    private LatexPanel protocol = new LatexPanel();
 
     /**
      * The sorting algorithm.
@@ -76,22 +74,13 @@ public class SortingWindow extends SortingWindowSubstructure implements ActionLi
             allStepsBtn.setText("<html> &nbsp; <br>Do " + algorithm.getStepLimit() + " Steps <br> &nbsp; <html>");
         }
 
-        this.smallmatrix = (this.algorithm.step2LaTeX(0).contains("\\begin{smallmatrix}"));
-
-        this.addLastStepToProtocol();
+        this.setProtocolPanel(protocol);
+        this.renderProtocol();
     }
 
-    private float getFontSize() {
-        float fontSize = NORMAL_FONT_SIZE;
-        if (smallmatrix) {
-            fontSize = SMALLMATRIX_FONT_SIZE;
-        }
-        return fontSize;
-    }
 
-    private void addLastStepToProtocol() {
-
-        this.addToProtocol(new LaTeXPanel(algorithm.step2LaTeX(algorithm.getProtocolSize() - 1), this.getFontSize()));
+    private void renderProtocol() {
+        protocol.setExpression(this.algorithm.protocol2LaTeX());
     }
 
     /*
@@ -120,7 +109,7 @@ public class SortingWindow extends SortingWindowSubstructure implements ActionLi
     private void handleNextStep() {
         boolean stepDone = algorithm.doStep();
         if (stepDone) {
-            this.addLastStepToProtocol();
+            this.renderProtocol();
             this.validate();
             this.repaint();
             this.scrollToBottom();
@@ -134,9 +123,9 @@ public class SortingWindow extends SortingWindowSubstructure implements ActionLi
     private void handleUndo() {
         boolean stepUndone = algorithm.undoStep();
         if (stepUndone) {
-            this.removeLastElementFromProtocol();
-            this.validate();
-            this.repaint();
+            this.renderProtocol();
+            this.scrollToTop();
+            this.scrollToBottom();
         } else {
             JOptionPane.showMessageDialog(this,
                     "<html>Can't undo step because there is nothing more to undo...</html>", "Layer-8-Error",
@@ -146,15 +135,12 @@ public class SortingWindow extends SortingWindowSubstructure implements ActionLi
 
     private void handleReset() {
         this.algorithm.reset();
-        while (this.protocolListPnl.getComponentCount() > 1) {
-            this.removeLastElementFromProtocol();
-        }
+        this.renderProtocol();
         this.validate();
         this.repaint();
     }
 
     private void handleAllSteps() {
-        int oldSize = algorithm.getProtocolSize();
 
         if (algorithm.getStepLimit() == -1 || algorithm.getStepLimit() >= algorithm.getInputSize()) {
             algorithm.doAllSteps();
@@ -162,14 +148,10 @@ public class SortingWindow extends SortingWindowSubstructure implements ActionLi
             boolean stepDone = true;
             for (int i = 0; i < algorithm.getStepLimit() && stepDone; i++) {
                 stepDone = algorithm.doStep();
-                System.out.println(i);
             }
         }
 
-        for (int i = oldSize; i < algorithm.getProtocolSize(); i++) {
-            this.addToProtocol(
-                    new LaTeXPanel(algorithm.step2LaTeX(i), this.getFontSize()));
-        }
+        this.renderProtocol();
 
         this.validate();
         this.repaint();
