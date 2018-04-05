@@ -7,8 +7,8 @@ public class HeapSortNodeValue {
 
     private ArrayList<Integer> numbers = new ArrayList<>();
 
-    public HeapSortNodeValue(int initialNumbers) {
-        numbers.add(initialNumbers);
+    public HeapSortNodeValue(int initialNumber) {
+        numbers.add(initialNumber);
     }
 
     public int getNumber() {

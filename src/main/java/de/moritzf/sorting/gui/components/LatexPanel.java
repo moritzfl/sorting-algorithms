@@ -19,14 +19,13 @@
 
 package de.moritzf.sorting.gui.components;
 
+import de.moritzf.sorting.gui.util.LatexUtil;
 import org.scilab.forge.jlatexmath.TeXConstants;
 import org.scilab.forge.jlatexmath.TeXFormula;
 import org.scilab.forge.jlatexmath.TeXIcon;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  * <p>
@@ -66,7 +65,7 @@ public class LatexPanel extends JPanel {
      */
     public LatexPanel(String expression) {
         super();
-        this.expression = expression;
+        this.expression = LatexUtil.normalizeTexExpression(expression);
         this.setBackground(Color.white);
         this.render();
     }
@@ -84,9 +83,7 @@ public class LatexPanel extends JPanel {
      * @param expression the expression
      */
     public void setExpression(String expression) {
-        //
-        this.expression = expression.replaceAll(Pattern.quote("$") + "\\s*" + Pattern.quote("$"),
-                Matcher.quoteReplacement("$\n\\\\\n$"));
+        this.expression = LatexUtil.normalizeTexExpression(expression);
         this.render();
     }
 
