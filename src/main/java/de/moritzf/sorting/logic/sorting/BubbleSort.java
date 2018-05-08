@@ -30,7 +30,6 @@ public class BubbleSort extends SortingAlgorithm {
 
     private static final String NAME = "Bubblesort";
 
-    private static final int STEP_LIMIT = 20;
 
     /**
      * The protocol. This contains all the steps performed in the algorithm
@@ -261,9 +260,6 @@ public class BubbleSort extends SortingAlgorithm {
         return NAME;
     }
 
-    public int getStepLimit() {
-        return STEP_LIMIT;
-    }
 
 
 }

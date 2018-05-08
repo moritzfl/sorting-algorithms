@@ -27,8 +27,6 @@ public class RadixSort extends SortingAlgorithm {
 
     private static final String NAME = "Radixsort";
 
-    private static final int STEP_LIMIT = -1;
-
     /**
      * The protocol.
      */
@@ -346,10 +344,6 @@ public class RadixSort extends SortingAlgorithm {
     @Override
     public String getName() {
         return NAME;
-    }
-
-    public int getStepLimit() {
-        return STEP_LIMIT;
     }
 
 }

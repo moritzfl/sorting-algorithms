@@ -1,25 +1,17 @@
 package de.moritzf.sorting.gui.windows;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
+import java.awt.*;
 
-import javax.swing.Box;
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JScrollBar;
-import javax.swing.JScrollPane;
+import javax.swing.*;
 
 import de.moritzf.sorting.gui.components.DragScrollListener;
 
 /**
- * The Class SortingWindow.
+ * The Class AbstractSortingWindow.
  *
  * @author Moritz Floeter
  *         <p>
- *         The Class SortingWindow. This class serves as a template for the
+ *         The Class AbstractSortingWindow. This class serves as a template for the
  *         graphical representation of any algorithm that can be divided into
  *         steps in a gui frame. From here all important actions concerning the
  *         sorting algorithm can be performed and displayed.
@@ -38,7 +30,7 @@ import de.moritzf.sorting.gui.components.DragScrollListener;
  *         You should have received a copy of the GNU General Public License
  *         along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-public abstract class SortingWindowSubstructure extends JFrame {
+public abstract class AbstractSortingWindowSubstructure extends JFrame {
 
     /**
      * The Constant serialVersionUID.
@@ -98,7 +90,7 @@ public abstract class SortingWindowSubstructure extends JFrame {
      *
      * @param parent the parent
      */
-    public SortingWindowSubstructure(JFrame parent) {
+    public AbstractSortingWindowSubstructure(JFrame parent) {
         super("Sorting Algorithm");
         JPanel mainpanel = new JPanel();
         this.getContentPane().add(mainpanel);
@@ -147,12 +139,12 @@ public abstract class SortingWindowSubstructure extends JFrame {
 
     /**
      *
-     * @param panel the panel
+     * @param comp the protocol component
      */
-    protected void setProtocolPanel(JPanel panel) {
+    protected void setProtocolComponent(JComponent comp) {
         this.protocolPnl.removeAll();
-        this.protocolPnl.add(panel, BorderLayout.WEST);
-        panel.addMouseListener(this.dragScrollListener);
+        this.protocolPnl.add(comp, BorderLayout.WEST);
+        comp.addMouseListener(this.dragScrollListener);
         this.validate();
         this.repaint();
     }

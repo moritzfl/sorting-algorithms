@@ -16,9 +16,6 @@ public class LatexUtil {
             //insert linebreak between multiple math-environments
             expression = expression.replaceAll(Pattern.quote("$") + "\\s*" + Pattern.quote("$"),
                     Matcher.quoteReplacement("$\n\\\\\n$"));
-
-            //replace \newline command with \\ as jlatexmath can only handle \newline
-            expression = expression.replace("\\newline", "\\\\");
         }
 
         return expression;

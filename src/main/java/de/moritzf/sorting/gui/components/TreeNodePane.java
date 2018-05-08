@@ -54,7 +54,7 @@ import org.scilab.forge.jlatexmath.TeXIcon;
  *
  * @author Udo Borkowski (ub@abego.org)
  */
-public class TreeNodePane extends JComponent {
+public class TreeNodePane extends JComponent implements ResizableComponent {
     private final TreeLayout<TreeNode> treeLayout;
 
     private TreeForTreeLayout<TreeNode> getTree() {
@@ -155,6 +155,21 @@ public class TreeNodePane extends JComponent {
         for (TreeNode textInBox : treeLayout.getNodeBounds().keySet()) {
             paintBox(g, textInBox);
         }
+    }
+
+    @Override
+    public void resetScale() {
+
+    }
+
+    @Override
+    public void increaseScale() {
+
+    }
+
+    @Override
+    public void decreaseScale() {
+
     }
 
     private static class TreeForTreeLayoutFactory {

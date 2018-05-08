@@ -27,8 +27,6 @@ public class QuickSort extends SortingAlgorithm {
     private static final String NAME = "Quicksort";
 
 
-    private static final int STEP_LIMIT = -1;
-
     /**
      * The protocol.
      */
@@ -416,10 +414,5 @@ public class QuickSort extends SortingAlgorithm {
     public String getName() {
         return NAME;
     }
-
-    public int getStepLimit() {
-        return STEP_LIMIT;
-    }
-
 
 }

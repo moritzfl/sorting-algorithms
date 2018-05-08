@@ -29,8 +29,6 @@ public class ShellSort extends SortingAlgorithm {
 
     private static final String NAME = "Shellsort";
 
-    private static final int STEP_LIMIT = -1;
-
     private ArrayList<ShellStep> protocol = new ArrayList<>();
 
     private int[] input;
@@ -314,9 +312,5 @@ public class ShellSort extends SortingAlgorithm {
         return NAME;
     }
 
-    @Override
-    public int getStepLimit() {
-        return STEP_LIMIT;
-    }
 
 }

@@ -244,28 +244,28 @@ public class AlgorithmSelection extends JFrame implements ActionListener {
 
             switch (selection) {
                 case BUBBLE_SORT:
-                    new SortingWindow(this, new BubbleSort(input));
+                    new LatexSortingWindow(this, new BubbleSort(input));
                     break;
                 case HEAP_SORT_MAX:
-                    new SortingWindow(this, new HeapSort(input, false));
+                    new HeapSortSortingWindow(this, new HeapSort(input, true));
                     break;
                 case HEAP_SORT_MIN:
-                    new SortingWindow(this, new HeapSort(input, true));
+                    new HeapSortSortingWindow(this, new HeapSort(input, false));
                     break;
                 case QUICK_SORT:
-                    new SortingWindow(this, new QuickSort(input));
+                    new LatexSortingWindow(this, new QuickSort(input));
                     break;
                 case RADIX_SORT:
-                    new SortingWindow(this, new RadixSort(input));
+                    new LatexSortingWindow(this, new RadixSort(input));
                     break;
                 case SELECTION_SORT:
-                    new SortingWindow(this, new SelectionSort(input));
+                    new LatexSortingWindow(this, new SelectionSort(input));
                     break;
                 case INSERTION_SORT:
-                    new SortingWindow(this, new InsertionSort(input));
+                    new LatexSortingWindow(this, new InsertionSort(input));
                     break;
                 case SHELL_SORT_2N:
-                    new SortingWindow(this, new ShellSort(input));
+                    new LatexSortingWindow(this, new ShellSort(input));
                     break;
                 default:
                     JOptionPane.showMessageDialog(this,

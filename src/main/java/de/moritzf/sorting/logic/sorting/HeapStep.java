@@ -12,6 +12,7 @@ public class HeapStep {
     public HeapStep(TreeNode<HeapSortNodeValue> rootNode, List<Integer> sortedNumbers, int currentNode) {
 
         this.rootNode = rootNode;
+        this.currentNode = currentNode;
         this.sortedNumbers = sortedNumbers;
     }
 

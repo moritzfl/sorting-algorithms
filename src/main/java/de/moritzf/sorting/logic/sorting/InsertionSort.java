@@ -11,7 +11,6 @@ public class InsertionSort extends SortingAlgorithm {
 
     private static final String NAME = "Insertionsort";
 
-    private static final int STEP_LIMIT = 20;
 
     private ArrayList<InsertionStep> protocol = new ArrayList<>();
 
@@ -193,14 +192,6 @@ public class InsertionSort extends SortingAlgorithm {
         return NAME;
     }
 
-    /**
-     * Gets step limit.
-     *
-     * @return the step limit
-     */
-    public int getStepLimit() {
-        return STEP_LIMIT;
-    }
 
 
 }

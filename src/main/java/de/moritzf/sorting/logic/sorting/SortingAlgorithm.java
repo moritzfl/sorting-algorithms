@@ -59,13 +59,6 @@ public abstract class SortingAlgorithm {
      */
     public abstract String getName();
 
-    /**
-     * Gets step limit. Used to limit the maximum number of steps that can be performed at once.
-     * This is used when a long protocol is expected due to a large input and replaces the execute all steps option in the gui.
-     *
-     * @return the step limit
-     */
-    public abstract int getStepLimit();
 
 
     public String getPdfInfoFilePath() {

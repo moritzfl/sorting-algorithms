@@ -21,8 +21,6 @@ public class HeapSortNodeValue {
 
     @Override
     public String toString() {
-        return new StringJoiner(", ", this.getClass().getSimpleName() + "[", "]")
-                .add("numbers = " + numbers)
-                .toString();
+        return "" + getNumber();
     }
 }

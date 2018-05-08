@@ -11,7 +11,6 @@ import java.io.File;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-import de.moritzf.sorting.gui.components.LatexPanel;
 import de.moritzf.sorting.io.SaveFile;
 import de.moritzf.sorting.logic.sorting.SortingAlgorithm;
 
@@ -37,21 +36,20 @@ import de.moritzf.sorting.logic.sorting.SortingAlgorithm;
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-public class SortingWindow extends SortingWindowSubstructure implements ActionListener {
+public abstract class AbstractSortingWindow extends AbstractSortingWindowSubstructure implements ActionListener {
 
     /**
      * The Constant serialVersionUID.
      */
     private static final long serialVersionUID = 7326001445728823589L;
 
-    private static final float FONT_SIZE = 30;
+    private static final double SCALE = 1d;
 
-    private LatexPanel protocol = new LatexPanel();
 
     /**
      * The sorting algorithm.
      */
-    private SortingAlgorithm algorithm;
+    protected SortingAlgorithm algorithm;
 
     /**
      * Instantiates a new sorting window.
@@ -59,7 +57,7 @@ public class SortingWindow extends SortingWindowSubstructure implements ActionLi
      * @param parent    the parent window.
      * @param algorithm the sorting algorithm
      */
-    public SortingWindow(JFrame parent, SortingAlgorithm algorithm) {
+    public AbstractSortingWindow(JFrame parent, SortingAlgorithm algorithm) {
         super(parent);
         this.setTitle(algorithm.getName());
         this.algorithm = algorithm;
@@ -69,19 +67,10 @@ public class SortingWindow extends SortingWindowSubstructure implements ActionLi
         reset.addActionListener(this);
         infoBtn.addActionListener(this);
         exportBtn.addActionListener(this);
-
-        if (algorithm.getStepLimit() != -1 && algorithm.getStepLimit() < algorithm.getInputSize()) {
-            allStepsBtn.setText("<html> &nbsp; <br>Do " + algorithm.getStepLimit() + " Steps <br> &nbsp; <html>");
-        }
-
-        this.setProtocolPanel(protocol);
-        this.renderProtocol();
     }
 
 
-    private void renderProtocol() {
-        protocol.setExpression(this.algorithm.protocol2LaTeX());
-    }
+    protected abstract void renderProtocol();
 
     /*
      * (non-Javadoc)
@@ -142,14 +131,12 @@ public class SortingWindow extends SortingWindowSubstructure implements ActionLi
 
     private void handleAllSteps() {
 
-        if (algorithm.getStepLimit() == -1 || algorithm.getStepLimit() >= algorithm.getInputSize()) {
-            algorithm.doAllSteps();
-        } else {
+
             boolean stepDone = true;
-            for (int i = 0; i < algorithm.getStepLimit() && stepDone; i++) {
+            while (stepDone) {
                 stepDone = algorithm.doStep();
             }
-        }
+
 
         this.renderProtocol();
 

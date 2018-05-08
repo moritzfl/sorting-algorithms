@@ -28,141 +28,121 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * <p>
  * The Class LatexPanel. A JPanel that displays LaTeX expressions.
- * </p>
  *
  * @author Moritz Floeter.
  */
-public class LatexPanel extends JPanel {
+public class LatexPanel extends JPanel implements ResizableComponent {
 
-    /**
-     * The Constant serialVersionUID.
-     */
-    private static final long serialVersionUID = -7654861252773688599L;
+  /** The Constant serialVersionUID. */
+  private static final long serialVersionUID = -7654861252773688599L;
 
-    /**
-     * The Constant default font size.
-     */
-    private static final float DEFAULT_FONT_SIZE = 21;
+  /** The Constant default font size. */
+  private static final float DEFAULT_FONT_SIZE = 21;
 
-    /**
-     * The textsize for the latex-rendering.
-     */
-    private float fontSizeTex = DEFAULT_FONT_SIZE;
+  /** The textsize for the latex-rendering. */
+  private float fontSizeTex = DEFAULT_FONT_SIZE;
+
+  /** The expression. */
+  private String expression;
+
+  /**
+   * Instantiates a new LaTeX panel.
+   *
+   * @param expression the expression @param tooltip the tooltip
+   */
+  public LatexPanel(String expression) {
+    super();
+    this.expression = LatexUtil.normalizeTexExpression(expression);
+    this.setBackground(Color.white);
+    this.render();
+  }
+
+  /** Instantiates a new Latex panel. */
+  public LatexPanel() {
+    this(null);
+  }
+
+  /**
+   * Sets the latex expression and renders it.
+   *
+   * @param expression the expression
+   */
+  public void setExpression(String expression) {
+    this.expression = LatexUtil.normalizeTexExpression(expression);
+    this.render();
+  }
+
+  /**
+   * Gets the latex expression that is currently displayed.
+   *
+   * @return the expression
+   */
+  public String getExpression() {
+    return this.expression;
+  }
 
 
-    /**
-     * The expression.
-     */
-    private String expression;
+  /** Reset font size. */
+  public void resetFontSize() {
 
+    this.fontSizeTex = DEFAULT_FONT_SIZE;
 
-    /**
-     * Instantiates a new LaTeX panel.
-     *
-     * @param expression the expression @param tooltip the tooltip
-     */
-    public LatexPanel(String expression) {
-        super();
-        this.expression = LatexUtil.normalizeTexExpression(expression);
-        this.setBackground(Color.white);
-        this.render();
+    refresh();
+  }
+
+  /** Refresh. */
+  public void refresh() {
+    this.setExpression(this.expression);
+  }
+
+  /** Renders the formula. */
+  private void render() {
+    String expressionUsed = "null";
+    if (this.expression != null) {
+      expressionUsed = this.expression;
     }
 
-    /**
-     * Instantiates a new Latex panel.
-     */
-    public LatexPanel() {
-        this(null);
-    }
+    try {
+      // create a formula
+      TeXFormula formula = new TeXFormula(expressionUsed);
 
-    /**
-     * Sets the latex expression and renders it.
-     *
-     * @param expression the expression
-     */
-    public void setExpression(String expression) {
-        this.expression = LatexUtil.normalizeTexExpression(expression);
-        this.render();
-    }
+      TeXIcon texIcon =
+          formula.createTeXIcon(
+              TeXConstants.STYLE_DISPLAY,
+              fontSizeTex,
+              TeXConstants.UNIT_PIXEL,
+              80,
+              TeXConstants.ALIGN_LEFT);
+      this.removeAll();
+      this.add(new JLabel(texIcon));
 
-    /**
-     * Gets the latex expression that is currently displayed.
-     *
-     * @return the expression
-     */
-    public String getExpression() {
-        return this.expression;
+    } catch (Exception ex) {
+      ex.printStackTrace();
     }
+    this.validate();
+    this.repaint();
+  }
 
-    /**
-     * Increase font size.
-     */
-    public void increaseFontSize() {
+  @Override
+  public void resetScale() {
+    this.fontSizeTex = DEFAULT_FONT_SIZE;
+    this.refresh();
+  }
+
+    @Override
+    public void increaseScale() {
         if (fontSizeTex < 70) {
             this.fontSizeTex = this.fontSizeTex * 1.2f;
         }
         refresh();
-
     }
 
-    /**
-     * Decrease font size.
-     */
-    public void decreaseFontSize() {
+    @Override
+    public void decreaseScale() {
         if (fontSizeTex > 15) {
             this.fontSizeTex = this.fontSizeTex * 0.8f;
         }
         refresh();
-
     }
-
-    /**
-     * Reset font size.
-     */
-    public void resetFontSize() {
-
-        this.fontSizeTex = DEFAULT_FONT_SIZE;
-
-        refresh();
-
-    }
-
-
-    /**
-     * Refresh.
-     */
-    public void refresh() {
-        this.setExpression(this.expression);
-    }
-
-
-    /**
-     * Renders the formula.
-     */
-    private void render() {
-        String expressionUsed = "null";
-        if (this.expression != null) {
-            expressionUsed = this.expression;
-        }
-
-        try {
-            // create a formula
-            TeXFormula formula = new TeXFormula(expressionUsed);
-
-            TeXIcon ticon = formula.createTeXIcon(TeXConstants.STYLE_DISPLAY, fontSizeTex, TeXConstants.UNIT_PIXEL, 80,
-                    TeXConstants.ALIGN_LEFT);
-            this.removeAll();
-            this.add(new JLabel(ticon));
-
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-        this.validate();
-        this.repaint();
-
-    }
-
-
 }

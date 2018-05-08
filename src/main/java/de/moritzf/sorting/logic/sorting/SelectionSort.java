@@ -11,8 +11,6 @@ public class SelectionSort extends SortingAlgorithm {
 
     private static final String NAME = "Selectionsort";
 
-    private static final int STEP_LIMIT = 20;
-
     /**
      * The protocol.
      */
@@ -230,10 +228,6 @@ public class SelectionSort extends SortingAlgorithm {
 
     public String getName() {
         return NAME;
-    }
-
-    public int getStepLimit() {
-        return STEP_LIMIT;
     }
 
 }
