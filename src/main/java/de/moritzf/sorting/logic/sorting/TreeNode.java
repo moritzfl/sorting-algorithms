@@ -44,7 +44,7 @@ public class TreeNode<T> {
   public TreeNode<T> getNode(int index) {
     Queue<TreeNode<T>> queue = new LinkedList<>();
     queue.add(this.getRootNode());
-    int breathSearchNiv = 1;
+    int breathSearchNiv = 0;
     TreeNode<T> currentNode = null;
     while (breathSearchNiv < index && !queue.isEmpty()) {
       currentNode = queue.poll();
