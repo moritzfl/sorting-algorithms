@@ -1,7 +1,5 @@
 package de.moritzf.sorting.logic.sorting;
 
-import apple.laf.JRSUIUtils;
-
 import java.util.*;
 
 public class HeapSort extends SortingAlgorithm {
@@ -82,16 +80,17 @@ public class HeapSort extends SortingAlgorithm {
       heapify(nodeToHeapify);
       protocol.add(new HeapStep(newTree, lastStep.getSortedNumbers(), lastStep.currentNode - 1));
       stepDone = true;
-    } else {
-      TreeNode<HeapSortNodeValue> rootNode = newTree.getRootNode();
-      TreeNode<HeapSortNodeValue> lastNode = newTree.getLastNode();
-      lastNode.setParent(null);
-      for (TreeNode<HeapSortNodeValue> child : rootNode.getChildren()) {
-        lastNode.addChild(child);
-      }
-      protocol.add(new HeapStep(newTree, lastStep.getSortedNumbers(), lastStep.currentNode - 1));
-      stepDone = true;
     }
+//    } else {
+//      TreeNode<HeapSortNodeValue> rootNode = newTree.getRootNode();
+//      TreeNode<HeapSortNodeValue> lastNode = newTree.getLastNode();
+//      lastNode.setParent(null);
+//      for (TreeNode<HeapSortNodeValue> child : rootNode.getChildren()) {
+//        lastNode.addChild(child);
+//      }
+//      protocol.add(new HeapStep(newTree, lastStep.getSortedNumbers(), lastStep.currentNode - 1));
+//      stepDone = true;
+//    }
 
     return stepDone;
   }

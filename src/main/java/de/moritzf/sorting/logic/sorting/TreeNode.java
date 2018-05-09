@@ -46,9 +46,9 @@ public class TreeNode<T> {
     queue.add(this.getRootNode());
     int breathSearchNiv = 1;
     TreeNode<T> currentNode = null;
-    while (breathSearchNiv < index || queue.isEmpty()) {
+    while (breathSearchNiv < index && !queue.isEmpty()) {
       currentNode = queue.poll();
-      this.getChildren().forEach(child -> queue.add(child));
+      currentNode.getChildren().forEach(child -> queue.add(child));
       breathSearchNiv++;
     }
 
