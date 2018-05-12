@@ -96,7 +96,7 @@ public class HeapSort extends SortingAlgorithm {
           }
 
           newRoot = lastNode;
-          heapify(lastNode);
+          heapify(newRoot);
 
         } else {
           // if lastNode == rootNode this is the last step of the heapsort algorithm
