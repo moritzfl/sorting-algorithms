@@ -294,15 +294,6 @@ public class RadixSort extends SortingAlgorithm {
     }
 
     /**
-     * Do all steps.
-     */
-    public void doAllSteps() {
-        while (doStep())
-            ;
-
-    }
-
-    /**
      * Highlights a certain part of a LaTeX expression by underlining it and
      * setting its color to red.
      *

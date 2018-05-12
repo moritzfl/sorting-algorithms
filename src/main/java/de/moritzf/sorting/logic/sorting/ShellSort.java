@@ -116,12 +116,6 @@ public class ShellSort extends SortingAlgorithm {
         return stepLengthsArray;
     }
 
-    @Override
-    public void doAllSteps() {
-        while (doStep()) {
-            //as doSteps returns true if successful this will execute all steps until no further step is possible
-        }
-    }
 
     @Override
     public boolean doStep() {

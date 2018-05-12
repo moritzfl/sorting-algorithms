@@ -67,13 +67,7 @@ public class QuickSort extends SortingAlgorithm {
         return protocol.size();
     }
 
-    /**
-     * Does all steps.
-     */
-    public void doAllSteps() {
-        while (doStep())
-            ;
-    }
+
 
     /**
      * Undo step.

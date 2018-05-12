@@ -26,15 +26,6 @@ public class InsertionSort extends SortingAlgorithm {
 
 
     /**
-     * Do all steps.
-     */
-    public void doAllSteps() {
-        while (doStep()) {
-
-        }
-    }
-
-    /**
      * Do step boolean.
      *
      * @return the boolean

@@ -64,8 +64,6 @@ public class HeapSort extends SortingAlgorithm {
     }
   }
 
-  @Override
-  public void doAllSteps() {}
 
   @Override
   public boolean doStep() {

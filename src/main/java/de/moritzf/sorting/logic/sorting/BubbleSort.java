@@ -56,14 +56,6 @@ public class BubbleSort extends SortingAlgorithm {
         protocol.add(new BubbleStep(input, sortingMarker, true));
     }
 
-    /**
-     * performs all steps until the algorithm terminates.
-     */
-    public void doAllSteps() {
-        while (doStep())
-            ;
-
-    }
 
     /**
      * Gets the input size.
