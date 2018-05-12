@@ -1,6 +1,5 @@
 package de.moritzf.sorting.logic.sorting;
 
-
 import java.util.*;
 
 public class TreeNode<T> {
@@ -58,7 +57,6 @@ public class TreeNode<T> {
     }
   }
 
-
   public List<TreeNode<T>> getChildren() {
     return new ArrayList<>(this.children);
   }
@@ -73,14 +71,14 @@ public class TreeNode<T> {
     return parent;
   }
 
-    public TreeNode<T>  getLastNode() {
-        Queue<TreeNode<T>> queue = new LinkedList<>();
-        queue.add(this.getRootNode());
-        TreeNode<T> currentNode = null;
-        while (!queue.isEmpty()) {
-            currentNode = queue.poll();
-            this.getChildren().forEach(child -> queue.add(child));
-        }
-        return currentNode;
+  public TreeNode<T> getLastNode() {
+    Queue<TreeNode<T>> queue = new LinkedList<>();
+    queue.add(this.getRootNode());
+    TreeNode<T> currentNode = null;
+    while (!queue.isEmpty()) {
+      currentNode = queue.poll();
+      currentNode.getChildren().forEach(child -> queue.add(child));
     }
+    return currentNode;
+  }
 }
