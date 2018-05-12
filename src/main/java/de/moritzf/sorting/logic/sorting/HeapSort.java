@@ -80,6 +80,7 @@ public class HeapSort extends SortingAlgorithm {
       // Heap Creation
       if (lastStep.currentNode >= 1) {
         TreeNode<HeapSortNodeValue> nodeToHeapify = newRoot.getNode(lastStep.currentNode);
+        nodeToHeapify.getValue().setHeapifyStart(true);
         heapify(nodeToHeapify);
         protocol.add(new HeapStep(newRoot, lastStep.getSortedNumbers(), lastStep.currentNode - 1));
         stepDone = true;
@@ -96,6 +97,7 @@ public class HeapSort extends SortingAlgorithm {
           }
 
           newRoot = lastNode;
+          newRoot.getValue().setHeapifyStart(true);
           heapify(newRoot);
 
         } else {
@@ -159,7 +161,11 @@ public class HeapSort extends SortingAlgorithm {
     return this.protocol;
   }
 
-  private class HeapNodeComparator implements Comparator<TreeNode<HeapSortNodeValue>> {
+  public boolean isMaxHeap() {
+      return this.maxHeap;
+  }
+
+    private class HeapNodeComparator implements Comparator<TreeNode<HeapSortNodeValue>> {
 
     public int compare(TreeNode<HeapSortNodeValue> o1, TreeNode<HeapSortNodeValue> o2) {
       if (o1.getValue().getNumber() > o2.getValue().getNumber()) {

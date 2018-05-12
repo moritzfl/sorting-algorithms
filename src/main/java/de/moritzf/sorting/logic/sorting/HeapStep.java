@@ -9,10 +9,15 @@ public class HeapStep {
     List<Integer> sortedNumbers;
     int currentNode;
 
+    public int getCurrentNode() {
+        return currentNode;
+    }
+
     public HeapStep(TreeNode<HeapSortNodeValue> rootNode, List<Integer> sortedNumbers, int currentNode) {
 
         this.rootNode = rootNode;
         this.currentNode = currentNode;
+
         this.sortedNumbers = sortedNumbers;
     }
 
