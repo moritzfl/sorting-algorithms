@@ -55,172 +55,174 @@ import org.scilab.forge.jlatexmath.TeXIcon;
  * @author Udo Borkowski (ub@abego.org)
  */
 public class TreeNodePane extends JComponent implements ResizableComponent {
-    private final TreeLayout<TreeNode> treeLayout;
+  private final TreeLayout<TreeNode> treeLayout;
 
-    private TreeForTreeLayout<TreeNode> getTree() {
-        return treeLayout.getTree();
+  private TreeForTreeLayout<TreeNode> getTree() {
+    return treeLayout.getTree();
+  }
+
+  private Iterable<TreeNode> getChildren(TreeNode parent) {
+    return getTree().getChildren(parent);
+  }
+
+  private Rectangle2D.Double getBoundsOfNode(TreeNode node) {
+    return treeLayout.getNodeBounds().get(node);
+  }
+
+  /** Specifies the tree to be displayed by passing in a {@link TreeLayout} for that tree. */
+  public TreeNodePane(TreeNode treeNode) {
+    TreeForTreeLayout<TreeNode> layout = TreeForTreeLayoutFactory.create(treeNode);
+    // create the layout
+    double gapBetweenLevels = 50;
+    double gapBetweenNodes = 15;
+    DefaultConfiguration<TreeNode> configuration =
+        new DefaultConfiguration<>(gapBetweenLevels, gapBetweenNodes);
+
+    TreeLayout<TreeNode> treeLayout =
+        new TreeLayout<>(layout, new TreeNodeExtentProvider(), configuration);
+    this.treeLayout = treeLayout;
+    Dimension size = treeLayout.getBounds().getBounds().getSize();
+    setPreferredSize(size);
+  }
+
+  // -------------------------------------------------------------------
+  // painting
+
+  private static final int ARC_SIZE = 20;
+  private static final Color BOX_COLOR = Color.white;
+  private static final Color BORDER_COLOR = Color.black;
+
+  private void paintEdges(Graphics g, TreeNode parent) {
+    if (!getTree().isLeaf(parent)) {
+      Rectangle2D.Double b1 = getBoundsOfNode(parent);
+      double x1 = b1.getCenterX();
+      double y1 = b1.getCenterY();
+      for (TreeNode child : getChildren(parent)) {
+        Rectangle2D.Double b2 = getBoundsOfNode(child);
+        g.drawLine((int) x1, (int) y1, (int) b2.getCenterX(), (int) b2.getCenterY());
+
+        paintEdges(g, child);
+      }
+    }
+  }
+
+  private void paintBox(Graphics g, TreeNode treeNode) {
+    // draw the box in the background
+    g.setColor(BOX_COLOR);
+    Rectangle2D.Double box = getBoundsOfNode(treeNode);
+    g.fillRoundRect(
+        (int) box.x, (int) box.y, (int) box.width - 1, (int) box.height - 1, ARC_SIZE, ARC_SIZE);
+    g.setColor(BORDER_COLOR);
+    g.drawRoundRect(
+        (int) box.x, (int) box.y, (int) box.width - 1, (int) box.height - 1, ARC_SIZE, ARC_SIZE);
+
+    // Draw the box content
+    int x = (int) box.x + ARC_SIZE / 2;
+    int y = (int) box.y + ARC_SIZE / 2;
+
+    String text = treeNode.getValue().toString();
+    String aboveNode = null;
+    if (text.contains("%begin-above-node")) {
+      String[] textParts = text.split("%begin-above-node");
+      text = textParts[0];
+      aboveNode = textParts[1];
+    }
+    TeXIcon aboveNodeIcon;
+    if (aboveNode != null) {
+      TeXFormula aboveNodeFormula = new TeXFormula(aboveNode);
+      aboveNodeIcon =
+          aboveNodeFormula.createTeXIcon(
+              TeXConstants.STYLE_DISPLAY,
+              20,
+              TeXConstants.UNIT_PIXEL,
+              80,
+              TeXConstants.ALIGN_CENTER);
+      aboveNodeIcon.paintIcon(this, g, x, y - ARC_SIZE / 2 - 20);
     }
 
-    private Iterable<TreeNode> getChildren(TreeNode parent) {
-        return getTree().getChildren(parent);
+    TeXFormula nodeFormula = new TeXFormula(text);
+    TeXIcon nodeIcon =
+        nodeFormula.createTeXIcon(
+            TeXConstants.STYLE_DISPLAY, 20, TeXConstants.UNIT_PIXEL, 80, TeXConstants.ALIGN_CENTER);
+    nodeIcon.paintIcon(this, g, x, y);
+  }
+
+  @Override
+  public void paint(Graphics g) {
+    super.paint(g);
+    paintEdges(g, getTree().getRoot());
+
+    for (TreeNode textInBox : treeLayout.getNodeBounds().keySet()) {
+      paintBox(g, textInBox);
+    }
+  }
+
+  @Override
+  public void resetScale() {}
+
+  @Override
+  public void increaseScale() {}
+
+  @Override
+  public void decreaseScale() {}
+
+  private static class TreeForTreeLayoutFactory {
+
+    public static TreeForTreeLayout<TreeNode> create(TreeNode rootNode) {
+      DefaultTreeForTreeLayout<TreeNode> tree = new DefaultTreeForTreeLayout<>(rootNode);
+      appendChildren(tree, rootNode);
+      return tree;
     }
 
-    private Rectangle2D.Double getBoundsOfNode(TreeNode node) {
-        return treeLayout.getNodeBounds().get(node);
+    private static void appendChildren(DefaultTreeForTreeLayout<TreeNode> tree, TreeNode parent) {
+      for (TreeNode child : (List<TreeNode>) parent.getChildren()) {
+        tree.addChild(parent, child);
+        appendChildren(tree, child);
+      }
     }
+  }
 
-    /**
-     * Specifies the tree to be displayed by passing in a {@link TreeLayout} for
-     * that tree.
-     */
-    public TreeNodePane(TreeNode treeNode) {
+  private class TreeNodeExtentProvider implements NodeExtentProvider<TreeNode> {
 
-        TreeForTreeLayout<TreeNode> layout = TreeForTreeLayoutFactory.create(treeNode);
-        // create the layout
-        double gapBetweenLevels = 50;
-        double gapBetweenNodes = 15;
-        DefaultConfiguration<TreeNode> configuration = new DefaultConfiguration<>(
-                gapBetweenLevels, gapBetweenNodes);
+    @Override
+    public double getWidth(TreeNode treeNode) {
+      String text = treeNode.getValue().toString();
+      if (text.contains("%begin-above-node")) {
+        String[] textParts = text.split("%begin-above-node");
+        text = textParts[0];
+      }
 
+      TeXFormula formula = new TeXFormula(LatexUtil.normalizeTexExpression(text));
+      TeXIcon icon =
+          formula.createTeXIcon(
+              TeXConstants.STYLE_DISPLAY,
+              20,
+              TeXConstants.UNIT_PIXEL,
+              80,
+              TeXConstants.ALIGN_CENTER);
 
-        TreeLayout<TreeNode> treeLayout = new TreeLayout<>(layout,
-                new TreeNodeExtentProvider(), configuration);
-        this.treeLayout = treeLayout;
-        Dimension size = treeLayout.getBounds().getBounds().getSize();
-        setPreferredSize(size);
-    }
-
-    // -------------------------------------------------------------------
-    // painting
-
-    private final static int ARC_SIZE = 20;
-    private final static Color BOX_COLOR = Color.white;
-    private final static Color BORDER_COLOR = Color.black;
-
-    private void paintEdges(Graphics g, TreeNode parent) {
-        if (!getTree().isLeaf(parent)) {
-            Rectangle2D.Double b1 = getBoundsOfNode(parent);
-            double x1 = b1.getCenterX();
-            double y1 = b1.getCenterY();
-            for (TreeNode child : getChildren(parent)) {
-                Rectangle2D.Double b2 = getBoundsOfNode(child);
-                g.drawLine((int) x1, (int) y1, (int) b2.getCenterX(),
-                        (int) b2.getCenterY());
-
-                paintEdges(g, child);
-            }
-        }
-    }
-
-    private void paintBox(Graphics g, TreeNode treeNode) {
-        // draw the box in the background
-        g.setColor(BOX_COLOR);
-        Rectangle2D.Double box = getBoundsOfNode(treeNode);
-        g.fillRoundRect((int) box.x, (int) box.y, (int) box.width - 1,
-                (int) box.height - 1, ARC_SIZE, ARC_SIZE);
-        g.setColor(BORDER_COLOR);
-        g.drawRoundRect((int) box.x, (int) box.y, (int) box.width - 1,
-                (int) box.height - 1, ARC_SIZE, ARC_SIZE);
-
-        //Draw the box content
-        int x = (int) box.x + ARC_SIZE / 2;
-        int y = (int) box.y + ARC_SIZE / 2;
-
-        String text = treeNode.getValue().toString();
-        String aboveNode = null;
-        if (text.contains("%begin-above-node"))  {
-            String[] textParts = text.split("%begin-above-node");
-            text = textParts[0];
-            aboveNode = textParts[1];
-        }
-        TeXIcon aboveNodeIcon;
-        if (aboveNode != null) {
-            TeXFormula aboveNodeFormula = new TeXFormula(aboveNode);
-            aboveNodeIcon = aboveNodeFormula.createTeXIcon(TeXConstants.STYLE_DISPLAY, 20, TeXConstants.UNIT_PIXEL, 80,
-                    TeXConstants.ALIGN_CENTER);
-            aboveNodeIcon.paintIcon(this, g, x, y - ARC_SIZE/2 - 20);
-        }
-
-        TeXFormula nodeFormula = new TeXFormula(text);
-        TeXIcon nodeIcon = nodeFormula.createTeXIcon(TeXConstants.STYLE_DISPLAY, 20, TeXConstants.UNIT_PIXEL, 80,
-                TeXConstants.ALIGN_CENTER);
-        nodeIcon.paintIcon(this, g, x, y);
+      return icon.getTrueIconWidth() + ARC_SIZE;
     }
 
     @Override
-    public void paint(Graphics g) {
-        super.paint(g);
-        paintEdges(g, getTree().getRoot());
+    public double getHeight(TreeNode treeNode) {
 
-        for (TreeNode textInBox : treeLayout.getNodeBounds().keySet()) {
-            paintBox(g, textInBox);
-        }
+      String text = treeNode.getValue().toString();
+      if (text.contains("%begin-above-node")) {
+        String[] textParts = text.split("%begin-above-node");
+        text = textParts[0];
+      }
+
+      TeXFormula formula = new TeXFormula(LatexUtil.normalizeTexExpression(text));
+      TeXIcon icon =
+          formula.createTeXIcon(
+              TeXConstants.STYLE_DISPLAY,
+              20,
+              TeXConstants.UNIT_PIXEL,
+              80,
+              TeXConstants.ALIGN_CENTER);
+
+      return icon.getTrueIconHeight() + ARC_SIZE;
     }
-
-    @Override
-    public void resetScale() {
-
-    }
-
-    @Override
-    public void increaseScale() {
-
-    }
-
-    @Override
-    public void decreaseScale() {
-
-    }
-
-    private static class TreeForTreeLayoutFactory {
-
-
-        public static TreeForTreeLayout<TreeNode> create(TreeNode rootNode) {
-            DefaultTreeForTreeLayout<TreeNode> tree = new DefaultTreeForTreeLayout<>(rootNode);
-            appendChildren(tree, rootNode);
-            return tree;
-        }
-
-        private static void appendChildren(DefaultTreeForTreeLayout<TreeNode> tree, TreeNode parent) {
-            for (TreeNode child : (List<TreeNode>) parent.getChildren()) {
-                tree.addChild(parent, child);
-                appendChildren(tree, child);
-            }
-        }
-    }
-
-
-    private class TreeNodeExtentProvider implements NodeExtentProvider<TreeNode> {
-
-        @Override
-        public double getWidth(TreeNode treeNode) {
-            String text = treeNode.getValue().toString();
-            if (text.contains("%begin-above-node"))  {
-                String[] textParts = text.split("%begin-above-node");
-                text = textParts[0];
-            }
-
-            TeXFormula formula = new TeXFormula(LatexUtil.normalizeTexExpression(text));
-            TeXIcon icon = formula.createTeXIcon(TeXConstants.STYLE_DISPLAY, 20, TeXConstants.UNIT_PIXEL, 80,
-                    TeXConstants.ALIGN_CENTER);
-
-            return icon.getTrueIconWidth() + ARC_SIZE;
-        }
-
-        @Override
-        public double getHeight(TreeNode treeNode) {
-
-            String text = treeNode.getValue().toString();
-            if (text.contains("%begin-above-node"))  {
-                String[] textParts = text.split("%begin-above-node");
-                text = textParts[0];
-            }
-
-            TeXFormula formula = new TeXFormula(LatexUtil.normalizeTexExpression(text));
-            TeXIcon icon = formula.createTeXIcon(TeXConstants.STYLE_DISPLAY, 20, TeXConstants.UNIT_PIXEL, 80,
-                    TeXConstants.ALIGN_CENTER);
-
-            return icon.getTrueIconHeight() + ARC_SIZE;
-        }
-    }
+  }
 }

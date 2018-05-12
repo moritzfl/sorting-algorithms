@@ -8,35 +8,29 @@ import java.awt.*;
 
 public class HeapSortProtocolPane extends JPanel implements ResizableComponent {
 
+  private HeapSort algorithm;
 
-    private HeapSort algorithm;
-    public HeapSortProtocolPane(HeapSort heapSort){
-        this.setLayout(new GridLayout(0, 1));
-        this.algorithm = heapSort;
-        this.generateProtocol();
+  public HeapSortProtocolPane(HeapSort heapSort) {
+    this.setLayout(new GridLayout(0, 1));
+    this.algorithm = heapSort;
+    this.generateProtocol();
+  }
+
+  @Override
+  public void resetScale() {}
+
+  @Override
+  public void increaseScale() {}
+
+  @Override
+  public void decreaseScale() {}
+
+  public void generateProtocol() {
+    this.removeAll();
+    for (HeapStep step : algorithm.getProtocol()) {
+      if (step.getRootNode() != null) {
+        this.add(new TreeNodePane(step.getRootNode()));
+      }
     }
-
-
-    @Override
-    public void resetScale() {
-
-    }
-
-    @Override
-    public void increaseScale() {
-
-    }
-
-    @Override
-    public void decreaseScale() {
-
-    }
-
-
-    public void generateProtocol() {
-        this.removeAll();
-        for (HeapStep step:  algorithm.getProtocol()){
-            this.add(new TreeNodePane(step.getRootNode()));
-        }
-    }
+  }
 }

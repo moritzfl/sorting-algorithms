@@ -38,7 +38,7 @@ public class HeapSort extends SortingAlgorithm {
     // 4   5
     int heapifyStartPosition = (input.length - (input.length % 2)) / 2;
 
-    protocol.add(new HeapStep(root, null, heapifyStartPosition));
+    protocol.add(new HeapStep(root, new ArrayList<>(), heapifyStartPosition));
   }
 
   public void heapify(TreeNode<HeapSortNodeValue> elementToHeapify) {
@@ -71,26 +71,44 @@ public class HeapSort extends SortingAlgorithm {
   public boolean doStep() {
 
     HeapStep lastStep = protocol.get(protocol.size() - 1);
-    TreeNode<HeapSortNodeValue> newTree = createNewTree(lastStep.getRootNode());
+    TreeNode<HeapSortNodeValue> newTree;
     boolean stepDone = false;
 
-    // Heap Creation
-    if (lastStep.currentNode >= 1) {
-      TreeNode<HeapSortNodeValue> nodeToHeapify = newTree.getNode(lastStep.currentNode);
-      heapify(nodeToHeapify);
-      protocol.add(new HeapStep(newTree, lastStep.getSortedNumbers(), lastStep.currentNode - 1));
-      stepDone = true;
+    // Only do a step, if the previous step had a tree with elements to sort
+    if (lastStep.getRootNode() != null) {
+      newTree = createNewTree(lastStep.getRootNode());
+      // Heap Creation
+      if (lastStep.currentNode >= 1) {
+        TreeNode<HeapSortNodeValue> nodeToHeapify = newTree.getNode(lastStep.currentNode);
+        heapify(nodeToHeapify);
+        protocol.add(new HeapStep(newTree, lastStep.getSortedNumbers(), lastStep.currentNode - 1));
+        stepDone = true;
+      } else {
+        // Sorting of elements
+        TreeNode<HeapSortNodeValue> rootNode = newTree.getRootNode();
+        TreeNode<HeapSortNodeValue> lastNode = newTree.getLastNode();
+
+        if (lastNode != rootNode) {
+          // remove the rootnode and put the last node in the heap to the top, then heapify
+          lastNode.setParent(null);
+          for (TreeNode<HeapSortNodeValue> child : rootNode.getChildren()) {
+            lastNode.addChild(child);
+          }
+
+          heapify(lastNode);
+        } else {
+          // if lastNode == rootNode this is the last step of the heapsort algorithm
+          newTree = null;
+        }
+
+        List<Integer> newSortedNumbers = new ArrayList(lastStep.getSortedNumbers());
+        newSortedNumbers.add(rootNode.getValue().getNumber());
+
+        protocol.add(new HeapStep(newTree, newSortedNumbers, lastStep.currentNode - 1));
+
+        stepDone = true;
+      }
     }
-//    } else {
-//      TreeNode<HeapSortNodeValue> rootNode = newTree.getRootNode();
-//      TreeNode<HeapSortNodeValue> lastNode = newTree.getLastNode();
-//      lastNode.setParent(null);
-//      for (TreeNode<HeapSortNodeValue> child : rootNode.getChildren()) {
-//        lastNode.addChild(child);
-//      }
-//      protocol.add(new HeapStep(newTree, lastStep.getSortedNumbers(), lastStep.currentNode - 1));
-//      stepDone = true;
-//    }
 
     return stepDone;
   }
