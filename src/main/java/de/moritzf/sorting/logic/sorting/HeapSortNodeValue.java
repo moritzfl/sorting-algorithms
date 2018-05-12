@@ -5,22 +5,30 @@ import java.util.StringJoiner;
 
 public class HeapSortNodeValue {
 
-    private ArrayList<Integer> numbers = new ArrayList<>();
+  private ArrayList<Integer> numbers = new ArrayList<>();
 
-    public HeapSortNodeValue(int initialNumber) {
-        numbers.add(initialNumber);
+  public HeapSortNodeValue(int initialNumber) {
+    numbers.add(initialNumber);
+  }
+
+  public int getNumber() {
+    return numbers.get(numbers.size() - 1);
+  }
+
+  public void setNumber(int number) {
+    this.numbers.add(number);
+  }
+
+  @Override
+  public String toString() {
+    StringJoiner joiner = new StringJoiner(",");
+
+    for (int i = 0; i < numbers.size() - 1; i++) {
+        joiner.add("\\st{" + Integer.toString(numbers.get(i))+ "}");
     }
 
-    public int getNumber() {
-        return numbers.get(numbers.size() - 1);
-    }
+    joiner.add(Integer.toString(numbers.get(numbers.size()-1)));
 
-    public void setNumber(int number) {
-        this.numbers.add(number);
-    }
-
-    @Override
-    public String toString() {
-        return "" + getNumber();
-    }
+    return joiner.toString();
+  }
 }
