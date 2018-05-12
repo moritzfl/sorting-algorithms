@@ -59,7 +59,7 @@ public class HeapSortProtocolPane extends JPanel implements ResizableComponent {
         addToProtocol(new LatexPanel("\\text{original binary tree}"));
       }
       if (i == 1){
-        addToProtocol(new LatexPanel("\\text{\\rhd \\lhd: element that is to be heapified} "));
+        addToProtocol(new LatexPanel("\\text{\\rhd \\lhd: heapified element} "));
       }
 
       if (step.getCurrentNode() == -1) {
