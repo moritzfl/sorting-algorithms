@@ -73,7 +73,7 @@ public class TreeNodePane extends JComponent implements ResizableComponent {
   public TreeNodePane(TreeNode treeNode) {
     TreeForTreeLayout<TreeNode> layout = TreeForTreeLayoutFactory.create(treeNode);
     // create the layout
-    double gapBetweenLevels = 50;
+    double gapBetweenLevels = 30;
     double gapBetweenNodes = 15;
     DefaultConfiguration<TreeNode> configuration =
         new DefaultConfiguration<>(gapBetweenLevels, gapBetweenNodes);
@@ -106,15 +106,19 @@ public class TreeNodePane extends JComponent implements ResizableComponent {
     }
   }
 
-  private void paintBox(Graphics g, TreeNode treeNode) {
+  private void paintNode(Graphics g, TreeNode treeNode) {
     // draw the box in the background
     g.setColor(BOX_COLOR);
     Rectangle2D.Double box = getBoundsOfNode(treeNode);
+
+    TreeNodeExtentProvider extentProvider = new TreeNodeExtentProvider();
+    double aboveTextSize = extentProvider.getAboveNodeHeight(treeNode);
+
     g.fillRoundRect(
-        (int) box.x, (int) box.y, (int) box.width - 1, (int) box.height - 1, ARC_SIZE, ARC_SIZE);
+        (int) box.x, (int) (box.y + aboveTextSize), (int) box.width - 1, (int) (box.height - aboveTextSize - 1), ARC_SIZE, ARC_SIZE);
     g.setColor(BORDER_COLOR);
     g.drawRoundRect(
-        (int) box.x, (int) box.y, (int) box.width - 1, (int) box.height - 1, ARC_SIZE, ARC_SIZE);
+            (int) box.x, (int) (box.y + aboveTextSize), (int) box.width - 1, (int) (box.height - aboveTextSize - 1), ARC_SIZE, ARC_SIZE);
 
     // Draw the box content
     int x = (int) box.x + ARC_SIZE / 2;
@@ -137,14 +141,14 @@ public class TreeNodePane extends JComponent implements ResizableComponent {
               TeXConstants.UNIT_PIXEL,
               80,
               TeXConstants.ALIGN_CENTER);
-      aboveNodeIcon.paintIcon(this, g, x, y - ARC_SIZE / 2 - 20);
+      aboveNodeIcon.paintIcon(this, g, x, y );
     }
 
     TeXFormula nodeFormula = new TeXFormula(text);
     TeXIcon nodeIcon =
         nodeFormula.createTeXIcon(
             TeXConstants.STYLE_DISPLAY, 20, TeXConstants.UNIT_PIXEL, 80, TeXConstants.ALIGN_CENTER);
-    nodeIcon.paintIcon(this, g, x, y);
+    nodeIcon.paintIcon(this, g, x, y + (int) aboveTextSize);
   }
 
   @Override
@@ -152,8 +156,8 @@ public class TreeNodePane extends JComponent implements ResizableComponent {
     super.paint(g);
     paintEdges(g, getTree().getRoot());
 
-    for (TreeNode textInBox : treeLayout.getNodeBounds().keySet()) {
-      paintBox(g, textInBox);
+    for (TreeNode treeNode : treeLayout.getNodeBounds().keySet()) {
+      paintNode(g, treeNode);
     }
   }
 
@@ -204,10 +208,13 @@ public class TreeNodePane extends JComponent implements ResizableComponent {
       return icon.getTrueIconWidth() + ARC_SIZE;
     }
 
-    @Override
+
+
+
     public double getHeight(TreeNode treeNode) {
 
       String text = treeNode.getValue().toString();
+      String aboveText = null;
       if (text.contains("%begin-above-node")) {
         String[] textParts = text.split("%begin-above-node");
         text = textParts[0];
@@ -222,7 +229,36 @@ public class TreeNodePane extends JComponent implements ResizableComponent {
               80,
               TeXConstants.ALIGN_CENTER);
 
-      return icon.getTrueIconHeight() + ARC_SIZE;
+
+
+      return icon.getTrueIconHeight() + ARC_SIZE + getAboveNodeHeight(treeNode) ;
+    }
+
+    public double getAboveNodeHeight(TreeNode treeNode){
+      String text = treeNode.getValue().toString();
+      String aboveText = null;
+      if (text.contains("%begin-above-node")) {
+        String[] textParts = text.split("%begin-above-node");
+        aboveText = textParts[1];
+      }
+
+      TeXFormula formula = new TeXFormula(LatexUtil.normalizeTexExpression(text));
+
+
+      double aboveTextHeight = 0;
+
+      if (aboveText != null) {
+        TeXIcon aboveTexIcon =
+                formula.createTeXIcon(
+                        TeXConstants.STYLE_DISPLAY,
+                        20,
+                        TeXConstants.UNIT_PIXEL,
+                        80,
+                        TeXConstants.ALIGN_CENTER);
+        aboveTextHeight = aboveTexIcon.getTrueIconHeight() + ARC_SIZE;
+      }
+
+      return aboveTextHeight;
     }
   }
 }
