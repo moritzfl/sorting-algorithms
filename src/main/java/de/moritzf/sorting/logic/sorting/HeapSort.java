@@ -41,7 +41,7 @@ public class HeapSort extends SortingAlgorithm {
     protocol.add(new HeapStep(root, new ArrayList<>(), heapifyStartPosition));
   }
 
-  public void heapify(TreeNode<HeapSortNodeValue> elementToHeapify) {
+  private void heapify(TreeNode<HeapSortNodeValue> elementToHeapify) {
     List<TreeNode<HeapSortNodeValue>> children = elementToHeapify.getChildren();
     Collections.sort(children, new HeapNodeComparator());
     int valueElement = elementToHeapify.getValue().getNumber();
@@ -57,8 +57,8 @@ public class HeapSort extends SortingAlgorithm {
         doSwap = valueChild < valueElement;
       }
       if (doSwap) {
-        elementToHeapify.getValue().setNumber(valueChild);
-        children.get(0).getValue().setNumber(valueElement);
+        elementToHeapify.getValue().replaceNumber(valueChild);
+        children.get(0).getValue().replaceNumber(valueElement);
         heapify(children.get(0));
       }
     }
@@ -115,14 +115,14 @@ public class HeapSort extends SortingAlgorithm {
     return stepDone;
   }
 
-  public TreeNode<HeapSortNodeValue> createNewTree(TreeNode<HeapSortNodeValue> oldTree) {
+  private TreeNode<HeapSortNodeValue> createNewTree(TreeNode<HeapSortNodeValue> oldTree) {
     TreeNode<HeapSortNodeValue> newTree =
         new TreeNode<>(new HeapSortNodeValue(oldTree.getValue().getNumber()));
     copyChildren(newTree, oldTree);
     return newTree;
   }
 
-  public void copyChildren(
+  private void copyChildren(
       TreeNode<HeapSortNodeValue> newTreeNode, TreeNode<HeapSortNodeValue> oldTreeNode) {
     for (TreeNode<HeapSortNodeValue> oldChild : oldTreeNode.getChildren()) {
       TreeNode<HeapSortNodeValue> newChild =

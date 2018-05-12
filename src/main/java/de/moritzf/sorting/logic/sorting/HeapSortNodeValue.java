@@ -15,7 +15,7 @@ public class HeapSortNodeValue {
     return numbers.get(numbers.size() - 1);
   }
 
-  public void setNumber(int number) {
+  public void replaceNumber(int number) {
     this.numbers.add(number);
   }
 

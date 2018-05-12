@@ -27,8 +27,4 @@ public class HeapStep {
             return null;
         }
     }
-
-    public void setSortedNumbers(List<Integer> sortedNumbers) {
-        this.sortedNumbers = sortedNumbers;
-    }
 }
