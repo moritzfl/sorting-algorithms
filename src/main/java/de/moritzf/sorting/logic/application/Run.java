@@ -1,7 +1,7 @@
 package de.moritzf.sorting.logic.application;
 
 import de.moritzf.sorting.gui.windows.AlgorithmSelection;
-import de.moritzf.sorting.gui.windows.GeneralGuiFunctions;
+import de.moritzf.sorting.gui.util.WindowUtil;
 
 
 /**
@@ -34,7 +34,7 @@ public class Run {
      */
     public static void main(String[] args) {
         // Set System look and feel according to the current OS
-        GeneralGuiFunctions.setSystemLookAndFeel();
+        WindowUtil.setSystemLookAndFeel();
 
         // opens a Algorithm Selection window.
         new AlgorithmSelection();

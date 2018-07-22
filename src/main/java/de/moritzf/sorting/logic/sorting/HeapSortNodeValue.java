@@ -2,23 +2,44 @@ package de.moritzf.sorting.logic.sorting;
 
 import java.util.ArrayList;
 
+/** This class represents the node values for the Heap sort algorithm. */
 public class HeapSortNodeValue {
 
   private ArrayList<Integer> numbers = new ArrayList<>();
   private boolean heapfyStart;
 
+  /**
+   * Instantiates a new Heap sort node value.
+   *
+   * @param initialNumber the initial number
+   */
   public HeapSortNodeValue(int initialNumber) {
     numbers.add(initialNumber);
   }
 
+  /**
+   * Sets heapify start.
+   *
+   * @param heapifyStart the heapify start
+   */
   public void setHeapifyStart(boolean heapifyStart) {
     this.heapfyStart = heapifyStart;
   }
 
+  /**
+   * Gets number.
+   *
+   * @return the number
+   */
   public int getNumber() {
     return numbers.get(numbers.size() - 1);
   }
 
+  /**
+   * Replace number.
+   *
+   * @param number the number
+   */
   public void replaceNumber(int number) {
     this.numbers.add(number);
   }

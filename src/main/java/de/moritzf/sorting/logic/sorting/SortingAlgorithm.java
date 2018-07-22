@@ -7,7 +7,9 @@ import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-/** The type Sorting algorithm. */
+/**
+ * Abstract class describing sorting algorithms. Every sorting algorithm should extend this class.
+ */
 public abstract class SortingAlgorithm {
 
   /**

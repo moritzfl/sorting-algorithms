@@ -5,17 +5,17 @@ import de.moritzf.sorting.logic.sorting.SortingAlgorithm;
 
 import javax.swing.*;
 
+/** Class for displaying sorting algorithms by using their latex-protocol. */
 public class LatexSortingWindow extends AbstractSortingWindow {
 
-
     private LatexPanel protocolComponent = new LatexPanel();
-    /**
-     * Instantiates a new sorting window.
-     *
-     * @param parent    the parent window.
-     * @param algorithm the sorting algorithm
-     */
-    public LatexSortingWindow(JFrame parent, SortingAlgorithm algorithm) {
+  /**
+   * Instantiates a new sorting window.
+   *
+   * @param parent the parent window.
+   * @param algorithm the sorting algorithm
+   */
+  public LatexSortingWindow(JFrame parent, SortingAlgorithm algorithm) {
         super(parent, algorithm);
         this.setProtocolComponent(protocolComponent);
         this.renderProtocol();

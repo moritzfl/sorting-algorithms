@@ -2,12 +2,23 @@ package de.moritzf.sorting.logic.sorting;
 
 import java.util.*;
 
+/**
+ * Implementation of the Heapsort algorithm
+ *
+ * @author Moritz Floeter
+ */
 public class HeapSort extends SortingAlgorithm {
 
   private List<HeapStep> protocol = new ArrayList<>();
 
   private boolean maxHeap;
 
+  /**
+   * Instantiates a new Heap sort.
+   *
+   * @param input the input
+   * @param maxHeap the max heap
+   */
   public HeapSort(int[] input, boolean maxHeap) {
     this.maxHeap = maxHeap;
     HeapSortNodeValue rootValue = new HeapSortNodeValue(input[0]);
@@ -63,7 +74,6 @@ public class HeapSort extends SortingAlgorithm {
       }
     }
   }
-
 
   @Override
   public boolean doStep() {
@@ -155,16 +165,25 @@ public class HeapSort extends SortingAlgorithm {
     return "Heapsort";
   }
 
+  /**
+   * Gets protocol.
+   *
+   * @return the protocol
+   */
   public List<HeapStep> getProtocol() {
     return this.protocol;
   }
 
+  /**
+   * Checks if maxheap or minheap is used.
+   *
+   * @return true if maxheap
+   */
   public boolean isMaxHeap() {
-      return this.maxHeap;
+    return this.maxHeap;
   }
 
-    private class HeapNodeComparator implements Comparator<TreeNode<HeapSortNodeValue>> {
-
+  private class HeapNodeComparator implements Comparator<TreeNode<HeapSortNodeValue>> {
     public int compare(TreeNode<HeapSortNodeValue> o1, TreeNode<HeapSortNodeValue> o2) {
       if (o1.getValue().getNumber() > o2.getValue().getNumber()) {
         return 1;

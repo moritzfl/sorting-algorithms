@@ -52,3 +52,9 @@
 
     licensed under the terms of GNU Lesser GPL v2.1
 
+
+    abego TreeLayout
+
+        Copyright (c) 2011, abego Software GmbH, Germany (http://www.abego.org)
+
+    licensed under the terms of 3-Clause BSD License

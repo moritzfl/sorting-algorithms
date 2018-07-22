@@ -3,7 +3,7 @@ package de.moritzf.sorting.logic.sorting;
 
 
 /**
- * The Class SelectionStep.
+ * The class represents a step of the shellsort algorithm.
  */
 public class SelectionStep {
 

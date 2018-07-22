@@ -63,13 +63,6 @@
             <artifactId>org.abego.treelayout.core</artifactId>
             <version>1.0.3</version>
         </dependency>
-        <dependency>
-            <groupId>com.github.wumpz</groupId>
-            <artifactId>java-diff-utils</artifactId>
-            <version>diffutils-2.2</version>
-        </dependency>
-
-
     </dependencies>
 
     <build>

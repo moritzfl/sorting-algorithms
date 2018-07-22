@@ -4,7 +4,11 @@ import java.util.ArrayList;
 
 import de.moritzf.sorting.logic.util.IntArrayUtils;
 
-/** The Class SelectionSort. */
+/**
+ * The class represents the implementation of the algorithm selection sort
+ *
+ * @author Moritz Floeter
+ */
 public class SelectionSort extends SortingAlgorithm {
 
   private static final String NAME = "Selectionsort";
@@ -179,15 +183,6 @@ public class SelectionSort extends SortingAlgorithm {
     while (protocol.size() > 1) {
       protocol.remove(protocol.size() - 1);
     }
-  }
-
-  /**
-   * Gets the protocol size.
-   *
-   * @return the protocol size
-   */
-  public int getProtocolSize() {
-    return this.protocol.size();
   }
 
   /**
