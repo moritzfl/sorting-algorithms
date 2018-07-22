@@ -17,7 +17,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import de.moritzf.sorting.gui.util.WindowUtil;
-import de.moritzf.sorting.logic.sorting.*;
+import de.moritzf.sorting.logic.sorting.algorithms.*;
 import org.jdesktop.swingx.JXTextField;
 
 import de.moritzf.sorting.logic.util.InputGeneration;

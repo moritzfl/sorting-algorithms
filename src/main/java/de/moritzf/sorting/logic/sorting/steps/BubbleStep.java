@@ -1,4 +1,4 @@
-package de.moritzf.sorting.logic.sorting;
+package de.moritzf.sorting.logic.sorting.steps;
 
 /**
  * The Class {@link BubbleStep}. Serves the representation of one step for the bubblsort * algorithm
@@ -16,7 +16,7 @@ public class BubbleStep {
      * The Sortingmarker. This marks the position which is looked at in the
      * according step.
      */
-    int sortingmarker;
+    private int sortingmarker;
 
     /**
      * The memory. This stores information about whether numbers have been

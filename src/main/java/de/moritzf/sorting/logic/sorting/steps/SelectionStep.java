@@ -1,4 +1,4 @@
-package de.moritzf.sorting.logic.sorting;
+package de.moritzf.sorting.logic.sorting.steps;
 
 
 
@@ -10,23 +10,23 @@ public class SelectionStep {
     /**
      * The array.
      */
-    int[] array;
+    private int[] array;
 
 
     /**
      * The sorted until position marker.
      */
-    int sortedUntilPositionMarker;
+    private int sortedUntilPositionMarker;
 
     /**
      * The searching position marker.
      */
-    int searchingPositionMarker;
+    private int searchingPositionMarker;
 
     /**
      * The min position.
      */
-    int minPosition;
+    private int minPosition;
 
     /**
      * Instantiates a new selection step.

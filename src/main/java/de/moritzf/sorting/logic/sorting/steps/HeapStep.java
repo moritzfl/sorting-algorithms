@@ -1,4 +1,6 @@
-package de.moritzf.sorting.logic.sorting;
+package de.moritzf.sorting.logic.sorting.steps;
+
+import de.moritzf.sorting.logic.sorting.TreeNode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,16 +13,16 @@ import java.util.List;
 public class HeapStep {
 
   /** The Root node. */
-  TreeNode<HeapSortNodeValue> rootNode;
+  private TreeNode<HeapSortNodeValue> rootNode;
 
   /**
    * List of numbers that have already been removed from the heap and inserted into this (sorted)
    * list.
    */
-  List<Integer> sortedNumbers;
+  private List<Integer> sortedNumbers;
 
   /** The node considered for the current step. */
-  int currentNode;
+  private int currentNode;
 
   /**
    * Gets the node that is considered for the current step.

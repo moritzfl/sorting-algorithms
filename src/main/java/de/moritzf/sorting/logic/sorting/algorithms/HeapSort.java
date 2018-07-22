@@ -1,4 +1,9 @@
-package de.moritzf.sorting.logic.sorting;
+package de.moritzf.sorting.logic.sorting.algorithms;
+
+import de.moritzf.sorting.logic.sorting.steps.HeapSortNodeValue;
+import de.moritzf.sorting.logic.sorting.steps.HeapStep;
+import de.moritzf.sorting.logic.sorting.SortingAlgorithm;
+import de.moritzf.sorting.logic.sorting.TreeNode;
 
 import java.util.*;
 
@@ -86,11 +91,12 @@ public class HeapSort extends SortingAlgorithm {
     if (lastStep.getRootNode() != null) {
       newRoot = createNewTree(lastStep.getRootNode());
       // Heap Creation
-      if (lastStep.currentNode >= 1) {
-        TreeNode<HeapSortNodeValue> nodeToHeapify = newRoot.getNode(lastStep.currentNode);
+      if (lastStep.getCurrentNode() >= 1) {
+        TreeNode<HeapSortNodeValue> nodeToHeapify = newRoot.getNode(lastStep.getCurrentNode());
         nodeToHeapify.getValue().setHeapifyStart(true);
         heapify(nodeToHeapify);
-        protocol.add(new HeapStep(newRoot, lastStep.getSortedNumbers(), lastStep.currentNode - 1));
+        protocol.add(
+            new HeapStep(newRoot, lastStep.getSortedNumbers(), lastStep.getCurrentNode() - 1));
         stepDone = true;
       } else {
         // Sorting of elements
@@ -116,7 +122,7 @@ public class HeapSort extends SortingAlgorithm {
         List<Integer> newSortedNumbers = new ArrayList(lastStep.getSortedNumbers());
         newSortedNumbers.add(rootNode.getValue().getNumber());
 
-        protocol.add(new HeapStep(newRoot, newSortedNumbers, lastStep.currentNode - 1));
+        protocol.add(new HeapStep(newRoot, newSortedNumbers, lastStep.getCurrentNode() - 1));
 
         stepDone = true;
       }

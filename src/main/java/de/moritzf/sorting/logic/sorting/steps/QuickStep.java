@@ -1,4 +1,4 @@
-package de.moritzf.sorting.logic.sorting;
+package de.moritzf.sorting.logic.sorting.steps;
 
 import java.util.ArrayList;
 

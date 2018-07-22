@@ -1,7 +1,7 @@
 package de.moritzf.sorting.gui.components;
 
-import de.moritzf.sorting.logic.sorting.HeapSort;
-import de.moritzf.sorting.logic.sorting.HeapStep;
+import de.moritzf.sorting.logic.sorting.algorithms.HeapSort;
+import de.moritzf.sorting.logic.sorting.steps.HeapStep;
 
 import javax.swing.*;
 

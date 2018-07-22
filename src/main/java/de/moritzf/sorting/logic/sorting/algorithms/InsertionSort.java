@@ -1,5 +1,7 @@
-package de.moritzf.sorting.logic.sorting;
+package de.moritzf.sorting.logic.sorting.algorithms;
 
+import de.moritzf.sorting.logic.sorting.steps.InsertionStep;
+import de.moritzf.sorting.logic.sorting.SortingAlgorithm;
 import de.moritzf.sorting.logic.util.IntArrayUtils;
 
 import java.util.ArrayList;

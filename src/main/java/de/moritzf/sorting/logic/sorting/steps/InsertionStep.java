@@ -1,4 +1,4 @@
-package de.moritzf.sorting.logic.sorting;
+package de.moritzf.sorting.logic.sorting.steps;
 
 import java.util.Arrays;
 import java.util.StringJoiner;
@@ -11,15 +11,15 @@ import java.util.StringJoiner;
 public class InsertionStep {
 
   /** The Sorted marker. */
-  int sortedMarker;
+  private int sortedMarker;
   /** The Search marker. */
-  int searchMarker;
+  private int searchMarker;
 
   /** The Memory. */
-  int memory;
+  private int memory;
 
   /** The Array. */
-  int[] array;
+  private int[] array;
 
   /**
    * Instantiates a new Insertion step.

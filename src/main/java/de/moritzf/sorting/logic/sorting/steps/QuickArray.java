@@ -1,4 +1,4 @@
-package de.moritzf.sorting.logic.sorting;
+package de.moritzf.sorting.logic.sorting.steps;
 
 /**
  * The Class QuickArray. This is used to represent a subarray in the algorithm * quicksort as the

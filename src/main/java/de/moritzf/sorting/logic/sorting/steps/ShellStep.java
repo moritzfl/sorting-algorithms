@@ -1,4 +1,6 @@
-package de.moritzf.sorting.logic.sorting;
+package de.moritzf.sorting.logic.sorting.steps;
+
+import de.moritzf.sorting.logic.sorting.algorithms.ShellSort;
 
 import java.util.Arrays;
 
@@ -10,9 +12,9 @@ import java.util.Arrays;
 public class ShellStep {
 
   /** The Source matrix. */
-  int[][] sourceMatrix;
+  private int[][] sourceMatrix;
   /** The Target matrix. */
-  int[][] targetMatrix;
+  private int[][] targetMatrix;
 
   /**
    * Get the matrix before the columns are sorted .
