@@ -4,7 +4,6 @@ import java.awt.*;
 
 import javax.swing.*;
 
-import de.moritzf.sorting.gui.components.DragScrollListener;
 import de.moritzf.sorting.gui.util.WindowUtil;
 
 /**
@@ -24,9 +23,6 @@ public abstract class AbstractSortingWindowSubstructure extends JFrame {
 
   /** The scroll. */
   private JScrollPane scroll;
-
-  /** The drag scroll. */
-  protected DragScrollListener dragScrollListener;
 
   /** The next step. */
   protected JButton nextStepBtn = new JButton("<html> &nbsp; <br>Next Step<br> &nbsp; </html>");
@@ -79,11 +75,9 @@ public abstract class AbstractSortingWindowSubstructure extends JFrame {
     right.add(rightbottom, BorderLayout.SOUTH);
 
     protocolPnl.setBackground(Color.white);
-    protocolPnl.addMouseListener(this.dragScrollListener);
 
     // Creating the main area of the window where the protocol is shown
     scroll = new JScrollPane(protocolPnl);
-    this.dragScrollListener = new DragScrollListener(protocolPnl);
     scroll.getVerticalScrollBar().setUnitIncrement(25);
     scroll.getHorizontalScrollBar().setUnitIncrement(25);
     mainpanel.add(scroll, BorderLayout.CENTER);
@@ -101,7 +95,6 @@ public abstract class AbstractSortingWindowSubstructure extends JFrame {
   protected void setProtocolComponent(JComponent comp) {
     this.protocolPnl.removeAll();
     this.protocolPnl.add(comp, BorderLayout.WEST);
-    comp.addMouseListener(this.dragScrollListener);
     this.validate();
     this.repaint();
   }
