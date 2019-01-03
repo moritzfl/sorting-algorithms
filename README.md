@@ -1,6 +1,5 @@
 # Sorting Algorithms
 
-[![Build Status](http://moritz-diskstation.ddns.net:4445/job/sorting-algorithms/job/master/badge/icon)](http://moritz-diskstation.ddns.net:4445/job/sorting-algorithms/job/master/)
 
 ![Screenshot](http://www.moritzf.de/projects/media/sorting.png)
 
