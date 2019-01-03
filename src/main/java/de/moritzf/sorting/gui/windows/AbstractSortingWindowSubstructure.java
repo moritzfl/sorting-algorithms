@@ -3,7 +3,10 @@ package de.moritzf.sorting.gui.windows;
 import java.awt.*;
 
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
+import de.moritzf.sorting.gui.components.ResizableComponent;
 import de.moritzf.sorting.gui.util.WindowUtil;
 
 /**
@@ -61,6 +64,7 @@ public abstract class AbstractSortingWindowSubstructure extends JFrame {
      * The reset button.
      */
     protected JButton reset = new JButton("<html>&nbsp; <br>Reset to Start<br> &nbsp;</html>");
+    private JComponent protocolComponent;
 
     /**
      * Instantiates a new sorting window.
@@ -72,6 +76,33 @@ public abstract class AbstractSortingWindowSubstructure extends JFrame {
         JPanel mainpanel = new JPanel();
         this.getContentPane().add(mainpanel);
         mainpanel.setLayout(new BorderLayout());
+        JMenuBar menuBar = new JMenuBar();
+        this.setJMenuBar(menuBar);
+
+
+        final JSlider slider = new JSlider(JSlider.HORIZONTAL, 50, 500, 100);
+
+        slider.setValue(100);
+        slider.setMinorTickSpacing(0);
+        slider.setMajorTickSpacing(50);
+        slider.setPaintTicks(true);
+        slider.setPaintLabels(true);
+
+
+        final JLabel scaleDisplay = new JLabel("Zoom: 100%");
+
+        slider.addChangeListener(new ChangeListener() {
+            public void stateChanged(ChangeEvent e) {
+
+                if (protocolComponent instanceof ResizableComponent) {
+                    ((ResizableComponent) protocolComponent).setScale(slider.getValue() / 100d);
+                    setProtocolComponent(protocolComponent);
+                    scaleDisplay.setText("Zoom: " + slider.getValue() + "%");
+                }
+
+            }
+        });
+
 
         // Create layout for the right side of the window
         JPanel right = new JPanel();
@@ -87,6 +118,12 @@ public abstract class AbstractSortingWindowSubstructure extends JFrame {
 
         right.add(righttop, BorderLayout.NORTH);
         Box rightbottom = Box.createVerticalBox();
+
+
+        if (protocolComponent instanceof ResizableComponent) {
+            rightbottom.add(scaleDisplay);
+            rightbottom.add(slider);
+        }
 
         rightbottom.add(infoBtn);
         rightbottom.add(exportBtn);
@@ -114,6 +151,7 @@ public abstract class AbstractSortingWindowSubstructure extends JFrame {
      */
     protected void setProtocolComponent(JComponent comp) {
         this.protocolPnl.removeAll();
+        this.protocolComponent = comp;
         this.protocolPnl.add(comp, BorderLayout.WEST);
         this.validate();
         this.repaint();
