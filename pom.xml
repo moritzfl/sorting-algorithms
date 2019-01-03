@@ -64,24 +64,6 @@
 		</resources>
 		<plugins>
 			<plugin>
-				<groupId>sh.tak.appbundler</groupId>
-				<artifactId>appbundle-maven-plugin</artifactId>
-				<version>1.2.0</version>
-				<configuration>
-					<mainClass>${mainClass}</mainClass>
-					<iconFile>icon.icns</iconFile>
-					<generateDiskImageFile>true</generateDiskImageFile>
-				</configuration>
-				<executions>
-					<execution>
-						<phase>package</phase>
-						<goals>
-							<goal>bundle</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
 				<groupId>org.sonarsource.scanner.maven</groupId>
 				<artifactId>sonar-maven-plugin</artifactId>
 				<version>3.3.0.603</version>

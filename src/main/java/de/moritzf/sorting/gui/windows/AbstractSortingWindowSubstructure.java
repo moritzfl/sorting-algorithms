@@ -98,6 +98,8 @@ public abstract class AbstractSortingWindowSubstructure extends JFrame {
                     ((ResizableComponent) protocolComponent).setScale(slider.getValue() / 100d);
                     setProtocolComponent(protocolComponent);
                     scaleDisplay.setText("Zoom: " + slider.getValue() + "%");
+                } else {
+                    slider.setEnabled(false);
                 }
 
             }
@@ -120,10 +122,9 @@ public abstract class AbstractSortingWindowSubstructure extends JFrame {
         Box rightbottom = Box.createVerticalBox();
 
 
-        if (protocolComponent instanceof ResizableComponent) {
-            rightbottom.add(scaleDisplay);
-            rightbottom.add(slider);
-        }
+        rightbottom.add(scaleDisplay);
+        rightbottom.add(slider);
+
 
         rightbottom.add(infoBtn);
         rightbottom.add(exportBtn);
