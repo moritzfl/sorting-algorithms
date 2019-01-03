@@ -1,7 +1,6 @@
 package de.moritzf.sorting.logic.sorting.steps;
 
 
-
 /**
  * The class represents a step of the shellsort algorithm.
  */

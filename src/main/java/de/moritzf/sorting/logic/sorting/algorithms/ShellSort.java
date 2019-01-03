@@ -188,7 +188,6 @@ public class ShellSort extends SortingAlgorithm {
     }
 
 
-
     @Override
     public void reset() {
         while (protocol.size() > 1) {

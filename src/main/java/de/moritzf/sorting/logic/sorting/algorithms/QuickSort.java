@@ -57,7 +57,6 @@ public class QuickSort extends SortingAlgorithm {
     }
 
 
-
     /**
      * Undo step.
      *
@@ -110,29 +109,29 @@ public class QuickSort extends SortingAlgorithm {
                     int leftEnd = prevStep.getQarrays().get(i).getLeftEnd();
                     boolean split = false;
 
-					/*
+                    /*
                      * When the rightEnd and Left end have not "traded sides"
-					 * but also aren't just on their default positions, that
-					 * means that suitable swap partners have been found during
-					 * the last step. Therefore those values get swapped.
-					 * 
-					 * Trading sides means that the marker "rightEnd" that
-					 * initially came from the right side of the array is now on
-					 * the left side of the array (and vice versa for the marker
-					 * "leftEnd").
-					 */
+                     * but also aren't just on their default positions, that
+                     * means that suitable swap partners have been found during
+                     * the last step. Therefore those values get swapped.
+                     *
+                     * Trading sides means that the marker "rightEnd" that
+                     * initially came from the right side of the array is now on
+                     * the left side of the array (and vice versa for the marker
+                     * "leftEnd").
+                     */
                     if ((rightEnd > leftEnd) && leftEnd >= 0) {
                         int temp = oldArrayClone[leftEnd];
                         oldArrayClone[leftEnd] = oldArrayClone[rightEnd];
                         oldArrayClone[rightEnd] = temp;
                         /*
-						 * When the rightEnd and the leftEnd have "traded sides"
-						 * this means that all elements are on the according
-						 * side. The only thing left to do here is to swap the
-						 * pivot element to the right position and to cut the
-						 * array into three pieces : the left side // pivot //
-						 * the right side
-						 */
+                         * When the rightEnd and the leftEnd have "traded sides"
+                         * this means that all elements are on the according
+                         * side. The only thing left to do here is to swap the
+                         * pivot element to the right position and to cut the
+                         * array into three pieces : the left side // pivot //
+                         * the right side
+                         */
                     } else if ((rightEnd < leftEnd) || (rightEnd == 0)) {
 
                         split = true;
@@ -140,11 +139,11 @@ public class QuickSort extends SortingAlgorithm {
                         oldArrayClone[oldArrayClone.length - 1] = oldArrayClone[leftEnd];
                         oldArrayClone[leftEnd] = temp;
 
-						/*
-						 * The left part of the array (containing all elements
-						 * that are smaller than the pivot) is added to the list
-						 * first
-						 */
+                        /*
+                         * The left part of the array (containing all elements
+                         * that are smaller than the pivot) is added to the list
+                         * first
+                         */
                         if (leftEnd - 1 >= 0) {
                             int[] leftSideSplit = subArray(oldArrayClone, 0,
                                     leftEnd - 1);
@@ -154,19 +153,19 @@ public class QuickSort extends SortingAlgorithm {
                             nextStep.getQarrays().add(leftQuickArray);
                         }
 
-						/*
-						 * The pivot-element is added to the list as an array
-						 * with only the pivot as element
-						 */
+                        /*
+                         * The pivot-element is added to the list as an array
+                         * with only the pivot as element
+                         */
                         int[] pivotSplit = subArray(oldArrayClone, leftEnd,
                                 leftEnd);
                         nextStep.getQarrays().add(new QuickArray(pivotSplit));
 
-						/*
-						 * Finally, the right part of the array (containing all
-						 * elements that are larger than the pivot) is added to
-						 * the list
-						 */
+                        /*
+                         * Finally, the right part of the array (containing all
+                         * elements that are larger than the pivot) is added to
+                         * the list
+                         */
                         if (leftEnd != oldArrayClone.length - 1) {
                             int[] rightSideSplit = subArray(oldArrayClone,
                                     leftEnd + 1, oldArrayClone.length - 1);
@@ -203,27 +202,27 @@ public class QuickSort extends SortingAlgorithm {
      * @param qarray the qarray
      */
     private static void findPartners(QuickArray qarray) {
-		/*
-		 * The search for both partners begins one position next to the stored
-		 * starting position.
-		 */
+        /*
+         * The search for both partners begins one position next to the stored
+         * starting position.
+         */
         int leftPartner = qarray.getLeftStart() + 1;
         int rightPartner = qarray.getRightStart() - 1;
 
         int pivot = qarray.getArray()[qarray.getArray().length - 1];
-		/*
-		 * Search for an element that belongs on the right side of the pivot
-		 * element. Search goes from left to right
-		 */
+        /*
+         * Search for an element that belongs on the right side of the pivot
+         * element. Search goes from left to right
+         */
         while (leftPartner < qarray.getArray().length - 1
                 && qarray.getArray()[leftPartner] <= pivot) {
             leftPartner++;
         }
 
-		/*
-		 * Search for a suitable swap partner -> an element that belongs on the
-		 * left side of the pivot. Search goes from right to left.
-		 */
+        /*
+         * Search for a suitable swap partner -> an element that belongs on the
+         * left side of the pivot. Search goes from right to left.
+         */
         while (rightPartner > 0 && qarray.getArray()[rightPartner] > pivot) {
             rightPartner--;
         }
@@ -282,11 +281,11 @@ public class QuickSort extends SortingAlgorithm {
 
         QuickStep chosenStep = this.protocol.get(chosenStepNumber);
 
-		/*
-		 * If the chosenStep is not the first step, a reference to the previous
-		 * step gets stored. If it is the first step, that reference points to
-		 * null.
-		 */
+        /*
+         * If the chosenStep is not the first step, a reference to the previous
+         * step gets stored. If it is the first step, that reference points to
+         * null.
+         */
         QuickStep prevStep = null;
         if (chosenStepNumber > 0) {
             prevStep = this.protocol.get(chosenStepNumber - 1);
@@ -294,11 +293,11 @@ public class QuickSort extends SortingAlgorithm {
 
         ArrayList<QuickArray> chosenQarrays = chosenStep.getQarrays();
 
-		/*
-		 * current position in the entire array. Because we start at the first
-		 * position, this value is 0 in the beginning. (meaning all arrays of
-		 * the chosenQarrays list put together)
-		 */
+        /*
+         * current position in the entire array. Because we start at the first
+         * position, this value is 0 in the beginning. (meaning all arrays of
+         * the chosenQarrays list put together)
+         */
         int position = 0;
 
         // loop over all QuickArrays in the chosenQarrays list
@@ -307,28 +306,28 @@ public class QuickSort extends SortingAlgorithm {
             // loop over the int array that is stored in the QuickArray that is
             // currently looked at (chosenArray)
             for (int j = 0; j < chosenQarray.getArray().length; j++) {
-				/*
-				 * the number at the position j of the chosenArray gets stored
-				 * as a String in order to later add it to the retString of this
-				 * function
-				 */
+                /*
+                 * the number at the position j of the chosenArray gets stored
+                 * as a String in order to later add it to the retString of this
+                 * function
+                 */
                 String number = "" + chosenQarray.getArray()[j];
 
-				/*
-				 * color adjustment. If the value is different from the one
-				 * stored in the previous step, it gets highlighted
-				 */
+                /*
+                 * color adjustment. If the value is different from the one
+                 * stored in the previous step, it gets highlighted
+                 */
                 if (prevStep != null
                         && chosenStep.getValueAtPosition(position) != prevStep
                         .getValueAtPosition(position)) {
                     number = "\\textcolor{red}{" + number + "}";
                 }
 
-				/*
-				 * underline adjustment. If the value is on the right of an
-				 * Qarray and that array is bigger than one, it is a pivot
-				 * element and therefore gets highlighted
-				 */
+                /*
+                 * underline adjustment. If the value is on the right of an
+                 * Qarray and that array is bigger than one, it is a pivot
+                 * element and therefore gets highlighted
+                 */
                 if (j == chosenQarray.getArray().length - 1
                         & (chosenQarrays.get(i).getArray().length > 1)) {
                     number = "\\underline{" + number + "}";
@@ -350,11 +349,11 @@ public class QuickSort extends SortingAlgorithm {
             }
         }
 
-		/*
-		 * after all numbers were inserted into the retString, a linebreak is
-		 * inserted as we now will continue by writing the Markers under the
-		 * according numbers
-		 */
+        /*
+         * after all numbers were inserted into the retString, a linebreak is
+         * inserted as we now will continue by writing the Markers under the
+         * according numbers
+         */
         retString += " \\\\ \n ";
 
         String[] startMarkers = chosenStep.getStartMarkerArray();

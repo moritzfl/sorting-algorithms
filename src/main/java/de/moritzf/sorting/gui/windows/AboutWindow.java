@@ -18,51 +18,51 @@ import javax.swing.JScrollPane;
  */
 public class AboutWindow extends JFrame {
 
-  private static final long serialVersionUID = -8640373993891704839L;
+    private static final long serialVersionUID = -8640373993891704839L;
 
-  private static String VERSION_FILE = "about-version.txt";
-  private static String COPYRIGHT_FILE = "about-copyright.txt";
+    private static String VERSION_FILE = "about-version.txt";
+    private static String COPYRIGHT_FILE = "about-copyright.txt";
 
-  /**
-   * Instantiates a new about window.
-   *
-   * @param parent the parent
-   */
-  public AboutWindow(JFrame parent) {
-    super("About");
-    this.setSize(600, 400);
-    Container mainpane = this.getContentPane();
-    mainpane.setLayout(new BorderLayout());
+    /**
+     * Instantiates a new about window.
+     *
+     * @param parent the parent
+     */
+    public AboutWindow(JFrame parent) {
+        super("About");
+        this.setSize(600, 400);
+        Container mainpane = this.getContentPane();
+        mainpane.setLayout(new BorderLayout());
 
-    String versionInformation = null;
-    try (BufferedReader buffer =
-        new BufferedReader(
-            new InputStreamReader(this.getClass().getResourceAsStream(VERSION_FILE)))) {
+        String versionInformation = null;
+        try (BufferedReader buffer =
+                     new BufferedReader(
+                             new InputStreamReader(this.getClass().getResourceAsStream(VERSION_FILE)))) {
 
-      versionInformation = buffer.lines().collect(Collectors.joining("\n"));
+            versionInformation = buffer.lines().collect(Collectors.joining("\n"));
 
-    } catch (IOException e) {
-      e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        String copyrightInformation = null;
+        try (BufferedReader buffer =
+                     new BufferedReader(
+                             new InputStreamReader(this.getClass().getResourceAsStream(COPYRIGHT_FILE)))) {
+
+            copyrightInformation = buffer.lines().collect(Collectors.joining("\n"));
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        mainpane.add(new LatexPanel(versionInformation), BorderLayout.NORTH);
+        mainpane.add(new JScrollPane(new MonoTextArea(copyrightInformation)), BorderLayout.CENTER);
+
+        this.setLocationRelativeTo(parent);
+        this.setAlwaysOnTop(true);
+        this.setResizable(false);
+        this.setVisible(true);
+        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
-
-    String copyrightInformation = null;
-    try (BufferedReader buffer =
-        new BufferedReader(
-            new InputStreamReader(this.getClass().getResourceAsStream(COPYRIGHT_FILE)))) {
-
-      copyrightInformation = buffer.lines().collect(Collectors.joining("\n"));
-
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
-
-    mainpane.add(new LatexPanel(versionInformation), BorderLayout.NORTH);
-    mainpane.add(new JScrollPane(new MonoTextArea(copyrightInformation)), BorderLayout.CENTER);
-
-    this.setLocationRelativeTo(parent);
-    this.setAlwaysOnTop(true);
-    this.setResizable(false);
-    this.setVisible(true);
-    this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-  }
 }

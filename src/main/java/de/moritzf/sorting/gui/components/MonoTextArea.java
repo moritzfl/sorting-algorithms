@@ -5,6 +5,7 @@ import javax.swing.JTextArea;
 
 /**
  * {@link JTextArea} that displays monospaced text.
+ *
  * @author Moritz Floeter
  */
 public class MonoTextArea extends JTextArea {

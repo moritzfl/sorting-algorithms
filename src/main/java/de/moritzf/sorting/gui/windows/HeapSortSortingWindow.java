@@ -5,18 +5,20 @@ import de.moritzf.sorting.logic.sorting.algorithms.HeapSort;
 
 import javax.swing.*;
 
-/** Class for displaying the heap sort algorithm. */
+/**
+ * Class for displaying the heap sort algorithm.
+ */
 public class HeapSortSortingWindow extends AbstractSortingWindow {
 
     private HeapSortProtocolPane protocolComponent;
 
-  /**
-   * Instantiates a new {@link HeapSortSortingWindow}.
-   *
-   * @param parent the parent
-   * @param algorithm the algorithm
-   */
-  public HeapSortSortingWindow(JFrame parent, HeapSort algorithm) {
+    /**
+     * Instantiates a new {@link HeapSortSortingWindow}.
+     *
+     * @param parent    the parent
+     * @param algorithm the algorithm
+     */
+    public HeapSortSortingWindow(JFrame parent, HeapSort algorithm) {
         super(parent, algorithm);
         this.protocolComponent = new HeapSortProtocolPane(algorithm);
         this.setProtocolComponent(protocolComponent);
