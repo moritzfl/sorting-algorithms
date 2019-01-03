@@ -84,33 +84,33 @@ public class TreeNodePane extends JComponent {
         }
     }
 
-    private void paintNode(Graphics g, TreeNode treeNode) {
+    private void paintNode(Graphics graphic, TreeNode treeNode) {
         // draw the box in the background
-        g.setColor(BOX_COLOR);
+        graphic.setColor(BOX_COLOR);
         Rectangle2D.Double box = getBoundsOfNode(treeNode);
 
         TreeNodeExtentProvider extentProvider = new TreeNodeExtentProvider();
         double aboveTextSize = extentProvider.getAboveNodeHeight(treeNode);
 
-        g.fillRoundRect(
+        graphic.fillRoundRect(
                 (int) box.x,
                 (int) (box.y + aboveTextSize),
                 (int) box.width - 1,
                 (int) (box.height - aboveTextSize - 1),
-                (int) (ARC_SIZE * scale),
-                (int) (ARC_SIZE * scale));
-        g.setColor(BORDER_COLOR);
-        g.drawRoundRect(
+                (int) ((double) ARC_SIZE * scale),
+                (int) ((double) ARC_SIZE * scale));
+        graphic.setColor(BORDER_COLOR);
+        graphic.drawRoundRect(
                 (int) box.x,
                 (int) (box.y + aboveTextSize),
                 (int) box.width - 1,
                 (int) (box.height - aboveTextSize - 1),
-                (int) (ARC_SIZE * scale),
-                (int) (ARC_SIZE * scale));
+                (int) ((double) ARC_SIZE * scale),
+                (int) ((double) ARC_SIZE * scale));
 
         // Draw the box content
-        int x = (int) box.x + (int) (ARC_SIZE * scale) / 2;
-        int y = (int) box.y + (int) (ARC_SIZE * scale) / 2;
+        int x = (int) (box.x + (double) ARC_SIZE * scale / 2d);
+        int y = (int) (box.y + (double) ARC_SIZE * scale / 2d);
 
         String text = treeNode.getValue().toString();
         String aboveNode = null;
@@ -125,18 +125,18 @@ public class TreeNodePane extends JComponent {
             aboveNodeIcon =
                     aboveNodeFormula.createTeXIcon(
                             TeXConstants.STYLE_DISPLAY,
-                            (int) (20 * scale),
+                            (int) (20d * scale),
                             TeXConstants.UNIT_PIXEL,
-                            (int) (80 * scale),
+                            (int) (80d * scale),
                             TeXConstants.ALIGN_CENTER);
-            aboveNodeIcon.paintIcon(this, g, x, y);
+            aboveNodeIcon.paintIcon(this, graphic, x, y);
         }
 
         TeXFormula nodeFormula = new TeXFormula(text);
         TeXIcon nodeIcon =
                 nodeFormula.createTeXIcon(
                         TeXConstants.STYLE_DISPLAY, (int) (20 * scale), TeXConstants.UNIT_PIXEL, (int) (80 * scale), TeXConstants.ALIGN_CENTER);
-        nodeIcon.paintIcon(this, g, x, y + (int) aboveTextSize);
+        nodeIcon.paintIcon(this, graphic, x, y + (int) aboveTextSize);
     }
 
     @Override
@@ -147,24 +147,6 @@ public class TreeNodePane extends JComponent {
         for (TreeNode treeNode : treeLayout.getNodeBounds().keySet()) {
             paintNode(g, treeNode);
         }
-    }
-
-
-    private void paintTree() {
-        TreeForTreeLayout<TreeNode> layout = TreeForTreeLayoutFactory.create(this.rootNode);
-        double gapBetweenLevels = 30;
-        double gapBetweenNodes = 15;
-        DefaultConfiguration<TreeNode> configuration =
-                new DefaultConfiguration<>(gapBetweenLevels * scale, gapBetweenNodes * scale);
-
-        TreeLayout<TreeNode> treeLayout =
-                new TreeLayout<>(layout, new TreeNodeExtentProvider(), configuration);
-        this.treeLayout = treeLayout;
-        Dimension size = treeLayout.getBounds().getBounds().getSize();
-        setPreferredSize(size);
-        this.validate();
-        this.repaint();
-
     }
 
 
@@ -230,7 +212,7 @@ public class TreeNodePane extends JComponent {
                             (int) (80d * scale),
                             TeXConstants.ALIGN_CENTER);
 
-            return icon.getTrueIconHeight() + ARC_SIZE * scale + getAboveNodeHeight(treeNode);
+            return icon.getTrueIconHeight() + (double) ARC_SIZE * scale + getAboveNodeHeight(treeNode);
         }
 
         /**
