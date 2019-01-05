@@ -13,7 +13,7 @@ import java.util.Arrays;
  *
  * @author Moritz Floeter
  */
-public class HeapSortProtocolPane extends JPanel implements ResizableComponent {
+public class HeapSortProtocolPane extends JPanel implements Resizable {
 
     private HeapSort algorithm;
     private JPanel protocolPanel;

@@ -135,7 +135,7 @@ public class TreeNodePane extends JComponent {
         TeXFormula nodeFormula = new TeXFormula(text);
         TeXIcon nodeIcon =
                 nodeFormula.createTeXIcon(
-                        TeXConstants.STYLE_DISPLAY, (int) (20 * scale), TeXConstants.UNIT_PIXEL, (int) (80 * scale), TeXConstants.ALIGN_CENTER);
+                        TeXConstants.STYLE_DISPLAY, (int) (20d * scale), TeXConstants.UNIT_PIXEL, (int) (80 * scale), TeXConstants.ALIGN_CENTER);
         nodeIcon.paintIcon(this, graphic, x, y + (int) aboveTextSize);
     }
 

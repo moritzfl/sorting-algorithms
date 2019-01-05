@@ -1,7 +1,7 @@
 package de.moritzf.sorting.gui.components;
 
 
-public interface ResizableComponent {
+public interface Resizable {
 
     void setScale(double scale);
 

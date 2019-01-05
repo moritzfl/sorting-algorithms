@@ -55,6 +55,7 @@ public abstract class SortingAlgorithm {
 
     public String getPdfInfoFilePath() {
         try {
+
             return this.getResourceAsFile(this.getName().toLowerCase() + ".pdf").getAbsolutePath();
         } catch (IOException e) {
             return null;

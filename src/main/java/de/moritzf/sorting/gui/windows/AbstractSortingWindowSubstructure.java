@@ -6,7 +6,7 @@ import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-import de.moritzf.sorting.gui.components.ResizableComponent;
+import de.moritzf.sorting.gui.components.Resizable;
 import de.moritzf.sorting.gui.util.WindowUtil;
 
 /**
@@ -60,6 +60,10 @@ public abstract class AbstractSortingWindowSubstructure extends JFrame {
     protected JButton infoBtn =
             new JButton("<html> &nbsp; <br>Additional Information<br> &nbsp; </html>");
 
+
+    private final JSlider slider = new JSlider(JSlider.HORIZONTAL, 50, 500, 100);
+
+    private final JLabel scaleDisplay = new JLabel("Zoom: 100%");
     /**
      * The reset button.
      */
@@ -80,8 +84,6 @@ public abstract class AbstractSortingWindowSubstructure extends JFrame {
         this.setJMenuBar(menuBar);
 
 
-        final JSlider slider = new JSlider(JSlider.HORIZONTAL, 50, 500, 100);
-
         slider.setValue(100);
         slider.setMinorTickSpacing(0);
         slider.setMajorTickSpacing(50);
@@ -89,13 +91,11 @@ public abstract class AbstractSortingWindowSubstructure extends JFrame {
         slider.setPaintLabels(true);
 
 
-        final JLabel scaleDisplay = new JLabel("Zoom: 100%");
-
         slider.addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
 
-                if (protocolComponent instanceof ResizableComponent) {
-                    ((ResizableComponent) protocolComponent).setScale(slider.getValue() / 100d);
+                if (protocolComponent instanceof Resizable) {
+                    ((Resizable) protocolComponent).setScale(slider.getValue() / 100d);
                     setProtocolComponent(protocolComponent);
                     scaleDisplay.setText("Zoom: " + slider.getValue() + "%");
                 } else {
@@ -153,6 +153,13 @@ public abstract class AbstractSortingWindowSubstructure extends JFrame {
     protected void setProtocolComponent(JComponent comp) {
         this.protocolPnl.removeAll();
         this.protocolComponent = comp;
+        if (!(comp instanceof Resizable)) {
+            slider.setEnabled(false);
+            scaleDisplay.setText("Zoom disabled");
+        } else {
+            slider.setEnabled(true);
+            scaleDisplay.setText("Zoom: " + ((Resizable) comp).getScale() + "%");
+        }
         this.protocolPnl.add(comp, BorderLayout.WEST);
         this.validate();
         this.repaint();

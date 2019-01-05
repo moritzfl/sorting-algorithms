@@ -137,7 +137,7 @@ public abstract class AbstractSortingWindow extends AbstractSortingWindowSubstru
         } catch (Exception e) {
             JOptionPane.showMessageDialog(
                     this,
-                    "<html> Failed to open algorithm's info file.<br> Make sure you have an pdf-reader installed.",
+                    "<html> Failed to open algorithm's info file.<br> Make sure you have a pdf-reader installed.",
                     "Error",
                     JOptionPane.ERROR_MESSAGE);
         }

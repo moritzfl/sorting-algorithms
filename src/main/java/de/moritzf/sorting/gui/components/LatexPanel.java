@@ -32,7 +32,7 @@ import java.awt.*;
  *
  * @author Moritz Floeter.
  */
-public class LatexPanel extends JPanel implements ResizableComponent {
+public class LatexPanel extends JPanel implements Resizable {
 
     /**
      * The Constant serialVersionUID.
