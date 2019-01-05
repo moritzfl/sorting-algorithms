@@ -39,13 +39,6 @@
     licensed under the terms of GPL v3
 
 
-    DragScrollListner - a class for enabling scrolling by touchinput
-
-        Copyright (C) Greg Cope
-
-    licensed under the terms of GPL v3
-
-
     SwingX - a library for various GUI-Elements
 
         Copyright (C) 2005-2006 Sun Microsystems
