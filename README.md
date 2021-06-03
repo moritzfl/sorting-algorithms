@@ -1,7 +1,7 @@
 # Sorting Algorithms
 
 
-![Screenshot](http://www.moritzf.de/projects/media/sorting.png)
+![Screenshot](https://moritzf.de/user/pages/02.projects/02.sorting-algorithms/sorting.png)
 
 This software was developed with the aim to enrich teaching and learning in the area of algorithms with new possibilities. It is licensed under the terms of GPL v3.
 
