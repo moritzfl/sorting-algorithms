@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
  */
 public class SaveFileUtil {
 
-    private static String TEMPLATE_FILE = "export-template.txt";
+    private static String TEMPLATE_FILE = "/de/moritzf/sorting/io/export-template.txt";
 
     /**
      * Saves the String passed to it as LaTeX document

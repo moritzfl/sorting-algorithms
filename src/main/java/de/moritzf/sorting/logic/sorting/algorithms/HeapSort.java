@@ -157,10 +157,97 @@ public class HeapSort extends SortingAlgorithm {
     public void reset() {
     }
 
-    @Override
+    /**
+     * Renders the protocol to LaTeX-code.
+     *
+     * @return the string
+     */
     public String protocol2LaTeX() {
-        return null;
+        String retString = "";
+        for (int i = 0; i < protocol.size(); i++) {
+            retString += " " + this.step2LaTeX(i) + "\n \n";
+        }
+        return retString;
     }
+
+    /**
+     * Generates a LaTeX-Expression representing one step. This is used for
+     * export only as JLaTeX-Math does not allow the use of tikz. The GUI uses
+     * HeapSortPanelExtended as replacement (which uses BinaryTreePanel to
+     * render the binary tree)
+     *
+     * @param chosenStepNumber the chosen step number
+     * @return the string
+     */
+    public String step2LaTeX(int chosenStepNumber) {
+        HeapStep chosenStep = this.protocol.get(chosenStepNumber);
+        String retString = "";
+        if (chosenStepNumber == 0) {
+            retString += "\\underline{\\textbf{Heap Creation}}\n\n original binary tree \n\n";
+        } else if (chosenStepNumber == 1) {
+            retString += "$\\rhd number\\lhd$ := element that is to be heapified \n\n";
+        }
+
+        final TreeNode<HeapSortNodeValue> renderingTarget = chosenStep.getRootNode();
+
+        /*
+         * Generate elements for the part of the protocol where values get
+         * removed from the Heap and inserted into the Array
+         */
+        if (chosenStep.getCurrentNode() < 1) {
+            if (chosenStep.getCurrentNode() == 0) {
+                retString += "\\underline{\\textbf{Sorting}}\n\n";
+              }
+            retString += "sorted array : [";
+            for (int i = 0; i < chosenStep.getSortedNumbers().size(); i++) {
+                retString += Integer.toString(chosenStep.getSortedNumbers().get(i));
+                if (i < chosenStep.getSortedNumbers().size() - 1) {
+                    retString += ", ";
+                }
+            }
+            retString += "]\n\n";
+        }
+
+
+        if (renderingTarget != null) {
+            retString += "\\begin{tikzpicture}[very thick,level/.style={sibling distance=60mm/#1}]\n \\"
+                    + generateLaTeXHeapNode(renderingTarget, chosenStep) + "; \n \\end{tikzpicture}";
+        } else {
+            retString += "$\\rightarrow finished  \\, sorting$";
+        }
+
+        retString += "\n\n ............................ \n\n";
+        return retString;
+    }
+
+    /**
+     * Generate heap node. This generates a node of the binary tree as well as
+     * all its children by recursively calling this function
+     *
+     * @param step       the step
+     * @return the string
+     */
+    private String generateLaTeXHeapNode(TreeNode<HeapSortNodeValue> renderingTarget, HeapStep step) {
+        String retString = "node [vertex]";
+        String[] parts = renderingTarget.toString().split("%begin-above-node");
+        if (parts.length > 1)  {
+            retString += "[label={\\small $" + parts[1].replace("st", "cancel") + "$}] ";
+        }
+        retString += "{$" + parts[0].replace("st", "cancel") + "$}";
+
+        if (!renderingTarget.getChildren().isEmpty()) {
+            List<TreeNode<HeapSortNodeValue>> children = renderingTarget.getChildren();
+            retString += "child{" + generateLaTeXHeapNode(children.get(0), step) + "}";
+            if (children.size() > 1) {
+                retString += "\nchild{" + generateLaTeXHeapNode(children.get(1), step) + "}";
+            } else {
+                retString += "child[missing]{}";
+            }
+
+        }
+        return retString;
+    }
+
 
     @Override
     public boolean undoStep() {
